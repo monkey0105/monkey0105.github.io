@@ -1,0 +1,982 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,sphinx," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。他是用jupyter notebook写的，放在公司内网的博客上。我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。">
+<meta name="keywords" content="python,sphinx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Generate Doc for Python Packages by sphinx">
+<meta property="og:url" content="http://yoursite.com/2016/09/09/generate-doc-for-python-pkgs-by-sphinx/index.html">
+<meta property="og:site_name" content="Dreamland">
+<meta property="og:description" content="这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。他是用jupyter notebook写的，放在公司内网的博客上。我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。">
+<meta property="og:updated_time" content="2017-05-11T07:26:12.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Generate Doc for Python Packages by sphinx">
+<meta name="twitter:description" content="这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。他是用jupyter notebook写的，放在公司内网的博客上。我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '0WAS567B7X',
+      apiKey: '759b8f1ab783d5715ba2a55a26a069d0',
+      indexName: 'hexo_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/09/generate-doc-for-python-pkgs-by-sphinx/"/>
+
+
+
+
+
+  <title>Generate Doc for Python Packages by sphinx | Dreamland</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ff535cdcd7fc7a424187099c15b8d662";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dreamland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Inner Peace</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/09/generate-doc-for-python-pkgs-by-sphinx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katherine Hou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dreamland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Generate Doc for Python Packages by sphinx</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-09T17:11:48+08:00">
+                2016-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/拿来主义-Copinism/" itemprop="url" rel="index">
+                    <span itemprop="name">拿来主义|Copinism</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/09/09/generate-doc-for-python-pkgs-by-sphinx/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/09/09/generate-doc-for-python-pkgs-by-sphinx/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/09/09/generate-doc-for-python-pkgs-by-sphinx/" class="leancloud_visitors" data-flag-title="Generate Doc for Python Packages by sphinx">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。<br>他是用jupyter notebook写的，放在公司内网的博客上。<br>我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。</p>
+<a id="more"></a>
+<h2 id="安装sphinx"><a href="#安装sphinx" class="headerlink" title="安装sphinx"></a>安装<code>sphinx</code></h2><p>ubuntu下可以用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install python-sphinx</div></pre></td></tr></table></figure></p>
+<h2 id="生成文档"><a href="#生成文档" class="headerlink" title="生成文档"></a>生成文档</h2><h3 id="建立文件夹"><a href="#建立文件夹" class="headerlink" title="建立文件夹"></a>建立文件夹</h3><p>假设我们的文件结构是这样的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">some_path/</div><div class="line">    /src</div><div class="line">        /jfds</div><div class="line">            __init__.py</div><div class="line">            module1.py</div><div class="line">            ...</div></pre></td></tr></table></figure></p>
+<p>其中jfds是python package对应的文件夹，如果要想在<code>some_path/</code>下创建名为<code>doc</code>的documentation文件夹，(和<code>src</code>并列)，那么可以在<code>some_path</code>打开<code>terminal</code>， 输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sphinx-apidoc -F -o docs src/</div></pre></td></tr></table></figure></p>
+<p>这样就自动生成了<code>doc</code>文件夹，包含了创建documentation所需的信息</p>
+<h3 id="添加package路径信息"><a href="#添加package路径信息" class="headerlink" title="添加package路径信息"></a>添加package路径信息</h3><p>如果jfds并未通过放入<code>site-packages</code>,加入<code>PYTHONPATH</code>等方式让<code>python</code>全局识别的话，如果修改<code>doc</code>文件夹中的<code>conf.py</code>, 添加以下行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),<span class="string">'../src'</span>))</div><div class="line">os.path.dirname(os.path.abspath(__file__))</div></pre></td></tr></table></figure></p>
+<p>的目的是找到<code>conf.py</code>的绝对路径，用<code>os.path.join</code>将它和<code>../src</code>合并后就找到了jfds这个package所在的绝对路径。</p>
+<p>最后用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sys.path.append</div></pre></td></tr></table></figure></p>
+<p>将jfds所在的路径加入，之后<code>sphinx</code>就能够找到<code>jfds</code> package</p>
+<h3 id="生成Documentation-HTML"><a href="#生成Documentation-HTML" class="headerlink" title="生成Documentation HTML"></a>生成Documentation HTML</h3><p>切换到<code>doc</code>目录，打开<code>terminal</code>，运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make html</div></pre></td></tr></table></figure></p>
+<p>就能在<code>_build</code>文件夹找到自动生成的文档</p>
+<h2 id="文档编写方式"><a href="#文档编写方式" class="headerlink" title="文档编写方式"></a>文档编写方式</h2><p>比较了几种风格，建议采用<code>google</code>的标准，这样可以让原始的docstring和生成的文档都有不错的可读性，<a href="http://www.sphinx-doc.org/en/stable/ext/example_google.html" target="_blank" rel="external"><em>样例见这里</em></a>。</p>
+<p>里面演示了如果编写<code>module</code>, <code>class</code>, <code>class method</code>, <code>function</code>等的文档。</p>
+<p>这里节选一部分展示<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">module_level_function</span><span class="params">(param1, param2=None, *args, **kwargs)</span>:</span></div><div class="line">    <span class="string">"""This is an example of a module level function.</span></div><div class="line"></div><div class="line">    Function parameters should be documented in the ``Args`` section. The name</div><div class="line">    of each parameter is required. The type and description of each parameter</div><div class="line">    is optional, but should be included if not obvious.</div><div class="line"></div><div class="line">    Parameter types -- if given -- should be specified according to</div><div class="line">    `PEP 484`_, though `PEP 484`_ conformance isn't required or enforced.</div><div class="line"></div><div class="line">    If \*args or \*\*kwargs are accepted,</div><div class="line">    they should be listed as ``*args`` and ``**kwargs``.</div><div class="line"></div><div class="line">    The format for a parameter is::</div><div class="line"></div><div class="line">        name (type): description</div><div class="line">            The description may span multiple lines. Following</div><div class="line">            lines should be indented. The "(type)" is optional.</div><div class="line"></div><div class="line">            Multiple paragraphs are supported in parameter</div><div class="line">            descriptions.</div><div class="line"></div><div class="line">    Args:</div><div class="line">        param1 (int): The first parameter.</div><div class="line">        param2 (Optional[str]): The second parameter. Defaults to None.</div><div class="line">            Second line of description should be indented.</div><div class="line">        *args: Variable length argument list.</div><div class="line">        **kwargs: Arbitrary keyword arguments.</div><div class="line"></div><div class="line">    Returns:</div><div class="line">        bool: True if successful, False otherwise.</div><div class="line"></div><div class="line">        The return type is optional and may be specified at the beginning of</div><div class="line">        the ``Returns`` section followed by a colon.</div><div class="line"></div><div class="line">        The ``Returns`` section may span multiple lines and paragraphs.</div><div class="line">        Following lines should be indented to match the first line.</div><div class="line"></div><div class="line">        The ``Returns`` section supports any reStructuredText formatting,</div><div class="line">        including literal blocks::</div><div class="line"></div><div class="line">            &#123;</div><div class="line">                'param1': param1,</div><div class="line">                'param2': param2</div><div class="line">            &#125;</div><div class="line"></div><div class="line">    Raises:</div><div class="line">        AttributeError: The ``Raises`` section is a list of all exceptions</div><div class="line">            that are relevant to the interface.</div><div class="line">        ValueError: If `param2` is equal to `param1`.</div><div class="line"></div><div class="line"></div><div class="line">    .. _PEP 484:</div><div class="line">       https://www.python.org/dev/peps/pep-0484/</div><div class="line"></div><div class="line">    """</div><div class="line">    <span class="keyword">if</span> param1 == param2:</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'param1 may not be equal to param2'</span>)</div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/sphinx/" rel="tag"># sphinx</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/16/Download-Bing-Background-Image-Everyday-by-Python/" rel="next" title="Download Bing Background Image Everyday by Python">
+                <i class="fa fa-chevron-left"></i> Download Bing Background Image Everyday by Python
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/09/Test-Cases-by-pytest/" rel="prev" title="Test Cases by pytest">
+                Test Cases by pytest <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Katherine Hou" />
+          <p class="site-author-name" itemprop="name">Katherine Hou</p>
+           
+              <p class="site-description motion-element" itemprop="description">To love the world as never get hurt!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装sphinx"><span class="nav-number">1.</span> <span class="nav-text">安装sphinx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成文档"><span class="nav-number">2.</span> <span class="nav-text">生成文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立文件夹"><span class="nav-number">2.1.</span> <span class="nav-text">建立文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加package路径信息"><span class="nav-number">2.2.</span> <span class="nav-text">添加package路径信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成Documentation-HTML"><span class="nav-number">2.3.</span> <span class="nav-text">生成Documentation HTML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档编写方式"><span class="nav-number">3.</span> <span class="nav-text">文档编写方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katherine Hou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://monkey0105.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/09/09/generate-doc-for-python-pkgs-by-sphinx/';
+          this.page.identifier = '2016/09/09/generate-doc-for-python-pkgs-by-sphinx/';
+          this.page.title = 'Generate Doc for Python Packages by sphinx';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://monkey0105.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3BX3ONtgxqqdzfeRue8AEATv-gzGzoHsz", "BBCnRCQrdzUDzXcMwYbdLwle");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

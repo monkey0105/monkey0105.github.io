@@ -1,0 +1,1029 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,ubuntu,matplotlib,jupyter notebook," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="本文介绍了好几种解决matplotlib中文显示问题的方法。 系统环境：  Ubuntu 16.04 LTS Python3.5 virtual environment jupyter notebook">
+<meta name="keywords" content="python,ubuntu,matplotlib,jupyter notebook">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu matplotlib 中文显示">
+<meta property="og:url" content="http://yoursite.com/2016/10/10/matplotlib-chinese-display/index.html">
+<meta property="og:site_name" content="Dreamland">
+<meta property="og:description" content="本文介绍了好几种解决matplotlib中文显示问题的方法。 系统环境：  Ubuntu 16.04 LTS Python3.5 virtual environment jupyter notebook">
+<meta property="og:updated_time" content="2017-05-11T07:26:12.935Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu matplotlib 中文显示">
+<meta name="twitter:description" content="本文介绍了好几种解决matplotlib中文显示问题的方法。 系统环境：  Ubuntu 16.04 LTS Python3.5 virtual environment jupyter notebook">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '0WAS567B7X',
+      apiKey: '759b8f1ab783d5715ba2a55a26a069d0',
+      indexName: 'hexo_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/10/matplotlib-chinese-display/"/>
+
+
+
+
+
+  <title>Ubuntu matplotlib 中文显示 | Dreamland</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ff535cdcd7fc7a424187099c15b8d662";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dreamland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Inner Peace</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/10/matplotlib-chinese-display/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katherine Hou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dreamland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ubuntu matplotlib 中文显示</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-10T00:00:00+08:00">
+                2016-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序媛-Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">程序媛|Coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/10/10/matplotlib-chinese-display/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/10/10/matplotlib-chinese-display/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/10/10/matplotlib-chinese-display/" class="leancloud_visitors" data-flag-title="Ubuntu matplotlib 中文显示">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文介绍了好几种解决matplotlib中文显示问题的方法。</p>
+<p>系统环境：</p>
+<ul>
+<li>Ubuntu 16.04 LTS</li>
+<li>Python3.5 virtual environment</li>
+<li>jupyter notebook<a id="more"></a>
+<h2 id="1st-install-some-Chinese-fonts"><a href="#1st-install-some-Chinese-fonts" class="headerlink" title="1st, install some Chinese fonts"></a>1st, install some Chinese fonts</h2></li>
+</ul>
+<p>在ubuntu下执行以下命令即可完成安装。</p>
+<p><code>git clone https://github.com/tracyone/program_font &amp;&amp; cd program_font &amp;&amp; ./install.sh</code></p>
+<p>Source:</p>
+<p><a href="https://github.com/monkey0105/program_font" target="_blank" rel="external">https://github.com/monkey0105/program_font</a></p>
+<h2 id="2nd-delete-matplotlib-cache-list"><a href="#2nd-delete-matplotlib-cache-list" class="headerlink" title="2nd, delete matplotlib cache list"></a>2nd, delete matplotlib cache list</h2><p>Delete file <code>~/.cache/matplotlib/fontList.py3k.cache</code></p>
+<p>Use <code>Ctrl+h</code> to unhide the hidden files.</p>
+<h2 id="3rd-find-available-Chinese-fonts-both-in-matplotlib-and-ubuntu"><a href="#3rd-find-available-Chinese-fonts-both-in-matplotlib-and-ubuntu" class="headerlink" title="3rd, find available Chinese fonts both in matplotlib and ubuntu"></a>3rd, find available Chinese fonts both in matplotlib and ubuntu</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> matplotlib.font_manager <span class="keyword">import</span> FontManager</div><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"></div><div class="line">fm = FontManager()</div><div class="line">mat_fonts = set(f.name <span class="keyword">for</span> f <span class="keyword">in</span> fm.ttflist)</div><div class="line"></div><div class="line">output = subprocess.check_output(</div><div class="line">    <span class="string">'fc-list :lang=zh -f "%&#123;family&#125;\n"'</span>, shell=<span class="keyword">True</span>)</div><div class="line">output = output.decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="comment"># print '*' * 10, '系统可用的中文字体', '*' * 10</span></div><div class="line"><span class="comment"># print output</span></div><div class="line">zh_fonts = set(f.split(<span class="string">','</span>, <span class="number">1</span>)[<span class="number">0</span>] <span class="keyword">for</span> f <span class="keyword">in</span> output.split(<span class="string">'\n'</span>))</div><div class="line">available = mat_fonts &amp; zh_fonts</div><div class="line"></div><div class="line">print(<span class="string">'*'</span> * <span class="number">10</span>, <span class="string">'可用的字体'</span>, <span class="string">'*'</span> * <span class="number">10</span>)</div><div class="line"><span class="keyword">for</span> f <span class="keyword">in</span> available:</div><div class="line">    print(f)</div></pre></td></tr></table></figure>
+<pre><code>/home/katherine/venv/py35/lib/python3.5/site-packages/matplotlib/font_manager.py:273: UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  warnings.warn(&apos;Matplotlib is building the font cache using fc-list. This may take a moment.&apos;)
+/home/katherine/venv/py35/lib/python3.5/site-packages/matplotlib/font_manager.py:273: UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  warnings.warn(&apos;Matplotlib is building the font cache using fc-list. This may take a moment.&apos;)
+/home/katherine/venv/py35/lib/python3.5/site-packages/matplotlib/font_manager.py:273: UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  warnings.warn(&apos;Matplotlib is building the font cache using fc-list. This may take a moment.&apos;)
+/home/katherine/venv/py35/lib/python3.5/site-packages/matplotlib/font_manager.py:273: UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  warnings.warn(&apos;Matplotlib is building the font cache using fc-list. This may take a moment.&apos;)
+
+
+********** 可用的字体 **********
+YouYuan
+KaiTi
+SimHei
+FangSong
+YaHei Consolas Hybrid
+Yahei Mono
+Microsoft YaHei
+LiSu
+</code></pre><h2 id="4th-find-the-directory-of-matplotlib-font-files"><a href="#4th-find-the-directory-of-matplotlib-font-files" class="headerlink" title="4th, find the directory of matplotlib font files"></a>4th, find the directory of matplotlib font files</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib</div><div class="line">matplotlib.matplotlib_fname()</div></pre></td></tr></table></figure>
+<pre><code>&apos;/home/katherine/venv/py35/lib/python3.5/site-packages/matplotlib/mpl-data/matplotlibrc&apos;
+</code></pre><p>If the output of the sentence above is  </p>
+<p><code>/home/katherine/anaconda3/lib/python3.5/site-packages/matplotlib/mpl-data/matplotlibrc</code></p>
+<p>Then the font file would be </p>
+<p><code>/home/katherine/anaconda3/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/</code></p>
+<p><strong>If there is no available font in the output of 3rd step, you need to copy one into the font file directory.</strong></p>
+<h4 id="I-copied-usr-share-fonts-MyFonts-YaHei-Consolas-1-11b-ttf-to-home-katherine-anaconda3-lib-python3-5-site-packages-matplotlib-mpl-data-fonts"><a href="#I-copied-usr-share-fonts-MyFonts-YaHei-Consolas-1-11b-ttf-to-home-katherine-anaconda3-lib-python3-5-site-packages-matplotlib-mpl-data-fonts" class="headerlink" title="I copied /usr/share/fonts/MyFonts/YaHei.Consolas.1.11b.ttf to /home/katherine/anaconda3/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/."></a>I copied <code>/usr/share/fonts/MyFonts/YaHei.Consolas.1.11b.ttf</code> to <code>/home/katherine/anaconda3/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/</code>.</h4><p>This font file stands for font named <code>YaHei Consolas Hybrid</code>. </p>
+<h2 id="5th-edit-file-matplotlibrc"><a href="#5th-edit-file-matplotlibrc" class="headerlink" title="5th, edit file matplotlibrc"></a>5th, edit file <code>matplotlibrc</code></h2><p><code>font.family : {zh_family}, serif</code></p>
+<p><code>font.serif : {zh_family}, ..., serif</code></p>
+<p><code>font.sans-serif: {zh_family}, ...</code></p>
+<p><strong>Copy one available font name, e.g. <code>YaHei Consolas Hybrid</code>, to the place of <code>{zh_family}</code>.</strong></p>
+<h2 id="6th-check-the-result"><a href="#6th-check-the-result" class="headerlink" title="6th, check the result"></a>6th, check the result</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line">x = [<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>]</div><div class="line">y = [<span class="number">1224</span>,<span class="number">838</span>,<span class="number">632</span>,<span class="number">626</span>,<span class="number">624</span>]</div><div class="line">xlabel(<span class="string">u"text for x轴"</span>)</div><div class="line">ylabel(<span class="string">u"text for y轴"</span>)</div><div class="line">title(<span class="string">u"x轴和Y轴对应关系"</span>)</div><div class="line">plot(x,y)</div><div class="line">savefig(<span class="string">'test'</span>)</div><div class="line">show()</div></pre></td></tr></table></figure>
+
+<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><h3 id="Method-1-failed"><a href="#Method-1-failed" class="headerlink" title="Method 1 - failed"></a>Method 1 - failed</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'YaHei Consolas Hybrid'</span>]</div><div class="line"><span class="comment">#plt.rcParams['font.sans-serif'] = ['SimHei'] # 指定默认字体</span></div><div class="line">plt.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span> <span class="comment"># 解决保存图像是负号'-'显示为方块的问题</span></div><div class="line">  </div><div class="line">t = arange(<span class="number">-5</span>*pi, <span class="number">5</span>*pi, <span class="number">0.01</span>)  </div><div class="line">y = sin(t)/t  </div><div class="line">plt.plot(t, y) </div><div class="line">plt.title(<span class="string">u'这里写的是中文'</span>)  </div><div class="line">plt.xlabel(<span class="string">u'X坐标'</span>)  </div><div class="line">plt.ylabel(<span class="string">u'Y坐标'</span>)  </div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> mpl</div><div class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'YaHei Consolas Hybrid'</span>] <span class="comment"># 指定默认字体</span></div><div class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span> <span class="comment"># 解决保存图像是负号'-'显示为方块的问题</span></div><div class="line">  </div><div class="line">t = arange(<span class="number">-5</span>*pi, <span class="number">5</span>*pi, <span class="number">0.01</span>)  </div><div class="line">y = sin(t)/t  </div><div class="line">plt.plot(t, y)  </div><div class="line">plt.title(<span class="string">u'这里写的是中文'</span>)  </div><div class="line">plt.xlabel(<span class="string">u'X坐标'</span>)  </div><div class="line">plt.ylabel(<span class="string">u'Y坐标'</span>)  </div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+
+<h3 id="Method-2-succeeded-but-annoyed-and-cannot-do-anything-with-axis-tick-label"><a href="#Method-2-succeeded-but-annoyed-and-cannot-do-anything-with-axis-tick-label" class="headerlink" title="Method 2 - succeeded, but annoyed, and cannot do anything with axis tick label"></a>Method 2 - succeeded, but annoyed, and cannot do anything with axis tick label</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *  </div><div class="line">myfont = matplotlib.font_manager.FontProperties(fname=<span class="string">'/usr/share/fonts/MyFonts/YaHei.Consolas.1.11b.ttf'</span>)  </div><div class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span>  </div><div class="line">t = arange(<span class="number">-5</span>*pi, <span class="number">5</span>*pi, <span class="number">0.01</span>)  </div><div class="line">y = sin(t)/t  </div><div class="line">plt.plot(t, y)  </div><div class="line">plt.title(<span class="string">u'这里写的是中文'</span>,fontproperties=myfont) <span class="comment">#指定字体  </span></div><div class="line">plt.xlabel(<span class="string">u'X坐标'</span>,fontproperties=myfont)  </div><div class="line">plt.ylabel(<span class="string">u'Y坐标'</span>,fontproperties=myfont)  </div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+
+<h3 id="Method-in-Seaborn"><a href="#Method-in-Seaborn" class="headerlink" title="Method in Seaborn"></a>Method in Seaborn</h3><p>This method may succeed after succeed in matplotlib, and may fail if not. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</div><div class="line">sns.set(font=<span class="string">'YaHei Consolas Hybrid'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+          
+            <a href="/tags/matplotlib/" rel="tag"># matplotlib</a>
+          
+            <a href="/tags/jupyter-notebook/" rel="tag"># jupyter notebook</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/09/extract-and-compress-files-in-ubuntu/" rel="next" title="Extract and Compress Files in Ubuntu">
+                <i class="fa fa-chevron-left"></i> Extract and Compress Files in Ubuntu
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/17/install-ubuntu-14-and-softwares/" rel="prev" title="Install Operation System Ubuntu 14.04 and Some Softwares">
+                Install Operation System Ubuntu 14.04 and Some Softwares <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Katherine Hou" />
+          <p class="site-author-name" itemprop="name">Katherine Hou</p>
+           
+              <p class="site-description motion-element" itemprop="description">To love the world as never get hurt!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1st-install-some-Chinese-fonts"><span class="nav-number">1.</span> <span class="nav-text">1st, install some Chinese fonts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2nd-delete-matplotlib-cache-list"><span class="nav-number">2.</span> <span class="nav-text">2nd, delete matplotlib cache list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3rd-find-available-Chinese-fonts-both-in-matplotlib-and-ubuntu"><span class="nav-number">3.</span> <span class="nav-text">3rd, find available Chinese fonts both in matplotlib and ubuntu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4th-find-the-directory-of-matplotlib-font-files"><span class="nav-number">4.</span> <span class="nav-text">4th, find the directory of matplotlib font files</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#I-copied-usr-share-fonts-MyFonts-YaHei-Consolas-1-11b-ttf-to-home-katherine-anaconda3-lib-python3-5-site-packages-matplotlib-mpl-data-fonts"><span class="nav-number">4.0.1.</span> <span class="nav-text">I copied /usr/share/fonts/MyFonts/YaHei.Consolas.1.11b.ttf to /home/katherine/anaconda3/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5th-edit-file-matplotlibrc"><span class="nav-number">5.</span> <span class="nav-text">5th, edit file matplotlibrc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6th-check-the-result"><span class="nav-number">6.</span> <span class="nav-text">6th, check the result</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Appendix"><span class="nav-number">7.</span> <span class="nav-text">Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-1-failed"><span class="nav-number">7.1.</span> <span class="nav-text">Method 1 - failed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-2-succeeded-but-annoyed-and-cannot-do-anything-with-axis-tick-label"><span class="nav-number">7.2.</span> <span class="nav-text">Method 2 - succeeded, but annoyed, and cannot do anything with axis tick label</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-in-Seaborn"><span class="nav-number">7.3.</span> <span class="nav-text">Method in Seaborn</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katherine Hou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://monkey0105.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/10/10/matplotlib-chinese-display/';
+          this.page.identifier = '2016/10/10/matplotlib-chinese-display/';
+          this.page.title = 'Ubuntu matplotlib 中文显示';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://monkey0105.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3BX3ONtgxqqdzfeRue8AEATv-gzGzoHsz", "BBCnRCQrdzUDzXcMwYbdLwle");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

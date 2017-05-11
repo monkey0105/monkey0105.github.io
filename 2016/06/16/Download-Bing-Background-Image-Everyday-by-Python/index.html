@@ -1,0 +1,1002 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,reptile,urllib,crontab," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Recently I read a translation version of a Quora Q&amp;amp;A in which people are talking about how the programmers use computer to serve their own life.The translation version is: 看程序员是如何把自动化做到极致的！And the">
+<meta name="keywords" content="python,reptile,urllib,crontab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Download Bing Background Image Everyday by Python">
+<meta property="og:url" content="http://yoursite.com/2016/06/16/Download-Bing-Background-Image-Everyday-by-Python/index.html">
+<meta property="og:site_name" content="Dreamland">
+<meta property="og:description" content="Recently I read a translation version of a Quora Q&amp;amp;A in which people are talking about how the programmers use computer to serve their own life.The translation version is: 看程序员是如何把自动化做到极致的！And the">
+<meta property="og:image" content="http://yoursite.com/images/OrienteStation_ZH-CN8775637045_1920x1080.jpg">
+<meta property="og:image" content="http://yoursite.com/images/PerceRock_ZH-CN12739516630_1920x1080.jpg">
+<meta property="og:image" content="http://yoursite.com/images/CanyonlandsNP_ZH-CN12598047863_1920x1080.jpg">
+<meta property="og:updated_time" content="2017-05-11T07:26:12.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Download Bing Background Image Everyday by Python">
+<meta name="twitter:description" content="Recently I read a translation version of a Quora Q&amp;amp;A in which people are talking about how the programmers use computer to serve their own life.The translation version is: 看程序员是如何把自动化做到极致的！And the">
+<meta name="twitter:image" content="http://yoursite.com/images/OrienteStation_ZH-CN8775637045_1920x1080.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '0WAS567B7X',
+      apiKey: '759b8f1ab783d5715ba2a55a26a069d0',
+      indexName: 'hexo_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/16/Download-Bing-Background-Image-Everyday-by-Python/"/>
+
+
+
+
+
+  <title>Download Bing Background Image Everyday by Python | Dreamland</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ff535cdcd7fc7a424187099c15b8d662";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dreamland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Inner Peace</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/16/Download-Bing-Background-Image-Everyday-by-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katherine Hou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dreamland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Download Bing Background Image Everyday by Python</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-16T21:27:25+08:00">
+                2016-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序媛-Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">程序媛|Coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/16/Download-Bing-Background-Image-Everyday-by-Python/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/16/Download-Bing-Background-Image-Everyday-by-Python/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/06/16/Download-Bing-Background-Image-Everyday-by-Python/" class="leancloud_visitors" data-flag-title="Download Bing Background Image Everyday by Python">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Recently I read a translation version of a Quora Q&amp;A in which people are talking about how the programmers use computer to serve their own life.<br>The translation version is: <a href="http://blog.jobbole.com/100744/" target="_blank" rel="external">看程序员是如何把自动化做到极致的！</a><br>And the initial Quora post is: <a href="https://www.quora.com/As-a-programmer-what-tasks-have-you-automated-to-make-your-everyday-life-easier" target="_blank" rel="external">As a programmer, what tasks have you automated to make your everyday life easier?</a>  </p>
+<p>One engineer just mentioned he wrote a small program to download <a href="http://cn.bing.com/" target="_blank" rel="external">Bing</a> background images everyday automatically by the computer. The images, which would be a new one everyday, are all great photographs token all over the world.  </p>
+<a id="more"></a>
+<p>Recently, I start learning and using Python in my work. And I heard a lot about Python’s fantastic functionality in collecting data from the Internet.<br>So I think maybe I could do this as well.  </p>
+<p>A post on <a href="https://www.zhihu.com/" target="_blank" rel="external">知乎</a> can be a good intro on Python reptile for us beginners - <a href="https://www.zhihu.com/question/20899988" target="_blank" rel="external">如何入门 Python 爬虫？</a>. </p>
+<h2 id="See-the-Pictures"><a href="#See-the-Pictures" class="headerlink" title="See the Pictures"></a>See the Pictures</h2><p>Now the program has been run for 3 times.  </p>
+<p>Following are the results! </p>
+<p><img src="/images/OrienteStation_ZH-CN8775637045_1920x1080.jpg" alt=""></p>
+<p><img src="/images/PerceRock_ZH-CN12739516630_1920x1080.jpg" alt=""></p>
+<p><img src="/images/CanyonlandsNP_ZH-CN12598047863_1920x1080.jpg" alt=""></p>
+<p>Look great! Right?  </p>
+<p>Now let’s start to do the job!  </p>
+<h2 id="First-Get-the-Picture"><a href="#First-Get-the-Picture" class="headerlink" title="First, Get the Picture"></a>First, Get the Picture</h2><p>This time, I use <code>urllib.request</code> module.  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line">url = <span class="string">'http://cn.bing.com/'</span>  <span class="comment"># Set url as Bing homepage</span></div><div class="line">page = urllib.request.urlopen(url)</div><div class="line">html = page.read().decode(<span class="string">'utf-8'</span>)  <span class="comment"># Get the raw HTML code of the page</span></div><div class="line"></div><div class="line"><span class="comment"># Get the url of the picture itself</span></div><div class="line"><span class="comment"># Following rules need to be recognised beforehand manually</span></div><div class="line">a = html.find(<span class="string">r'g_img=&#123;url: "http:'</span>)</div><div class="line">b = html.find(<span class="string">r'_1920x1080.jpg'</span>)</div><div class="line"></div><div class="line">path = <span class="string">"/home/katherine/Pictures/"</span>  <span class="comment"># Set the target position to save the picture</span></div><div class="line">img_url = html[(a+<span class="number">13</span>):(b+<span class="number">14</span>)].replace(<span class="string">'\\'</span>,<span class="string">''</span>)  <span class="comment"># Replce the '\\'s</span></div><div class="line">name = img_url.rsplit(<span class="string">'/'</span>)[<span class="number">-1</span>]  <span class="comment"># Use the raw name</span></div><div class="line">conn = urllib.request.urlopen(img_url)</div><div class="line">f = open(path+name,<span class="string">'wb'</span>)</div><div class="line">f.write(conn.read())</div><div class="line">f.close()  <span class="comment"># Save the picture data</span></div><div class="line">print(<span class="string">'Pic Saved!'</span>)</div></pre></td></tr></table></figure>
+<h2 id="Next-Ask-PC-to-do-Everyday-Job"><a href="#Next-Ask-PC-to-do-Everyday-Job" class="headerlink" title="Next, Ask PC to do Everyday Job"></a>Next, Ask PC to do Everyday Job</h2><h3 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a><code>crontab</code></h3><p>I searched and people say <code>crontab</code> could solve the problem and it’s already in Linux os.  </p>
+<p>Syntax is as below: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">crontab [-u user] file</div><div class="line">crontab [ -u user ] [ -i ] &#123; -e | -l | -r &#125;</div><div class="line"></div><div class="line">-e	(edit user&apos;s crontab)</div><div class="line">-l	(list user&apos;s crontab)</div><div class="line">-r	(delete user&apos;s crontab)</div><div class="line">-i	(prompt before deleting user&apos;s crontab)</div></pre></td></tr></table></figure>
+<p>Below is the syntax of <code>crontab</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">*   *   *   *   *   command to be executed</div><div class="line">-   -   -   -   -</div><div class="line">|   |   |   |   |</div><div class="line">|   |   |   |   +----- day of week (0 - 6) (Sunday=0)</div><div class="line">|   |   |   +------- month (1 - 12)</div><div class="line">|   |   +--------- day of month (1 - 31)</div><div class="line">|   +----------- hour (0 - 23)</div><div class="line">+------------- min (0 - 59)</div></pre></td></tr></table></figure></p>
+<p>However, I failed…<br>Now I think maybe because I didn’t specify the user name.  </p>
+<h3 id="python-crontab"><a href="#python-crontab" class="headerlink" title="python-crontab"></a><code>python-crontab</code></h3><p>Then I just find a python package called <a href="https://pypi.python.org/pypi/python-crontab/" target="_blank" rel="external"><code>crontab</code></a> which can do the same job.  </p>
+<p>Use <code>pip install python-crontab</code> to complete the installation. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> crontab <span class="keyword">import</span> CronTab</div><div class="line"></div><div class="line">cron = CronTab(user=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">job = cron.new(command=<span class="string">'python3 /home/katherine/PycharmProjects/untitled/bing_img.py'</span>)</div><div class="line">job.minute.on(<span class="number">45</span>)</div><div class="line">job.hour.on(<span class="number">9</span>)</div><div class="line"></div><div class="line">cron.write()</div></pre></td></tr></table></figure>
+<p>After setting a crontab task, we can use <code>crontab -l</code> in Terminal to check.  </p>
+<p>Now we can see<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">45  9  *  *  *  python3 /home/katherine/PycharmProjects/untitled/bing_img.py</div></pre></td></tr></table></figure></p>
+<p>which means 09:45 everyday, <code>python3</code> would run <code>bing_img.py</code>.  </p>
+<p><strong>If the computer is power off, the <code>crontab</code> will not work.</strong>   </p>
+<h2 id="Next-Step"><a href="#Next-Step" class="headerlink" title="Next Step"></a>Next Step</h2><p>Maybe in next step I can collect the description for the image everyday because I can tell no information only by looking at the beautiful pictures.<br>Or I could try other interesting tasks ;P  </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/reptile/" rel="tag"># reptile</a>
+          
+            <a href="/tags/urllib/" rel="tag"># urllib</a>
+          
+            <a href="/tags/crontab/" rel="tag"># crontab</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/31/Books-and-Movies-in-Q1/" rel="next" title="第一季度读书观影记">
+                <i class="fa fa-chevron-left"></i> 第一季度读书观影记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/09/generate-doc-for-python-pkgs-by-sphinx/" rel="prev" title="Generate Doc for Python Packages by sphinx">
+                Generate Doc for Python Packages by sphinx <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Katherine Hou" />
+          <p class="site-author-name" itemprop="name">Katherine Hou</p>
+           
+              <p class="site-description motion-element" itemprop="description">To love the world as never get hurt!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#See-the-Pictures"><span class="nav-number">1.</span> <span class="nav-text">See the Pictures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-Get-the-Picture"><span class="nav-number">2.</span> <span class="nav-text">First, Get the Picture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next-Ask-PC-to-do-Everyday-Job"><span class="nav-number">3.</span> <span class="nav-text">Next, Ask PC to do Everyday Job</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#crontab"><span class="nav-number">3.1.</span> <span class="nav-text">crontab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-crontab"><span class="nav-number">3.2.</span> <span class="nav-text">python-crontab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next-Step"><span class="nav-number">4.</span> <span class="nav-text">Next Step</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katherine Hou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://monkey0105.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/06/16/Download-Bing-Background-Image-Everyday-by-Python/';
+          this.page.identifier = '2016/06/16/Download-Bing-Background-Image-Everyday-by-Python/';
+          this.page.title = 'Download Bing Background Image Everyday by Python';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://monkey0105.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3BX3ONtgxqqdzfeRue8AEATv-gzGzoHsz", "BBCnRCQrdzUDzXcMwYbdLwle");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

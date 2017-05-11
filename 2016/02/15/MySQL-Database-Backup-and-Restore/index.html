@@ -1,0 +1,1020 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MySQL,database,backup,restore," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="MySQL的数据建了也有段日子了，但始终没有做备份，确实很不符合数据库的理论，倒是很符合我的懒癌风格。">
+<meta name="keywords" content="MySQL,database,backup,restore">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL Database Backup and Restore">
+<meta property="og:url" content="http://yoursite.com/2016/02/15/MySQL-Database-Backup-and-Restore/index.html">
+<meta property="og:site_name" content="Dreamland">
+<meta property="og:description" content="MySQL的数据建了也有段日子了，但始终没有做备份，确实很不符合数据库的理论，倒是很符合我的懒癌风格。">
+<meta property="og:updated_time" content="2017-05-11T07:26:12.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL Database Backup and Restore">
+<meta name="twitter:description" content="MySQL的数据建了也有段日子了，但始终没有做备份，确实很不符合数据库的理论，倒是很符合我的懒癌风格。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '0WAS567B7X',
+      apiKey: '759b8f1ab783d5715ba2a55a26a069d0',
+      indexName: 'hexo_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/02/15/MySQL-Database-Backup-and-Restore/"/>
+
+
+
+
+
+  <title>MySQL Database Backup and Restore | Dreamland</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ff535cdcd7fc7a424187099c15b8d662";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dreamland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Inner Peace</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/15/MySQL-Database-Backup-and-Restore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katherine Hou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dreamland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL Database Backup and Restore</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-15T16:23:51+08:00">
+                2016-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序媛-Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">程序媛|Coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/02/15/MySQL-Database-Backup-and-Restore/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/02/15/MySQL-Database-Backup-and-Restore/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/02/15/MySQL-Database-Backup-and-Restore/" class="leancloud_visitors" data-flag-title="MySQL Database Backup and Restore">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MySQL的数据建了也有段日子了，但始终没有做备份，确实很不符合数据库的理论，倒是很符合我的懒癌风格。<br><a id="more"></a></p>
+<h1 id="Using-mysqldump-in-Command-Prompt"><a href="#Using-mysqldump-in-Command-Prompt" class="headerlink" title="Using mysqldump in Command Prompt"></a>Using <code>mysqldump</code> in Command Prompt</h1><p>在Google搜索”MySQL Backup Restore”出现最多的词应该就是<code>mysqldump</code>了，一开始以为是一个需要另外安装的软件，所以一直避开不看，结果绕了弯路。<br><code>mysqldump</code>其实是完全复制创建数据库和数据表的过程，导出sql语句文件。这样，在恢复备份时，只需要重新跑一遍导出的sql语句即可。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>优点是快速复制了数据库和数据表的结构和内容；缺点是碰到如我现在碰到的庞大的表格（一开始一次性导入都十分困难，只能有R循环分批导入的表格），导出过程就如卡死了一般，非常缓慢，也不知道是否能够完全复制。</p>
+<h2 id="备份过程"><a href="#备份过程" class="headerlink" title="备份过程"></a>备份过程</h2><ol>
+<li>点击<code>Startup</code>，输入<code>cmd</code>，打开Windows Command Prompt。</li>
+<li>输入<code>cd C:\Program Files\MySQL\MySQL Server 5.6\bin</code>(具体以使用的版本和路径为准哟)。</li>
+<li><code>mysqldump</code>基本语法<ul>
+<li>备份一个数据库中多个表： <code>mysqldump -u username -p dbname table1 table2 ...&gt; BackupName.sql</code><ul>
+<li><em>dbname</em>: 数据库的名称；</li>
+<li><em>table n</em>: 需要备份的数据表的名称，为空则备份整个数据库；</li>
+<li><em>BackupName.sql</em>: 备份文件的名称，文件名前面可以加上一个绝对路径。        </li>
+</ul>
+</li>
+<li>备份多个数据库： <code>mysqldump -u username -p --databases dbname2 dbname2 ...&gt; BackupName.sql</code></li>
+<li>备份所有数据库： <code>mysqldump -u username -p --all-databases &gt; BackupName.sql</code></li>
+</ul>
+</li>
+<li>输入<code>root</code>的password。</li>
+</ol>
+<h2 id="恢复过程"><a href="#恢复过程" class="headerlink" title="恢复过程"></a>恢复过程</h2><p>仍然在Windows Command Prompt中，把<code>&gt;</code>之前最低一级单位的名称删除，然后把<code>&gt;</code>换成<code>&lt;</code>即可。<br>注意要在<code>C:\Program Files\MySQL\MySQL Server 5.6\bin</code>目录下。</p>
+<ul>
+<li>恢复一个数据库中多个表： <code>mysqldump -u username -p dbname &lt; BackupName.sql</code>    </li>
+<li>恢复一个或多个数据库： <code>mysqldump -u username -p &lt; BackupName.sql</code></li>
+</ul>
+<h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><ol>
+<li>我一开始把导出的目标文件夹命名为<code>MySQL DB Backup</code>，中间有空格，结果提示说<code>mysqldump: Couldn&#39;t find table: &quot;DB&quot;</code>，让我很是无语啊，于是就改成了<code>MySQL_Backup</code>。</li>
+<li>备份之前请一定检查一下目标文件夹的空间够不够，否则就会碰到我碰到的窘况。<blockquote>
+<p>Backup failed: mysqldump: Got errno 28 on write<br>Meaning： Insufficient disk space to store output.<br>Solution： Free up some disk space. You might want to track down the reason you’re low on disk space too.</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="Copy-data-file-from-MySQL-Server-Path"><a href="#Copy-data-file-from-MySQL-Server-Path" class="headerlink" title="Copy data file from MySQL Server Path"></a>Copy <code>data</code> file from MySQL Server Path</h1><p>原先二师兄好像也研究过这一块，然而今天在一篇博客中看到详解，让我茅塞顿开（虽然还来不及完全尝试╮(╯▽╰)╭）。</p>
+<h2 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h2><p><del>据说是直接复制出来，要还原的时候直接粘贴在相同路径就欧儿了！</del>  </p>
+<h2 id="补充-2016-04"><a href="#补充-2016-04" class="headerlink" title="补充 2016-04"></a>补充 2016-04</h2><p>试了几次貌似并不成功。恢复时粘贴回原来的文件，文件夹里看起来跟原始状态一样，MySQL里面也能看到那张表，但是无法成功打开或操作。<br>建议还是使用数据库生成方式进行备份与恢复。<br>应该是有解决方案的才对=。=</p>
+<h2 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h2><p>这里说的<code>data</code>文件夹并不是<code>C:\Program Files\MySQL\MySQL Server 5.6\data</code>，而是<strong>隐藏文件夹</strong>： <code>C:\Users\All Users\MySQL\MySQL Server 5.6\data</code>。</p>
+<ol>
+<li>先设置<code>Folder and search options</code>中隐藏文件夹可见。</li>
+<li>找到文件夹<code>C:\Users\All Users\MySQL\MySQL Server 5.6\data</code>，打开可以看到之前创建的数据库。</li>
+<li>复制 &amp; 粘贴。</li>
+<li>恢复时只要粘贴到此目录下即可。</li>
+<li>最好在备份好后仍然隐藏文件夹，以避免误删某些系统文件。</li>
+</ol>
+<p>快去尝试一下吧！说你呢，二师兄！;p</p>
+<hr>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li><a href="http://www.2cto.com/database/201406/312660.html" target="_blank" rel="external">http://www.2cto.com/database/201406/312660.html</a></li>
+<li><a href="http://www.cnblogs.com/kissdodog/p/4174421.html" target="_blank" rel="external">http://www.cnblogs.com/kissdodog/p/4174421.html</a></li>
+<li><a href="https://www.youtube.com/watch?v=AoZVLe2VqR4" target="_blank" rel="external">https://www.youtube.com/watch?v=AoZVLe2VqR4</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/database/" rel="tag"># database</a>
+          
+            <a href="/tags/backup/" rel="tag"># backup</a>
+          
+            <a href="/tags/restore/" rel="tag"># restore</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/09/Chinese-New-Year/" rel="next" title="我家的年味儿">
+                <i class="fa fa-chevron-left"></i> 我家的年味儿
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/31/Books-and-Movies-in-Q1/" rel="prev" title="第一季度读书观影记">
+                第一季度读书观影记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Katherine Hou" />
+          <p class="site-author-name" itemprop="name">Katherine Hou</p>
+           
+              <p class="site-description motion-element" itemprop="description">To love the world as never get hurt!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Using-mysqldump-in-Command-Prompt"><span class="nav-number">1.</span> <span class="nav-text">Using mysqldump in Command Prompt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点"><span class="nav-number">1.1.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备份过程"><span class="nav-number">1.2.</span> <span class="nav-text">备份过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#恢复过程"><span class="nav-number">1.3.</span> <span class="nav-text">恢复过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能出现的问题"><span class="nav-number">1.4.</span> <span class="nav-text">可能出现的问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Copy-data-file-from-MySQL-Server-Path"><span class="nav-number">2.</span> <span class="nav-text">Copy data file from MySQL Server Path</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点-1"><span class="nav-number">2.1.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充-2016-04"><span class="nav-number">2.2.</span> <span class="nav-text">补充 2016-04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体过程"><span class="nav-number">2.3.</span> <span class="nav-text">具体过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katherine Hou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://monkey0105.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/02/15/MySQL-Database-Backup-and-Restore/';
+          this.page.identifier = '2016/02/15/MySQL-Database-Backup-and-Restore/';
+          this.page.title = 'MySQL Database Backup and Restore';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://monkey0105.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3BX3ONtgxqqdzfeRue8AEATv-gzGzoHsz", "BBCnRCQrdzUDzXcMwYbdLwle");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
