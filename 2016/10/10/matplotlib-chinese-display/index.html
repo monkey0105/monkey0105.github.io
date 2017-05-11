@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,ubuntu,matplotlib,jupyter notebook," />
+  <meta name="keywords" content="ubuntu,python,jupyter notebook,matplotlib," />
 
 
 
@@ -91,16 +91,21 @@
 
 
 <meta name="description" content="本文介绍了好几种解决matplotlib中文显示问题的方法。 系统环境：  Ubuntu 16.04 LTS Python3.5 virtual environment jupyter notebook">
-<meta name="keywords" content="python,ubuntu,matplotlib,jupyter notebook">
+<meta name="keywords" content="ubuntu,python,jupyter notebook,matplotlib">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu matplotlib 中文显示">
-<meta property="og:url" content="http://yoursite.com/2016/10/10/matplotlib-chinese-display/index.html">
+<meta property="og:url" content="http://monkey0105.github.io/2016/10/10/matplotlib-chinese-display/index.html">
 <meta property="og:site_name" content="Dreamland">
 <meta property="og:description" content="本文介绍了好几种解决matplotlib中文显示问题的方法。 系统环境：  Ubuntu 16.04 LTS Python3.5 virtual environment jupyter notebook">
+<meta property="og:image" content="http://monkey0105.github.io/2016/10/10/matplotlib-chinese-display/output_14_0.png">
+<meta property="og:image" content="http://monkey0105.github.io/2016/10/10/matplotlib-chinese-display/output_16_0.png">
+<meta property="og:image" content="http://monkey0105.github.io/2016/10/10/matplotlib-chinese-display/output_17_0.png">
+<meta property="og:image" content="http://monkey0105.github.io/2016/10/10/matplotlib-chinese-display/output_19_0.png">
 <meta property="og:updated_time" content="2017-05-11T07:26:12.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu matplotlib 中文显示">
 <meta name="twitter:description" content="本文介绍了好几种解决matplotlib中文显示问题的方法。 系统环境：  Ubuntu 16.04 LTS Python3.5 virtual environment jupyter notebook">
+<meta name="twitter:image" content="http://monkey0105.github.io/2016/10/10/matplotlib-chinese-display/output_14_0.png">
 
 
 
@@ -108,7 +113,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -128,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/10/matplotlib-chinese-display/"/>
+  <link rel="canonical" href="http://monkey0105.github.io/2016/10/10/matplotlib-chinese-display/"/>
 
 
 
@@ -254,26 +259,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
-            站点地图
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            公益404
-          </a>
-        </li>
-      
 
       
         <li class="menu-item menu-item-search">
@@ -341,12 +326,12 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/10/matplotlib-chinese-display/">
+    <link itemprop="mainEntityOfPage" href="http://monkey0105.github.io/2016/10/10/matplotlib-chinese-display/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Katherine Hou">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -497,13 +482,13 @@ LiSu
 <p><strong>Copy one available font name, e.g. <code>YaHei Consolas Hybrid</code>, to the place of <code>{zh_family}</code>.</strong></p>
 <h2 id="6th-check-the-result"><a href="#6th-check-the-result" class="headerlink" title="6th, check the result"></a>6th, check the result</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line">x = [<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>]</div><div class="line">y = [<span class="number">1224</span>,<span class="number">838</span>,<span class="number">632</span>,<span class="number">626</span>,<span class="number">624</span>]</div><div class="line">xlabel(<span class="string">u"text for x轴"</span>)</div><div class="line">ylabel(<span class="string">u"text for y轴"</span>)</div><div class="line">title(<span class="string">u"x轴和Y轴对应关系"</span>)</div><div class="line">plot(x,y)</div><div class="line">savefig(<span class="string">'test'</span>)</div><div class="line">show()</div></pre></td></tr></table></figure>
-
+<img src="/2016/10/10/matplotlib-chinese-display/output_14_0.png" alt="output_14_0.png" title="">
 <h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><h3 id="Method-1-failed"><a href="#Method-1-failed" class="headerlink" title="Method 1 - failed"></a>Method 1 - failed</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'YaHei Consolas Hybrid'</span>]</div><div class="line"><span class="comment">#plt.rcParams['font.sans-serif'] = ['SimHei'] # 指定默认字体</span></div><div class="line">plt.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span> <span class="comment"># 解决保存图像是负号'-'显示为方块的问题</span></div><div class="line">  </div><div class="line">t = arange(<span class="number">-5</span>*pi, <span class="number">5</span>*pi, <span class="number">0.01</span>)  </div><div class="line">y = sin(t)/t  </div><div class="line">plt.plot(t, y) </div><div class="line">plt.title(<span class="string">u'这里写的是中文'</span>)  </div><div class="line">plt.xlabel(<span class="string">u'X坐标'</span>)  </div><div class="line">plt.ylabel(<span class="string">u'Y坐标'</span>)  </div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-
+<img src="/2016/10/10/matplotlib-chinese-display/output_16_0.png" alt="output_16_0.png" title="">
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> mpl</div><div class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'YaHei Consolas Hybrid'</span>] <span class="comment"># 指定默认字体</span></div><div class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span> <span class="comment"># 解决保存图像是负号'-'显示为方块的问题</span></div><div class="line">  </div><div class="line">t = arange(<span class="number">-5</span>*pi, <span class="number">5</span>*pi, <span class="number">0.01</span>)  </div><div class="line">y = sin(t)/t  </div><div class="line">plt.plot(t, y)  </div><div class="line">plt.title(<span class="string">u'这里写的是中文'</span>)  </div><div class="line">plt.xlabel(<span class="string">u'X坐标'</span>)  </div><div class="line">plt.ylabel(<span class="string">u'Y坐标'</span>)  </div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-
+<img src="/2016/10/10/matplotlib-chinese-display/output_17_0.png" alt="output_17_0.png" title="">
 <h3 id="Method-2-succeeded-but-annoyed-and-cannot-do-anything-with-axis-tick-label"><a href="#Method-2-succeeded-but-annoyed-and-cannot-do-anything-with-axis-tick-label" class="headerlink" title="Method 2 - succeeded, but annoyed, and cannot do anything with axis tick label"></a>Method 2 - succeeded, but annoyed, and cannot do anything with axis tick label</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *  </div><div class="line">myfont = matplotlib.font_manager.FontProperties(fname=<span class="string">'/usr/share/fonts/MyFonts/YaHei.Consolas.1.11b.ttf'</span>)  </div><div class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span>  </div><div class="line">t = arange(<span class="number">-5</span>*pi, <span class="number">5</span>*pi, <span class="number">0.01</span>)  </div><div class="line">y = sin(t)/t  </div><div class="line">plt.plot(t, y)  </div><div class="line">plt.title(<span class="string">u'这里写的是中文'</span>,fontproperties=myfont) <span class="comment">#指定字体  </span></div><div class="line">plt.xlabel(<span class="string">u'X坐标'</span>,fontproperties=myfont)  </div><div class="line">plt.ylabel(<span class="string">u'Y坐标'</span>,fontproperties=myfont)  </div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-
+<img src="/2016/10/10/matplotlib-chinese-display/output_19_0.png" alt="output_19_0.png" title="">
 <h3 id="Method-in-Seaborn"><a href="#Method-in-Seaborn" class="headerlink" title="Method in Seaborn"></a>Method in Seaborn</h3><p>This method may succeed after succeed in matplotlib, and may fail if not. </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</div><div class="line">sns.set(font=<span class="string">'YaHei Consolas Hybrid'</span>)</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
@@ -536,13 +521,13 @@ LiSu
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
             <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
           
-            <a href="/tags/matplotlib/" rel="tag"># matplotlib</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
             <a href="/tags/jupyter-notebook/" rel="tag"># jupyter notebook</a>
+          
+            <a href="/tags/matplotlib/" rel="tag"># matplotlib</a>
           
         </div>
       
@@ -640,7 +625,7 @@ LiSu
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.jpg"
                alt="Katherine Hou" />
           <p class="site-author-name" itemprop="name">Katherine Hou</p>
            
@@ -674,7 +659,7 @@ LiSu
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -686,12 +671,41 @@ LiSu
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/monkey0105" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
 
         
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://papacochon.com/" title="二师兄" target="_blank">二师兄</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://junjiecai.github.io/" title="Exolution" target="_blank">Exolution</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
@@ -731,7 +745,7 @@ LiSu
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -747,7 +761,7 @@ LiSu
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -788,6 +802,9 @@ LiSu
 
 
 
+  
+  
+
 
 
 
@@ -814,6 +831,12 @@ LiSu
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
 
   
 
@@ -826,6 +849,13 @@ LiSu
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -852,7 +882,7 @@ LiSu
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2016/10/10/matplotlib-chinese-display/';
+          this.page.url = 'http://monkey0105.github.io/2016/10/10/matplotlib-chinese-display/';
           this.page.identifier = '2016/10/10/matplotlib-chinese-display/';
           this.page.title = 'Ubuntu matplotlib 中文显示';
         };

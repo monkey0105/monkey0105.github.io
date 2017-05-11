@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="hexo,jupyter notebook,jupyter nbconvert," />
 
 
 
@@ -91,16 +91,18 @@
 
 
 <meta name="description" content="前因现在的工作基本上都是借助jupyter notebook和Python内核来完成的。做探索性的工作或者完成基本的分析报告都是如此，所以迫切地希望能够用jupyter notebook来直接完成一篇博文。">
-<meta name="keywords" content="hexo">
+<meta name="keywords" content="hexo,jupyter notebook,jupyter nbconvert">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 背离又回归">
-<meta property="og:url" content="http://yoursite.com/2016/09/22/hexo-leave-and-come-back/index.html">
+<meta property="og:title" content="抛弃Hexo又回归">
+<meta property="og:url" content="http://monkey0105.github.io/2016/09/22/hexo-leave-and-come-back/index.html">
 <meta property="og:site_name" content="Dreamland">
 <meta property="og:description" content="前因现在的工作基本上都是借助jupyter notebook和Python内核来完成的。做探索性的工作或者完成基本的分析报告都是如此，所以迫切地希望能够用jupyter notebook来直接完成一篇博文。">
-<meta property="og:updated_time" content="2017-05-11T07:26:12.935Z">
+<meta property="og:image" content="http://monkey0105.github.io/2016/09/22/hexo-leave-and-come-back/hexo-leave-and-come-back_11_0.png">
+<meta property="og:updated_time" content="2017-05-11T09:12:11.063Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo 背离又回归">
+<meta name="twitter:title" content="抛弃Hexo又回归">
 <meta name="twitter:description" content="前因现在的工作基本上都是借助jupyter notebook和Python内核来完成的。做探索性的工作或者完成基本的分析报告都是如此，所以迫切地希望能够用jupyter notebook来直接完成一篇博文。">
+<meta name="twitter:image" content="http://monkey0105.github.io/2016/09/22/hexo-leave-and-come-back/hexo-leave-and-come-back_11_0.png">
 
 
 
@@ -108,7 +110,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -128,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/22/hexo-leave-and-come-back/"/>
+  <link rel="canonical" href="http://monkey0105.github.io/2016/09/22/hexo-leave-and-come-back/"/>
 
 
 
 
 
-  <title>Hexo 背离又回归 | Dreamland</title>
+  <title>抛弃Hexo又回归 | Dreamland</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,26 +256,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
-            站点地图
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            公益404
-          </a>
-        </li>
-      
 
       
         <li class="menu-item menu-item-search">
@@ -341,12 +323,12 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/22/hexo-leave-and-come-back/">
+    <link itemprop="mainEntityOfPage" href="http://monkey0105.github.io/2016/09/22/hexo-leave-and-come-back/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Katherine Hou">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -358,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo 背离又回归</h1>
+          <h1 class="post-title" itemprop="name headline">抛弃Hexo又回归</h1>
         
 
         <div class="post-meta">
@@ -421,7 +403,7 @@
 
           
           
-             <span id="/2016/09/22/hexo-leave-and-come-back/" class="leancloud_visitors" data-flag-title="Hexo 背离又回归">
+             <span id="/2016/09/22/hexo-leave-and-come-back/" class="leancloud_visitors" data-flag-title="抛弃Hexo又回归">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -456,23 +438,27 @@
 <p>然而用了两天，也许是因为懒惰，觉得还是Hexo好啊！<br>Hexo的系统结构和配置方法，我不算精通，却也基本熟悉了。对pelican还是一头雾水呢。<br>其次，看Hexo的官方网站，可以感觉到它已经是一个非常成熟的工具了，而且支持许多外部的第三方服务，包括留言和分享等。（不知道pelican是否都支持。）</p>
 <p>最最最重要的是，在pelican没有找到还算满意的主题啊！！！</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>于是，Hexo，我又回来了，不要嫌弃我！哈哈哈哈！</p>
-<h3 id="格式转换工具jupyter-nbconvert"><a href="#格式转换工具jupyter-nbconvert" class="headerlink" title="格式转换工具jupyter nbconvert"></a>格式转换工具<code>jupyter nbconvert</code></h3><p>而支持jupyter notebook的问题，可以通过jupyter本身的工具<a href="https://github.com/jupyter/nbconvert" target="_blank" rel="external">jupyter nbconvert</a>来解决。</p>
+<h3 id="格式转换工具jupyter-nbconvert"><a href="#格式转换工具jupyter-nbconvert" class="headerlink" title="格式转换工具jupyter nbconvert"></a>格式转换工具<a href="https://github.com/jupyter/nbconvert" target="_blank" rel="external"><code>jupyter nbconvert</code></a></h3><p>而支持jupyter notebook的问题，可以通过jupyter本身的工具<a href="https://github.com/jupyter/nbconvert" target="_blank" rel="external">jupyter nbconvert</a>来解决。</p>
 <p>只需要一句简单的命令就可以把jupyter notebook转换成markdown文件。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">jupyter nbconvert --to &lt;output format&gt; &lt;input notebook&gt;</div><div class="line">jupyter nbconvert --to markdown mynotebook.ipynb</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">jupyter nbconvert --to &lt;output format&gt; &lt;input notebook&gt; --output-dir &lt;destination path&gt;</div><div class="line">jupyter nbconvert --to markdown mynotebook.ipynb --output-dir /home/katherine/Documents/hexo_blog/source/_posts/</div></pre></td></tr></table></figure>
 <p><code>jupyter nbconvert</code>支持以下格式的文件之间的转换：<br><code>custom</code>, <code>html</code>, <code>latex</code>, <code>markdown</code>, <code>notebook</code>, <code>pdf</code>, <code>python</code>, <code>rst</code>, <code>script</code>, <code>slides</code></p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>notebook的命名不要包含中文和空格，以免出现问题。</p>
-<p>生成markdown文件后要进行检查。<br>Hexo支持的markdown文件，最开头的格式如下，且第一行不能为空。nbconvert貌似帮我自动空了一行，需要手动删掉。也可以在jupyter notebook中先不写这些信息，生成md文件后再补。</p>
+<p>如果不用<code>--to</code>参数，则默认转换成html文件。</p>
+<p>如果不用<code>--output-dir</code>参数，则默认转换成的文件保存在当前目录。</p>
+<p><code>&lt;input notebook&gt;</code>可以填写类似<code>my*.ipynb</code>的值，则<code>jupyter nbconvert</code>会自动转换当前路径下所有以my开头命名的notebook。</p>
+<p><code>jupyter nbconvert</code>生成markdown文件时，如果有图片等其他文件输出，会被保存到跟markdown文件同级的名为<code>&lt;notebook_name&gt;_files</code>的文件夹下。</p>
+<h3 id="转为Hexo可处理的形式"><a href="#转为Hexo可处理的形式" class="headerlink" title="转为Hexo可处理的形式"></a>转为Hexo可处理的形式</h3><h4 id="markdown文件"><a href="#markdown文件" class="headerlink" title="markdown文件"></a>markdown文件</h4><p>notebook的命名不要包含中文和空格，以免出现问题。</p>
+<p>生成markdown文件后要进行检查。<br>Hexo支持的markdown文件，最开头的格式如下，且第一行不能为空行。nbconvert貌似帮我自动空了一行，需要手动删掉。建议在jupyter notebook中先不写这些信息，生成md文件后再补。</p>
 <blockquote>
-<hr>
+<p>-——————</p>
 <p>title: Hexo 背离又回归<br>categories: ‘看世界|World Eye’<br>tags: </p>
-<ul>
-<li>hexo<br>date:</li>
-</ul>
-<hr>
+<p>- tag1</p>
+<p>- tag2</p>
+<p>date:</p>
+<p>-———————</p>
 </blockquote>
-<p>生成<code>new post</code>后会生成一个md文件，到时候用编辑好的md文件替换即可，不过要注意文件名，要保持与<code>asset_folder</code>命名一致。</p>
-<p>生成的图片位置，要手动把图片添加到<code>/images</code>文件夹下，而文章里面的图片位置也要手动修改。<br>或者在站点配置文件中设置<code>post_asset_folder: true</code>，这样在每个post生成后，还会相对应地生成一个和md文件名相同的文件夹，把图片放进去后，把md文件中<code>![image label](/path/to/image_name.png)</code>改为<figure class="highlight plain"><figcaption><span>asset_img image_name.png image label %&#125;```即可。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">好像有点复杂，不过可以完全倚赖Hexo的工具啊。感觉还是棒棒哒！</div><div class="line"></div><div class="line">### 测试</div><div class="line">这里，我们还要测试一下包含python代码的notebook转换成md文件后，还能否正常显示。</div><div class="line"></div><div class="line"></div><div class="line">```python</div><div class="line">%matplotlib inline</div><div class="line">import numpy as np</div><div class="line">import seaborn as sns</div><div class="line">import matplotlib.pyplot as plt</div><div class="line"></div><div class="line">sns.set(style=&quot;dark&quot;)</div><div class="line">rs = np.random.RandomState(50)</div><div class="line"></div><div class="line"># Set up the matplotlib figure</div><div class="line">f, axes = plt.subplots(3, 3, figsize=(9, 9), sharex=True, sharey=True)</div><div class="line"></div><div class="line"># Rotate the starting point around the cubehelix hue circle</div><div class="line">for ax, s in zip(axes.flat, np.linspace(0, 3, 10)):</div><div class="line"></div><div class="line">    # Create a cubehelix colormap to use with kdeplot</div><div class="line">    cmap = sns.cubehelix_palette(start=s, light=1, as_cmap=True)</div><div class="line"></div><div class="line">    # Generate and plot a random bivariate dataset</div><div class="line">    x, y = rs.randn(2, 50)</div><div class="line">    sns.kdeplot(x, y, cmap=cmap, shade=True, cut=5, ax=ax)</div><div class="line">    ax.set(xlim=(-3, 3), ylim=(-3, 3))</div><div class="line"></div><div class="line">f.tight_layout()</div></pre></td></tr></table></figure></p>
-
+<p>生成<code>new post</code>后会生成一个md文件，到时候用编辑好的md文件替换即可。</p>
+<h4 id="图片等其他资料文件"><a href="#图片等其他资料文件" class="headerlink" title="图片等其他资料文件"></a>图片等其他资料文件</h4><p>生成的图片位置，要手动把图片添加到<code>/images</code>文件夹下，而文章里面的图片位置也要手动修改。<br>或者在站点配置文件中设置<code>post_asset_folder: true</code>，这样在每个post生成后，还会相对应地生成一个和md文件名相同的文件夹，把图片放进去后，把md文件中<code>![image label](/path/to/image_name.png)</code>改为<figure class="highlight plain"><figcaption><span>asset_img <image_name.png> <image> <label> %&#125;```即可。</label></image></image_name.png></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**即要保证markdown的文件文件名要和同级路径中的asset_folder保持一致。**</div><div class="line"></div><div class="line">好像有点复杂，不过可以完全倚赖Hexo的工具啊。感觉还是棒棒哒！</div><div class="line"></div><div class="line">### 测试</div><div class="line">这里，我们还要测试一下包含python代码的notebook转换成md文件后，还能否正常显示。</div><div class="line"></div><div class="line"></div><div class="line">```python</div><div class="line">%matplotlib inline</div><div class="line">import numpy as np</div><div class="line">import seaborn as sns</div><div class="line">import matplotlib.pyplot as plt</div><div class="line"></div><div class="line">sns.set(style=&quot;dark&quot;)</div><div class="line">rs = np.random.RandomState(50)</div><div class="line"></div><div class="line"># Set up the matplotlib figure</div><div class="line">f, axes = plt.subplots(3, 3, figsize=(9, 9), sharex=True, sharey=True)</div><div class="line"></div><div class="line"># Rotate the starting point around the cubehelix hue circle</div><div class="line">for ax, s in zip(axes.flat, np.linspace(0, 3, 10)):</div><div class="line"></div><div class="line">    # Create a cubehelix colormap to use with kdeplot</div><div class="line">    cmap = sns.cubehelix_palette(start=s, light=1, as_cmap=True)</div><div class="line"></div><div class="line">    # Generate and plot a random bivariate dataset</div><div class="line">    x, y = rs.randn(2, 50)</div><div class="line">    sns.kdeplot(x, y, cmap=cmap, shade=True, cut=5, ax=ax)</div><div class="line">    ax.set(xlim=(-3, 3), ylim=(-3, 3))</div><div class="line"></div><div class="line">f.tight_layout()</div></pre></td></tr></table></figure></p>
+<img src="/2016/09/22/hexo-leave-and-come-back/hexo-leave-and-come-back_11_0.png" alt="测试seaborn等高线图的显示" title="测试seaborn等高线图的显示">
 
       
     </div>
@@ -504,6 +490,10 @@
           
             <a href="/tags/hexo/" rel="tag"># hexo</a>
           
+            <a href="/tags/jupyter-notebook/" rel="tag"># jupyter notebook</a>
+          
+            <a href="/tags/jupyter-nbconvert/" rel="tag"># jupyter nbconvert</a>
+          
         </div>
       
 
@@ -515,7 +505,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/13/Git-Manual/" rel="next" title="Git Manual">
+              <a href="/2016/09/13/git-manual/" rel="next" title="Git Manual">
                 <i class="fa fa-chevron-left"></i> Git Manual
               </a>
             
@@ -600,7 +590,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.jpg"
                alt="Katherine Hou" />
           <p class="site-author-name" itemprop="name">Katherine Hou</p>
            
@@ -634,7 +624,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -646,12 +636,41 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/monkey0105" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
 
         
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://papacochon.com/" title="二师兄" target="_blank">二师兄</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://junjiecai.github.io/" title="Exolution" target="_blank">Exolution</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
@@ -669,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前因"><span class="nav-number">1.</span> <span class="nav-text">前因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经过"><span class="nav-number">2.</span> <span class="nav-text">经过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#格式转换工具jupyter-nbconvert"><span class="nav-number">3.1.</span> <span class="nav-text">格式转换工具jupyter nbconvert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">3.2.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前因"><span class="nav-number">1.</span> <span class="nav-text">前因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经过"><span class="nav-number">2.</span> <span class="nav-text">经过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#格式转换工具jupyter-nbconvert"><span class="nav-number">3.1.</span> <span class="nav-text">格式转换工具jupyter nbconvert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转为Hexo可处理的形式"><span class="nav-number">3.2.</span> <span class="nav-text">转为Hexo可处理的形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#markdown文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">markdown文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片等其他资料文件"><span class="nav-number">3.2.2.</span> <span class="nav-text">图片等其他资料文件</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -691,7 +710,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -707,7 +726,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -748,6 +767,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -774,6 +796,12 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
 
   
 
@@ -786,6 +814,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -812,9 +847,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2016/09/22/hexo-leave-and-come-back/';
+          this.page.url = 'http://monkey0105.github.io/2016/09/22/hexo-leave-and-come-back/';
           this.page.identifier = '2016/09/22/hexo-leave-and-come-back/';
-          this.page.title = 'Hexo 背离又回归';
+          this.page.title = '抛弃Hexo又回归';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://monkey0105.disqus.com/embed.js';
