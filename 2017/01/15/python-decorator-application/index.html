@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo,markdown," />
+  <meta name="keywords" content="python,decorator," />
 
 
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="Just keep this post as a memo about Hexo, markdown gramma, etc.">
-<meta name="keywords" content="Hexo,markdown">
+<meta name="description" content="python装饰器的应用若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。">
+<meta name="keywords" content="python,decorator">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://monkey0105.github.io/2015/12/29/hello-world/index.html">
+<meta property="og:title" content="Python Decorator Application">
+<meta property="og:url" content="http://monkey0105.github.io/2017/01/15/python-decorator-application/index.html">
 <meta property="og:site_name" content="Dreamland">
-<meta property="og:description" content="Just keep this post as a memo about Hexo, markdown gramma, etc.">
-<meta property="og:updated_time" content="2017-05-11T07:26:12.931Z">
+<meta property="og:description" content="python装饰器的应用若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。">
+<meta property="og:updated_time" content="2017-05-17T03:10:09.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Just keep this post as a memo about Hexo, markdown gramma, etc.">
+<meta name="twitter:title" content="Python Decorator Application">
+<meta name="twitter:description" content="python装饰器的应用若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://monkey0105.github.io/2015/12/29/hello-world/"/>
+  <link rel="canonical" href="http://monkey0105.github.io/2017/01/15/python-decorator-application/"/>
 
 
 
 
 
-  <title>Hello World | Dreamland</title>
+  <title>Python Decorator Application | Dreamland</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -321,7 +321,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://monkey0105.github.io/2015/12/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://monkey0105.github.io/2017/01/15/python-decorator-application/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Katherine Hou">
@@ -338,7 +338,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Python Decorator Application</h1>
         
 
         <div class="post-meta">
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-29T16:52:09+08:00">
-                2015-12-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-15T21:27:25+08:00">
+                2017-01-15
               </time>
             
 
@@ -373,8 +373,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/拿来主义-Copinism/" itemprop="url" rel="index">
-                    <span itemprop="name">拿来主义|Copinism</span>
+                  <a href="/categories/程序媛-Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">程序媛|Coding</span>
                   </a>
                 </span>
 
@@ -391,9 +391,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/29/hello-world/#comments" itemprop="discussionUrl">
+                <a href="/2017/01/15/python-decorator-application/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/29/hello-world/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/01/15/python-decorator-application/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,7 +401,7 @@
 
           
           
-             <span id="/2015/12/29/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/2017/01/15/python-decorator-application/" class="leancloud_visitors" data-flag-title="Python Decorator Application">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -429,24 +429,113 @@
       
 
       
-        <p>Just keep this post as a memo about Hexo, markdown gramma, etc. </p>
-<a id="more"></a>
-<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><ul>
-<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" rel="external">Cheating Sheet</a></li>
-</ul>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br>Open Git Bash and turn my working directory to D:/Hexo.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> d:/Hexo</div></pre></td></tr></table></figure></p>
-<h3 id="Create-a-new-draft"><a href="#Create-a-new-draft" class="headerlink" title="Create a new draft"></a>Create a new draft</h3><p>The reference is <a href="http://oomusou.io/hexo/hexo-draft/" target="_blank" rel="external">http://oomusou.io/hexo/hexo-draft/</a>.<br>Create a new draft under the directory <code>source/_drafts</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new draft &lt;title&gt;</div></pre></td></tr></table></figure></p>
-<p>After editing the drafts, use <code>--draft</code> parameter to preview.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server --draft</div></pre></td></tr></table></figure></p>
-<p>After being satisfied with the draft, use <code>publish</code> command to move the <code>.md</code> file to the directory <code>source/_posts</code>. Then you can <code>generate</code> and <code>deploy</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo publish &lt;filename&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="python装饰器的应用"><a href="#python装饰器的应用" class="headerlink" title="python装饰器的应用"></a>python装饰器的应用</h1><p>若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。<br><a id="more"></a></p>
+<h2 id="情景描述"><a href="#情景描述" class="headerlink" title="情景描述"></a>情景描述</h2><p>有一个函数，存在一定概率会运行失败。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">prob_fail</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">    <span class="keyword">if</span> randint(<span class="number">0</span>,<span class="number">100</span>) &lt; <span class="number">20</span>:</div><div class="line">        print(<span class="string">'Succeed'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Fail'</span>)</div><div class="line">        <span class="keyword">raise</span> Exception</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prob_fail()</div></pre></td></tr></table></figure>
+<pre><code>Fail
 
+
+
+---------------------------------------------------------------------------
+
+Exception                                 Traceback (most recent call last)
+
+&lt;ipython-input-4-f3c46ba59b44&gt; in &lt;module&gt;()
+----&gt; 1 prob_fail()
+
+
+&lt;ipython-input-3-6bdb0df19324&gt; in prob_fail()
+      5     else:
+      6         print(&apos;Fail&apos;)
+----&gt; 7         raise Exception
+
+
+Exception: 
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prob_fail()</div></pre></td></tr></table></figure>
+<pre><code>Succeed
+</code></pre><h2 id="希望能达到的效果是，在函数运行失败时自动重试。"><a href="#希望能达到的效果是，在函数运行失败时自动重试。" class="headerlink" title="希望能达到的效果是，在函数运行失败时自动重试。"></a>希望能达到的效果是，在函数运行失败时自动重试。</h2><h3 id="不用装饰器也可实现"><a href="#不用装饰器也可实现" class="headerlink" title="不用装饰器也可实现"></a>不用装饰器也可实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        prob_fail()</div><div class="line">        <span class="keyword">break</span></div><div class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">        print(<span class="string">'Retrying. '</span>)</div></pre></td></tr></table></figure>
+<pre><code>Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Succeed
+</code></pre><h3 id="若多个函数都想实现此功能，用装饰器更方便"><a href="#若多个函数都想实现此功能，用装饰器更方便" class="headerlink" title="若多个函数都想实现此功能，用装饰器更方便"></a>若多个函数都想实现此功能，用装饰器更方便</h3><p>装饰器的特征：</p>
+<ul>
+<li>Closure 闭包函数</li>
+<li>外层函数的参数只有一个，且是需要被装饰的函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                <span class="keyword">return</span> func()</div><div class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">                print(<span class="string">'Retrying. '</span>)</div><div class="line">    <span class="keyword">return</span> inner</div><div class="line"></div><div class="line"><span class="meta">@decorator</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">prob_fail</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">    <span class="keyword">if</span> randint(<span class="number">0</span>,<span class="number">100</span>) &lt; <span class="number">20</span>:</div><div class="line">        print(<span class="string">'Succeed'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Fail'</span>)</div><div class="line">        <span class="keyword">raise</span> Exception</div></pre></td></tr></table></figure>
+<p><strong>之后只要直接调用函数本身即可。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prob_fail()</div></pre></td></tr></table></figure>
+<pre><code>Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Fail
+Retrying. 
+Succeed
+</code></pre><h3 id="若函数本身有参数，则需要在inner函数中补齐参数设置，以满足不同函数的调用需求"><a href="#若函数本身有参数，则需要在inner函数中补齐参数设置，以满足不同函数的调用需求" class="headerlink" title="若函数本身有参数，则需要在inner函数中补齐参数设置，以满足不同函数的调用需求"></a>若函数本身有参数，则需要在inner函数中补齐参数设置，以满足不同函数的调用需求</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(*args, **kargs)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                <span class="keyword">return</span> func(*args, **kargs)</div><div class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">                print(<span class="string">'Retrying. '</span>)</div><div class="line">    <span class="keyword">return</span> inner</div></pre></td></tr></table></figure>
+<h3 id="若想要在装饰器中增加别的参数以实现更多控制，则需要再包一层函数"><a href="#若想要在装饰器中增加别的参数以实现更多控制，则需要再包一层函数" class="headerlink" title="若想要在装饰器中增加别的参数以实现更多控制，则需要再包一层函数"></a>若想要在装饰器中增加别的参数以实现更多控制，则需要再包一层函数</h3><p>此处设置了<strong>最大重试次数(max_retry_n)</strong>和<strong>重试等待时间(retry_wait_arg)</strong>的控制。<br>若超过<strong>最大重试次数</strong>，则抛出MaxRetryNumError，这是Exception类的一个子类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MaxRetryNumError</span><span class="params">(Exception)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">retry_control</span><span class="params">(max_retry_n, retry_wait_arg)</span>:</span></div><div class="line">    <span class="keyword">from</span> time <span class="keyword">import</span> sleep</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(*args, **kargs)</span>:</span></div><div class="line">            i = <span class="number">0</span></div><div class="line">            <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">try</span>:</div><div class="line">                    <span class="keyword">return</span> func(*args, **kargs)</div><div class="line"></div><div class="line">                <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">                    wait_sec = retry_wait_arg*(i**<span class="number">2</span>)</div><div class="line">                    print(<span class="string">'Wait &#123;&#125; seconds before retrying. '</span>.format(wait_sec))</div><div class="line">                    sleep(wait_sec)</div><div class="line"></div><div class="line">                i += <span class="number">1</span></div><div class="line">                <span class="keyword">if</span> i &gt; max_retry_n:</div><div class="line">                    <span class="keyword">raise</span> MaxRetryNumError(<span class="string">'Reach the Max Retry Number: &#123;&#125;! '</span>.format(max_retry_n))</div><div class="line">                print(<span class="string">'Retry Time &#123;&#125;'</span>.format(i))</div><div class="line"></div><div class="line">        <span class="keyword">return</span> inner</div><div class="line">    <span class="keyword">return</span> decorator</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@retry_control(3, 3)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">prob_fail</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">    <span class="keyword">if</span> randint(<span class="number">0</span>,<span class="number">100</span>) &lt; <span class="number">20</span>:</div><div class="line">        print(<span class="string">'Succeed'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Fail'</span>)</div><div class="line">        <span class="keyword">raise</span> Exception</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prob_fail()</div></pre></td></tr></table></figure>
+<pre><code>Fail
+Wait 0 seconds before retrying. 
+Retry Time 1
+Fail
+Wait 3 seconds before retrying. 
+Retry Time 2
+Fail
+Wait 12 seconds before retrying. 
+Retry Time 3
+Fail
+Wait 27 seconds before retrying. 
+
+
+
+---------------------------------------------------------------------------
+
+MaxRetryNumError                          Traceback (most recent call last)
+
+&lt;ipython-input-18-f3c46ba59b44&gt; in &lt;module&gt;()
+----&gt; 1 prob_fail()
+
+
+&lt;ipython-input-15-b95d7b9d96bc&gt; in inner(*args, **kargs)
+     18                 i += 1
+     19                 if i &gt; max_retry_n:
+---&gt; 20                     raise MaxRetryNumError(&apos;Reach the Max Retry Number: {}! &apos;.format(max_retry_n))
+     21                 print(&apos;Retry Time {}&apos;.format(i))
+     22 
+
+
+MaxRetryNumError: Reach the Max Retry Number: 3! 
+</code></pre>
       
     </div>
 
@@ -475,9 +564,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/markdown/" rel="tag"># markdown</a>
+            <a href="/tags/decorator/" rel="tag"># decorator</a>
           
         </div>
       
@@ -490,15 +579,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/10/17/install-ubuntu-14-and-softwares/" rel="next" title="Install Operation System Ubuntu 14.04 and Some Softwares">
+                <i class="fa fa-chevron-left"></i> Install Operation System Ubuntu 14.04 and Some Softwares
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/04/new-year-plan-2016/" rel="prev" title="2016 目标 & 计划">
-                2016 目标 & 计划 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -669,7 +758,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown"><span class="nav-number">1.</span> <span class="nav-text">Markdown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo"><span class="nav-number">2.</span> <span class="nav-text">Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-draft"><span class="nav-number">2.1.</span> <span class="nav-text">Create a new draft</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">2.2.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">2.3.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">2.4.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">2.5.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python装饰器的应用"><span class="nav-number">1.</span> <span class="nav-text">python装饰器的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#情景描述"><span class="nav-number">1.1.</span> <span class="nav-text">情景描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#希望能达到的效果是，在函数运行失败时自动重试。"><span class="nav-number">1.2.</span> <span class="nav-text">希望能达到的效果是，在函数运行失败时自动重试。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不用装饰器也可实现"><span class="nav-number">1.2.1.</span> <span class="nav-text">不用装饰器也可实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#若多个函数都想实现此功能，用装饰器更方便"><span class="nav-number">1.2.2.</span> <span class="nav-text">若多个函数都想实现此功能，用装饰器更方便</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#若函数本身有参数，则需要在inner函数中补齐参数设置，以满足不同函数的调用需求"><span class="nav-number">1.2.3.</span> <span class="nav-text">若函数本身有参数，则需要在inner函数中补齐参数设置，以满足不同函数的调用需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#若想要在装饰器中增加别的参数以实现更多控制，则需要再包一层函数"><span class="nav-number">1.2.4.</span> <span class="nav-text">若想要在装饰器中增加别的参数以实现更多控制，则需要再包一层函数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -828,9 +917,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://monkey0105.github.io/2015/12/29/hello-world/';
-          this.page.identifier = '2015/12/29/hello-world/';
-          this.page.title = 'Hello World';
+          this.page.url = 'http://monkey0105.github.io/2017/01/15/python-decorator-application/';
+          this.page.identifier = '2017/01/15/python-decorator-application/';
+          this.page.title = 'Python Decorator Application';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://monkey0105.disqus.com/embed.js';
