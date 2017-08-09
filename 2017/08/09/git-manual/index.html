@@ -1,0 +1,1137 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="As coding more and more, git becomes a must-use tool to save the codes and control versions.This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy.">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git Manual">
+<meta property="og:url" content="http://monkey0105.github.io/2017/08/09/git-manual/index.html">
+<meta property="og:site_name" content="Dreamland">
+<meta property="og:description" content="As coding more and more, git becomes a must-use tool to save the codes and control versions.This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy.">
+<meta property="og:updated_time" content="2017-08-09T06:36:15.637Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git Manual">
+<meta name="twitter:description" content="As coding more and more, git becomes a must-use tool to save the codes and control versions.This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '0WAS567B7X',
+      apiKey: '759b8f1ab783d5715ba2a55a26a069d0',
+      indexName: 'hexo_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://monkey0105.github.io/2017/08/09/git-manual/"/>
+
+
+
+
+
+  <title>Git Manual | Dreamland</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ff535cdcd7fc7a424187099c15b8d662";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dreamland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Inner Peace</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://monkey0105.github.io/2017/08/09/git-manual/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katherine Hou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dreamland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git Manual</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-09T14:30:00+08:00">
+                2017-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序媛-Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">程序媛|Coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/09/git-manual/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/09/git-manual/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/09/git-manual/" class="leancloud_visitors" data-flag-title="Git Manual">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>As coding more and more, <code>git</code> becomes a must-use tool to save the codes and control versions.<br>This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy. </p>
+<p>If you lack of basic knowledge about git, I would recommend you a helpful tutorial <a href="http://iissnan.com/progit/index.html" target="_blank" rel="external">Pro Git</a>, translated and editted by the author of theme <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external"><code>Next</code></a>. </p>
+<a id="more"></a>
+<h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>Git is a local version control tool to help users, whether the user is a programmer of a writer, to manage the contents and changes in <strong>text files</strong>.<br>If you would like to have a backup remotely, you could use <a href="https://github.com/" target="_blank" rel="external">Github</a> to save your work on the remote repo. </p>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>If you use Ubuntu, <code>apt-get</code> could be used to install git.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git git-core</div></pre></td></tr></table></figure></p>
+<h2 id="Work-Locally"><a href="#Work-Locally" class="headerlink" title="Work Locally"></a>Work Locally</h2><h3 id="Build-local-repository"><a href="#Build-local-repository" class="headerlink" title="Build local repository"></a>Build local repository</h3><p>To create a new folder to hold the clone files, or you already have some work to track, you can use: : </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">Initialized empty Git repository <span class="keyword">in</span> /&lt;file_dir&gt;/.git/</div></pre></td></tr></table></figure>
+<h3 id="Track-the-work"><a href="#Track-the-work" class="headerlink" title="Track the work"></a>Track the work</h3><p>After initialization, after some work, use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add &lt;file path and name&gt;</div></pre></td></tr></table></figure></p>
+<p>to add the specific file to the track; use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure></p>
+<p>or<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add --all</div></pre></td></tr></table></figure></p>
+<p>to add all changed files to the track. </p>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a><code>.gitignore</code></h3><p>If some specific type of files are not needed to track all the time, they can be added to the <code>.gitignore</code> file. Just create a file named <code>.gitignore</code> and then add the file types or names not necessary to track as the following. Then git will automatically ignore the files listed in the <code>.gitignore</code> file.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*.csv # all the csv files</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m <span class="string">'&lt;name the commit yourself&gt;'</span></div></pre></td></tr></table></figure>
+<p>Or you can use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -am <span class="string">'&lt;name the commit yourself&gt;'</span></div></pre></td></tr></table></figure></p>
+<p>to combine <code>add</code> and <code>commit</code> into one sentence.<br><strong>Pay attention, <code>git commit -am</code> only commit the files already in the track, and ignore the files which have never been added into the track. </strong></p>
+<h3 id="Check-the-status"><a href="#Check-the-status" class="headerlink" title="Check the status"></a>Check the status</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+<h3 id="Check-the-history"><a href="#Check-the-history" class="headerlink" title="Check the history"></a>Check the history</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span></div></pre></td></tr></table></figure>
+<h2 id="Work-with-the-Remote-Repo"><a href="#Work-with-the-Remote-Repo" class="headerlink" title="Work with the Remote Repo"></a>Work with the Remote Repo</h2><h3 id="If-already-run-git-init"><a href="#If-already-run-git-init" class="headerlink" title="If already run git init"></a>If already run <code>git init</code></h3><p>Then:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull git://github.com/monkey0105/source.git master</div></pre></td></tr></table></figure></p>
+<p>The files then are all downloaded in the file. </p>
+<p>Set <code>origin</code> address<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/monkey0105/source.git</div></pre></td></tr></table></figure></p>
+<h3 id="If-not-run-git-init"><a href="#If-not-run-git-init" class="headerlink" title="If not run git init"></a>If not run <code>git init</code></h3><p>Just use <code>git clone</code>, and <code>git</code> will create a new folder to hold the clone files for you.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git://github.com/monkey0105/source.git --branch &lt;branch&gt; &lt;directory name&gt;</div></pre></td></tr></table></figure></p>
+<p><code>--branch &lt;branch&gt;</code> can specify the branch you want. if no branch is specified, the default branch would be <code>master</code>.</p>
+<p><code>&lt;directory name&gt;</code> can specify the place you want to put the repo. if no directory name is specified, the name of the repo would be used as the folder’s name. </p>
+<h3 id="Update-the-remote-repository"><a href="#Update-the-remote-repository" class="headerlink" title="Update the remote repository"></a>Update the remote repository</h3><p>After do some changes, <code>commit</code> and <code>push</code> to the remote repository.</p>
+<p>Then:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
+<p>The files in the Github is up-to-date. </p>
+<h1 id="Branch"><a href="#Branch" class="headerlink" title="Branch"></a>Branch</h1><p>Always pay attention to the branch you currently work on. </p>
+<h2 id="Check-which-branch-is-the-work-currently-on"><a href="#Check-which-branch-is-the-work-currently-on" class="headerlink" title="Check which branch is the work currently on"></a>Check which branch is the work currently on</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git branch</div><div class="line">* dev</div><div class="line">  master</div><div class="line">  ...</div></pre></td></tr></table></figure>
+<p>All the local branches would be shown, and one <code>*</code> is in front of the name of current branch. </p>
+<h2 id="Checkout"><a href="#Checkout" class="headerlink" title="Checkout"></a>Checkout</h2><p>You can use <code>checkout</code> to create or switch between the branches.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Switch to an existed branch &lt;branch name&gt;</span></div><div class="line">git checkout &lt;branch name&gt;</div><div class="line"></div><div class="line"><span class="comment"># Create a new branch &lt;branch name&gt; and switch to it</span></div><div class="line">git checkout -b &lt;branch name&gt;</div></pre></td></tr></table></figure>
+<h2 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h2><p><code>git checkout</code> to the target branch <code>&lt;branch name 1&gt;</code> and merge contents on <code>&lt;branch name 2&gt;</code> into it. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout &lt;branch name 1&gt;</div><div class="line">git merge &lt;branch name 2&gt;</div></pre></td></tr></table></figure>
+<h1 id="Fork"><a href="#Fork" class="headerlink" title="Fork"></a>Fork</h1><h2 id="Sync-a-Fork-Repo"><a href="#Sync-a-Fork-Repo" class="headerlink" title="Sync a Fork Repo"></a>Sync a Fork Repo</h2><ol>
+<li><p>Open Terminal.</p>
+</li>
+<li><p>List the current configured remote repository for your fork.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git remote -v</div><div class="line">origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)</div><div class="line">origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)</div></pre></td></tr></table></figure>
+</li>
+<li><p>Specify a new remote <em>upstream</em> repository that will be synced with the fork.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git</div></pre></td></tr></table></figure>
+</li>
+<li><p>Verify the new upstream repository you’ve specified for your fork.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git remote -v</div><div class="line">origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)</div><div class="line">origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)</div><div class="line">upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)</div><div class="line">upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)</div></pre></td></tr></table></figure>
+</li>
+<li><p>Fetch the branches and their respective commits from the upstream repository. Commits to <code>master</code> will be stored in a local branch, <code>upstream/master</code>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git fetch upstream</div><div class="line">remote: Counting objects: 75, done.</div><div class="line">remote: Compressing objects: 100% (53/53), done.</div><div class="line">remote: Total 62 (delta 27), reused 44 (delta 9)</div><div class="line">Unpacking objects: 100% (62/62), done.</div><div class="line">From https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY</div><div class="line"> * [new branch]      master     -&gt; upstream/master</div></pre></td></tr></table></figure>
+</li>
+<li><p>Check out your fork’s local <code>master</code> branch.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout master</div><div class="line">Switched to branch <span class="string">'master'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Merge the changes from <code>upstream/master</code> into your local <code>master</code> branch. This brings your fork’s <code>master</code> branch into sync with the upstream repository, without losing your local changes.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git merge upstream/master</div><div class="line">Updating a422352..5fdff0f</div><div class="line">Fast-forward</div><div class="line"> README                    |    9 -------</div><div class="line"> README.md                 |    7 ++++++</div><div class="line"> 2 files changed, 7 insertions(+), 9 deletions(-)</div><div class="line"> delete mode 100644 README</div><div class="line"> create mode 100644 README.md</div></pre></td></tr></table></figure>
+<p>If your local branch didn’t have any unique commits, Git will instead perform a “fast-forward”:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git merge upstream/master</div><div class="line">Updating 34e91da..16c56ad</div><div class="line">Fast-forward</div><div class="line"> README.md                 |    5 +++--</div><div class="line"> 1 file changed, 3 insertions(+), 2 deletions(-)</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Syncing your fork only updates your local copy of the repository. To update your fork on GitHub, you must <a href="https://help.github.com/articles/pushing-to-a-remote" target="_blank" rel="external">push your changes</a>.</strong></p>
+</li>
+</ol>
+<h1 id="Cancel-or-Edit-Commit-in-Private-Branches"><a href="#Cancel-or-Edit-Commit-in-Private-Branches" class="headerlink" title="Cancel or Edit Commit in Private Branches"></a>Cancel or Edit Commit in Private Branches</h1><p>Never reset/rebase actions which have been made in <strong>public</strong> branches.</p>
+<blockquote>
+<p>Once you understand what rebasing is, the most important thing to learn is when <em>not</em> to do it. </p>
+<p>The golden rule of <code>git rebase</code> is to never use it on <em>public</em> branches.</p>
+</blockquote>
+<h2 id="Revert-Reset-amp-Checkout-Usage-in-Commit-amp-File-Level"><a href="#Revert-Reset-amp-Checkout-Usage-in-Commit-amp-File-Level" class="headerlink" title="Revert, Reset &amp; Checkout Usage in Commit &amp; File Level"></a>Revert, Reset &amp; Checkout Usage in Commit &amp; File Level</h2><p>Below is the summary. Detail article can be found in <a href="https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting" target="_blank" rel="external">Atlassian Git Tutorial</a>. </p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Scope</th>
+<th>Common use cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git reset</td>
+<td>Commit-level</td>
+<td>Discard commits in a private branch or throw away uncommited changes</td>
+</tr>
+<tr>
+<td>git reset</td>
+<td>File-level</td>
+<td>Unstage a file</td>
+</tr>
+<tr>
+<td>git checkout</td>
+<td>Commit-level</td>
+<td>Switch between branches or inspect old snapshots</td>
+</tr>
+<tr>
+<td>git checkout</td>
+<td>File-level</td>
+<td>Discard changes in the working directory</td>
+</tr>
+<tr>
+<td>git revert</td>
+<td>Commit-level</td>
+<td>Undo commits in a public branch</td>
+</tr>
+<tr>
+<td>git revert</td>
+<td>File-level</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Merging-vs-Rebasing"><a href="#Merging-vs-Rebasing" class="headerlink" title="Merging vs. Rebasing"></a>Merging vs. Rebasing</h2><p>You can find detailed explanation <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing" target="_blank" rel="external">here</a>. </p>
+<p>If you would prefer a clean, linear history free of unnecessary merge commits, you should reach for <code>git rebase</code>instead of <code>git merge</code> when integrating changes from another branch.</p>
+<p>On the other hand, if you want to preserve the complete history of your project and avoid the risk of re-writing public commits, you can stick with <code>git merge</code>. Either option is perfectly valid, but at least now you have the option of leveraging the benefits of <code>git rebase</code>.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li>A helpful tutorial Pro Git<ul>
+<li><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="external">https://git-scm.com/book/zh/v2</a></li>
+<li><a href="http://iissnan.com/progit/index.html" target="_blank" rel="external">http://iissnan.com/progit/index.html</a></li>
+</ul>
+</li>
+<li><a href="https://help.github.com/" target="_blank" rel="external">GitHub Help</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials" target="_blank" rel="external">A Git Tutorial Powered by Atlassian</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="Katherine Hou WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="Katherine Hou Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/15/python-decorator-application/" rel="next" title="Python Decorator Application">
+                <i class="fa fa-chevron-left"></i> Python Decorator Application
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Katherine Hou" />
+          <p class="site-author-name" itemprop="name">Katherine Hou</p>
+           
+              <p class="site-description motion-element" itemprop="description">To love the world as never get hurt!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/monkey0105" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://papacochon.com/" title="二师兄" target="_blank">二师兄</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://junjiecai.github.io/" title="师父" target="_blank">师父</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://xiaogalayy.github.io/" title="琳儿" target="_blank">琳儿</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://mjp1124.github.io/" title="白龙马" target="_blank">白龙马</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://zhangxu999.github.io/" title="旭总" target="_blank">旭总</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-number">1.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Work-Locally"><span class="nav-number">1.2.</span> <span class="nav-text">Work Locally</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-local-repository"><span class="nav-number">1.2.1.</span> <span class="nav-text">Build local repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Track-the-work"><span class="nav-number">1.2.2.</span> <span class="nav-text">Track the work</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gitignore"><span class="nav-number">1.2.3.</span> <span class="nav-text">.gitignore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#commit"><span class="nav-number">1.2.4.</span> <span class="nav-text">commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-the-status"><span class="nav-number">1.2.5.</span> <span class="nav-text">Check the status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-the-history"><span class="nav-number">1.2.6.</span> <span class="nav-text">Check the history</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Work-with-the-Remote-Repo"><span class="nav-number">1.3.</span> <span class="nav-text">Work with the Remote Repo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#If-already-run-git-init"><span class="nav-number">1.3.1.</span> <span class="nav-text">If already run git init</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#If-not-run-git-init"><span class="nav-number">1.3.2.</span> <span class="nav-text">If not run git init</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-the-remote-repository"><span class="nav-number">1.3.3.</span> <span class="nav-text">Update the remote repository</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Branch"><span class="nav-number">2.</span> <span class="nav-text">Branch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-which-branch-is-the-work-currently-on"><span class="nav-number">2.1.</span> <span class="nav-text">Check which branch is the work currently on</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Checkout"><span class="nav-number">2.2.</span> <span class="nav-text">Checkout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Merge"><span class="nav-number">2.3.</span> <span class="nav-text">Merge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fork"><span class="nav-number">3.</span> <span class="nav-text">Fork</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sync-a-Fork-Repo"><span class="nav-number">3.1.</span> <span class="nav-text">Sync a Fork Repo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cancel-or-Edit-Commit-in-Private-Branches"><span class="nav-number">4.</span> <span class="nav-text">Cancel or Edit Commit in Private Branches</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Revert-Reset-amp-Checkout-Usage-in-Commit-amp-File-Level"><span class="nav-number">4.1.</span> <span class="nav-text">Revert, Reset & Checkout Usage in Commit & File Level</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Merging-vs-Rebasing"><span class="nav-number">4.2.</span> <span class="nav-text">Merging vs. Rebasing</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katherine Hou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://monkey0105.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://monkey0105.github.io/2017/08/09/git-manual/';
+          this.page.identifier = '2017/08/09/git-manual/';
+          this.page.title = 'Git Manual';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://monkey0105.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3BX3ONtgxqqdzfeRue8AEATv-gzGzoHsz", "BBCnRCQrdzUDzXcMwYbdLwle");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
