@@ -5,9 +5,9 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="As coding more and more, git becomes a must-use tool to save the codes and control versions.This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy.">
+<meta name="description" content="As coding more and more, git becomes a must-use tool to save the codes and control versions.  This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy.">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Manual">
 <meta property="og:url" content="http://monkey0105.github.io/2017/08/09/git-manual/index.html">
 <meta property="og:site_name" content="Dreamland">
-<meta property="og:description" content="As coding more and more, git becomes a must-use tool to save the codes and control versions.This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy.">
+<meta property="og:description" content="As coding more and more, git becomes a must-use tool to save the codes and control versions.  This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy.">
 <meta property="og:updated_time" content="2017-08-09T06:36:15.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Manual">
-<meta name="twitter:description" content="As coding more and more, git becomes a must-use tool to save the codes and control versions.This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy.">
+<meta name="twitter:description" content="As coding more and more, git becomes a must-use tool to save the codes and control versions.  This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy.">
 
 
 
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -134,7 +134,7 @@
 
 
 
-  <title>Git Manual | Dreamland</title>
+  <title>Git Manual | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +145,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -429,31 +429,44 @@
       
 
       
-        <p>As coding more and more, <code>git</code> becomes a must-use tool to save the codes and control versions.<br>This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy. </p>
+        <p>As coding more and more, <code>git</code> becomes a must-use tool to save the codes and control versions. 
+This is only a memo for myself to help with my daily work. If it’s also helpful to you, I’d be very happy. </p>
 <p>If you lack of basic knowledge about git, I would recommend you a helpful tutorial <a href="http://iissnan.com/progit/index.html" target="_blank" rel="external">Pro Git</a>, translated and editted by the author of theme <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external"><code>Next</code></a>. </p>
 <a id="more"></a>
-<h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>Git is a local version control tool to help users, whether the user is a programmer of a writer, to manage the contents and changes in <strong>text files</strong>.<br>If you would like to have a backup remotely, you could use <a href="https://github.com/" target="_blank" rel="external">Github</a> to save your work on the remote repo. </p>
-<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>If you use Ubuntu, <code>apt-get</code> could be used to install git.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git git-core</div></pre></td></tr></table></figure></p>
+<h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>Git is a local version control tool to help users, whether the user is a programmer of a writer, to manage the contents and changes in <strong>text files</strong>. 
+If you would like to have a backup remotely, you could use <a href="https://github.com/" target="_blank" rel="external">Github</a> to save your work on the remote repo. </p>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>If you use Ubuntu, <code>apt-get</code> could be used to install git. 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git git-core</div></pre></td></tr></table></figure></p>
 <h2 id="Work-Locally"><a href="#Work-Locally" class="headerlink" title="Work Locally"></a>Work Locally</h2><h3 id="Build-local-repository"><a href="#Build-local-repository" class="headerlink" title="Build local repository"></a>Build local repository</h3><p>To create a new folder to hold the clone files, or you already have some work to track, you can use: : </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">Initialized empty Git repository <span class="keyword">in</span> /&lt;file_dir&gt;/.git/</div></pre></td></tr></table></figure>
-<h3 id="Track-the-work"><a href="#Track-the-work" class="headerlink" title="Track the work"></a>Track the work</h3><p>After initialization, after some work, use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add &lt;file path and name&gt;</div></pre></td></tr></table></figure></p>
-<p>to add the specific file to the track; use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure></p>
-<p>or<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add --all</div></pre></td></tr></table></figure></p>
+<h3 id="Track-the-work"><a href="#Track-the-work" class="headerlink" title="Track the work"></a>Track the work</h3><p>After initialization, after some work, use
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add &lt;file path and name&gt;</div></pre></td></tr></table></figure></p>
+<p>to add the specific file to the track; use
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure></p>
+<p>or
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add --all</div></pre></td></tr></table></figure></p>
 <p>to add all changed files to the track. </p>
-<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a><code>.gitignore</code></h3><p>If some specific type of files are not needed to track all the time, they can be added to the <code>.gitignore</code> file. Just create a file named <code>.gitignore</code> and then add the file types or names not necessary to track as the following. Then git will automatically ignore the files listed in the <code>.gitignore</code> file.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*.csv # all the csv files</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a><code>.gitignore</code></h3><p>If some specific type of files are not needed to track all the time, they can be added to the <code>.gitignore</code> file. Just create a file named <code>.gitignore</code> and then add the file types or names not necessary to track as the following. Then git will automatically ignore the files listed in the <code>.gitignore</code> file. 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*.csv # all the csv files</div><div class="line">...</div></pre></td></tr></table></figure></p>
 <h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m <span class="string">'&lt;name the commit yourself&gt;'</span></div></pre></td></tr></table></figure>
-<p>Or you can use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -am <span class="string">'&lt;name the commit yourself&gt;'</span></div></pre></td></tr></table></figure></p>
-<p>to combine <code>add</code> and <code>commit</code> into one sentence.<br><strong>Pay attention, <code>git commit -am</code> only commit the files already in the track, and ignore the files which have never been added into the track. </strong></p>
+<p>Or you can use 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -am <span class="string">'&lt;name the commit yourself&gt;'</span></div></pre></td></tr></table></figure></p>
+<p>to combine <code>add</code> and <code>commit</code> into one sentence. 
+<strong>Pay attention, <code>git commit -am</code> only commit the files already in the track, and ignore the files which have never been added into the track. </strong></p>
 <h3 id="Check-the-status"><a href="#Check-the-status" class="headerlink" title="Check the status"></a>Check the status</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
 <h3 id="Check-the-history"><a href="#Check-the-history" class="headerlink" title="Check the history"></a>Check the history</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span></div></pre></td></tr></table></figure>
-<h2 id="Work-with-the-Remote-Repo"><a href="#Work-with-the-Remote-Repo" class="headerlink" title="Work with the Remote Repo"></a>Work with the Remote Repo</h2><h3 id="If-already-run-git-init"><a href="#If-already-run-git-init" class="headerlink" title="If already run git init"></a>If already run <code>git init</code></h3><p>Then:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull git://github.com/monkey0105/source.git master</div></pre></td></tr></table></figure></p>
+<h2 id="Work-with-the-Remote-Repo"><a href="#Work-with-the-Remote-Repo" class="headerlink" title="Work with the Remote Repo"></a>Work with the Remote Repo</h2><h3 id="If-already-run-git-init"><a href="#If-already-run-git-init" class="headerlink" title="If already run git init"></a>If already run <code>git init</code></h3><p>Then:
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull git://github.com/monkey0105/source.git master</div></pre></td></tr></table></figure></p>
 <p>The files then are all downloaded in the file. </p>
-<p>Set <code>origin</code> address<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/monkey0105/source.git</div></pre></td></tr></table></figure></p>
-<h3 id="If-not-run-git-init"><a href="#If-not-run-git-init" class="headerlink" title="If not run git init"></a>If not run <code>git init</code></h3><p>Just use <code>git clone</code>, and <code>git</code> will create a new folder to hold the clone files for you.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git://github.com/monkey0105/source.git --branch &lt;branch&gt; &lt;directory name&gt;</div></pre></td></tr></table></figure></p>
+<p>Set <code>origin</code> address
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/monkey0105/source.git</div></pre></td></tr></table></figure></p>
+<h3 id="If-not-run-git-init"><a href="#If-not-run-git-init" class="headerlink" title="If not run git init"></a>If not run <code>git init</code></h3><p>Just use <code>git clone</code>, and <code>git</code> will create a new folder to hold the clone files for you.
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git://github.com/monkey0105/source.git --branch &lt;branch&gt; &lt;directory name&gt;</div></pre></td></tr></table></figure></p>
 <p><code>--branch &lt;branch&gt;</code> can specify the branch you want. if no branch is specified, the default branch would be <code>master</code>.</p>
 <p><code>&lt;directory name&gt;</code> can specify the place you want to put the repo. if no directory name is specified, the name of the repo would be used as the folder’s name. </p>
 <h3 id="Update-the-remote-repository"><a href="#Update-the-remote-repository" class="headerlink" title="Update the remote repository"></a>Update the remote repository</h3><p>After do some changes, <code>commit</code> and <code>push</code> to the remote repository.</p>
-<p>Then:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
+<p>Then:
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
 <p>The files in the Github is up-to-date. </p>
 <h1 id="Branch"><a href="#Branch" class="headerlink" title="Branch"></a>Branch</h1><p>Always pay attention to the branch you currently work on. </p>
 <h2 id="Check-which-branch-is-the-work-currently-on"><a href="#Check-which-branch-is-the-work-currently-on" class="headerlink" title="Check which branch is the work currently on"></a>Check which branch is the work currently on</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git branch</div><div class="line">* dev</div><div class="line">  master</div><div class="line">  ...</div></pre></td></tr></table></figure>
@@ -620,6 +633,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/09/19/transform-data-from-long-format-to-wide-format/" rel="prev" title="Transform data from long format to wide format">
+                Transform data from long format to wide format <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -703,7 +720,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -725,7 +742,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -839,7 +856,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -880,9 +897,6 @@
 
 
 
-  
-  
-
 
 
 
@@ -909,12 +923,6 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
-
 
   
 
@@ -927,13 +935,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -1121,13 +1122,32 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
   
 
   
+  
+
 
   
 

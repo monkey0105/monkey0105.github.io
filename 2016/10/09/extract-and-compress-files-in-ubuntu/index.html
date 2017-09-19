@@ -5,9 +5,9 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -134,7 +134,7 @@
 
 
 
-  <title>Extract and Compress Files in Ubuntu | Dreamland</title>
+  <title>Extract and Compress Files in Ubuntu | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +145,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -432,16 +432,26 @@
         <p>This artical contains basic operation of working with zip, tar, tar.gz, tar.bz2 files. </p>
 <a id="more"></a>
 <h2 id="ZIP"><a href="#ZIP" class="headerlink" title="ZIP"></a>ZIP</h2><p>zip可能是目前使用得最多的文档压缩格式。它最大的优点就是在不同的操作系统平台，比如Linux， Windows以及Mac OS，上使用。缺点就是支持的压缩率不是很高，而tar.gz和tar.gz2在压缩率方面做得非常好。闲话少说，我们步入正题吧：</p>
-<p>我们可以使用下列的命令压缩一个目录：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">zip -r archive_name.zip directory_to_compress</div></pre></td></tr></table></figure></p>
-<p>下面是如果解压一个zip文档：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip archive_name.zip</div></pre></td></tr></table></figure></p>
-<h2 id="TAR"><a href="#TAR" class="headerlink" title="TAR"></a>TAR</h2><p>Tar是在Linux中使用得非常广泛的文档打包格式。它的好处就是它只消耗非常少的CPU以及时间去打包文件，他仅仅只是一个打包工具，并不负责压缩。下面是如何打包一个目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -cvf archive_name.tar directory_to_compress</div></pre></td></tr></table></figure></p>
-<p>如何解包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xvf archive_name.tar.gz</div></pre></td></tr></table></figure></p>
-<p>上面这个解包命令将会将文档解开在当前目录下面。当然，你也可以用这个命令来捏住解包的路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xvf archive_name.tar -C /tmp/extract_here/</div></pre></td></tr></table></figure></p>
-<h2 id="TAR-GZ"><a href="#TAR-GZ" class="headerlink" title="TAR.GZ"></a>TAR.GZ</h2><p>这种格式是我使用得最多的压缩格式。它在压缩时不会占用太多CPU的，而且可以得到一个非常理想的压缩率。使用下面这种格式去压缩一个目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zcvf archive_name.tar.gz directory_to_compress</div></pre></td></tr></table></figure></p>
-<p>解压缩：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf archive_name.tar.gz</div></pre></td></tr></table></figure></p>
-<p>上面这个解包命令将会将文档解开在当前目录下面。当然，你也可以用这个命令来捏住解包的路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf archive_name.tar.gz -C /tmp/extract_here/</div></pre></td></tr></table></figure></p>
-<h2 id="TAR-BZ2"><a href="#TAR-BZ2" class="headerlink" title="TAR.BZ2"></a>TAR.BZ2</h2><p>这种压缩格式是我们提到的所有方式中压缩率最好的。当然，这也就意味着，它比前面的方式要占用更多的CPU与时间。这个就是你如何使用tar.bz2进行压缩。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -jcvf archive_name.tar.bz2 directory_to_compress</div></pre></td></tr></table></figure></p>
-<p>上面这个解包命令将会将文档解开在当前目录下面。当然，你也可以用这个命令来捏住解包的路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -jxvf archive_name.tar.bz2 -C /tmp/extract_here/</div></pre></td></tr></table></figure></p>
+<p>我们可以使用下列的命令压缩一个目录：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">zip -r archive_name.zip directory_to_compress</div></pre></td></tr></table></figure></p>
+<p>下面是如果解压一个zip文档：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip archive_name.zip</div></pre></td></tr></table></figure></p>
+<h2 id="TAR"><a href="#TAR" class="headerlink" title="TAR"></a>TAR</h2><p>Tar是在Linux中使用得非常广泛的文档打包格式。它的好处就是它只消耗非常少的CPU以及时间去打包文件，他仅仅只是一个打包工具，并不负责压缩。下面是如何打包一个目录：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -cvf archive_name.tar directory_to_compress</div></pre></td></tr></table></figure></p>
+<p>如何解包：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xvf archive_name.tar.gz</div></pre></td></tr></table></figure></p>
+<p>上面这个解包命令将会将文档解开在当前目录下面。当然，你也可以用这个命令来捏住解包的路径：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xvf archive_name.tar -C /tmp/extract_here/</div></pre></td></tr></table></figure></p>
+<h2 id="TAR-GZ"><a href="#TAR-GZ" class="headerlink" title="TAR.GZ"></a>TAR.GZ</h2><p>这种格式是我使用得最多的压缩格式。它在压缩时不会占用太多CPU的，而且可以得到一个非常理想的压缩率。使用下面这种格式去压缩一个目录：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zcvf archive_name.tar.gz directory_to_compress</div></pre></td></tr></table></figure></p>
+<p>解压缩：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf archive_name.tar.gz</div></pre></td></tr></table></figure></p>
+<p>上面这个解包命令将会将文档解开在当前目录下面。当然，你也可以用这个命令来捏住解包的路径：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf archive_name.tar.gz -C /tmp/extract_here/</div></pre></td></tr></table></figure></p>
+<h2 id="TAR-BZ2"><a href="#TAR-BZ2" class="headerlink" title="TAR.BZ2"></a>TAR.BZ2</h2><p>这种压缩格式是我们提到的所有方式中压缩率最好的。当然，这也就意味着，它比前面的方式要占用更多的CPU与时间。这个就是你如何使用tar.bz2进行压缩。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -jcvf archive_name.tar.bz2 directory_to_compress</div></pre></td></tr></table></figure></p>
+<p>上面这个解包命令将会将文档解开在当前目录下面。当然，你也可以用这个命令来捏住解包的路径：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -jxvf archive_name.tar.bz2 -C /tmp/extract_here/</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -606,7 +616,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -628,7 +638,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -742,7 +752,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -783,9 +793,6 @@
 
 
 
-  
-  
-
 
 
 
@@ -812,12 +819,6 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
-
 
   
 
@@ -830,13 +831,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -1024,13 +1018,32 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
   
 
   
+  
+
 
   
 

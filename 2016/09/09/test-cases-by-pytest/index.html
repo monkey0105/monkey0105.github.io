@@ -5,9 +5,9 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="这篇同样是“拿来”的。pytest will run all files in the current directory and its subdirectories of the form test_.py or _test.py. More generally, it follows standard test discovery rules.">
+<meta name="description" content="这篇同样是“拿来”的。 pytest will run all files in the current directory and its subdirectories of the form test_.py or _test.py. More generally, it follows standard test discovery rules.">
 <meta name="keywords" content="python,pytest">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Test Cases by pytest">
 <meta property="og:url" content="http://monkey0105.github.io/2016/09/09/test-cases-by-pytest/index.html">
 <meta property="og:site_name" content="Dreamland">
-<meta property="og:description" content="这篇同样是“拿来”的。pytest will run all files in the current directory and its subdirectories of the form test_.py or _test.py. More generally, it follows standard test discovery rules.">
+<meta property="og:description" content="这篇同样是“拿来”的。 pytest will run all files in the current directory and its subdirectories of the form test_.py or _test.py. More generally, it follows standard test discovery rules.">
 <meta property="og:updated_time" content="2017-05-11T07:26:12.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Test Cases by pytest">
-<meta name="twitter:description" content="这篇同样是“拿来”的。pytest will run all files in the current directory and its subdirectories of the form test_.py or _test.py. More generally, it follows standard test discovery rules.">
+<meta name="twitter:description" content="这篇同样是“拿来”的。 pytest will run all files in the current directory and its subdirectories of the form test_.py or _test.py. More generally, it follows standard test discovery rules.">
 
 
 
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -134,7 +134,7 @@
 
 
 
-  <title>Test Cases by pytest | Dreamland</title>
+  <title>Test Cases by pytest | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +145,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -429,28 +429,38 @@
       
 
       
-        <p>这篇同样是“拿来”的。<br><code>pytest</code> will run all files in the current directory and its subdirectories of the form <code>test_.py</code> or <code>_test.py</code>. More generally, it follows standard test discovery rules.<br><a id="more"></a></p>
+        <p>这篇同样是“拿来”的。
+<code>pytest</code> will run all files in the current directory and its subdirectories of the form <code>test_.py</code> or <code>_test.py</code>. More generally, it follows standard test discovery rules.
+<a id="more"></a></p>
 <h2 id="python中的package和module"><a href="#python中的package和module" class="headerlink" title="python中的package和module"></a>python中的package和module</h2><h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><p><code>module</code>用于组织一系列相关的<code>function</code>和<code>class</code>,在文件系统中体现为一个<code>.py</code>文件。</p>
 <h3 id="package"><a href="#package" class="headerlink" title="package"></a>package</h3><p><code>package</code>用于组织一些列相关的<code>module</code>,在文件系统中体现为一个含有若干<code>.py</code>文件的文件夹。 不过要让<code>python</code>理解某个文件夹是<code>package</code>，需要在该文件夹中添加一个名为<code>__init__.py</code>的文件。<code>__init__.py</code>文件可以为空(这个文件有其他功能，这里不讨论)</p>
 <p>文件夹可以存放其他文件夹，同理，package也可以包含其他的package。</p>
-<h2 id="文件系统中的文件组织形式"><a href="#文件系统中的文件组织形式" class="headerlink" title="文件系统中的文件组织形式"></a>文件系统中的文件组织形式</h2><p>因此，<code>python</code>中的<code>package</code>和<code>module</code>，在文件系统中看应该是这样的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">package1/  </div><div class="line">    __init__.py  </div><div class="line">    module1.py  </div><div class="line">    module2.py  </div><div class="line">    package2/  </div><div class="line">        __init__.py  </div><div class="line">        module1.py  </div><div class="line">        module2.py  </div><div class="line">package3/  </div><div class="line">    __init__.py  </div><div class="line">    module1.py  </div><div class="line">    module2.py</div></pre></td></tr></table></figure></p>
+<h2 id="文件系统中的文件组织形式"><a href="#文件系统中的文件组织形式" class="headerlink" title="文件系统中的文件组织形式"></a>文件系统中的文件组织形式</h2><p>因此，<code>python</code>中的<code>package</code>和<code>module</code>，在文件系统中看应该是这样的
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">package1/  </div><div class="line">    __init__.py  </div><div class="line">    module1.py  </div><div class="line">    module2.py  </div><div class="line">    package2/  </div><div class="line">        __init__.py  </div><div class="line">        module1.py  </div><div class="line">        module2.py  </div><div class="line">package3/  </div><div class="line">    __init__.py  </div><div class="line">    module1.py  </div><div class="line">    module2.py</div></pre></td></tr></table></figure></p>
 <h2 id="如何让python找到自己编写的package？"><a href="#如何让python找到自己编写的package？" class="headerlink" title="如何让python找到自己编写的package？"></a>如何让<code>python</code>找到自己编写的<code>package</code>？</h2><p>如果我们自己写了一个<code>program.py</code>文件，希望它能够使用自己编写的<code>package</code>或者<code>module</code>，如何让<code>python</code>能够找到自己编写的<code>package</code>和<code>module</code>呢？</p>
-<p>例如，在<code>program.py</code>中使用<code>import</code>导入所需的函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> package.module1 <span class="keyword">import</span> some_function1</div><div class="line"><span class="keyword">from</span> module3 <span class="keyword">import</span> some_function2</div></pre></td></tr></table></figure></p>
+<p>例如，在<code>program.py</code>中使用<code>import</code>导入所需的函数
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> package.module1 <span class="keyword">import</span> some_function1</div><div class="line"><span class="keyword">from</span> module3 <span class="keyword">import</span> some_function2</div></pre></td></tr></table></figure></p>
 <p>有以下几种方法</p>
 <h3 id="将package文件夹和module文件放在和program-py同级的文件夹下"><a href="#将package文件夹和module文件放在和program-py同级的文件夹下" class="headerlink" title="将package文件夹和module文件放在和program.py同级的文件夹下"></a>将<code>package</code>文件夹和<code>module</code>文件放在和<code>program.py</code>同级的文件夹下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">someFolder/</div><div class="line">    program.py</div><div class="line">    package/</div><div class="line">        __init__.py</div><div class="line">        module1.py</div><div class="line">        module2.py</div><div class="line">        ...</div><div class="line">    module3.py</div><div class="line">    ...</div></pre></td></tr></table></figure>
 <h3 id="将package文件夹和module文件放在python安装目录下的site-packages文件夹下"><a href="#将package文件夹和module文件放在python安装目录下的site-packages文件夹下" class="headerlink" title="将package文件夹和module文件放在python安装目录下的site-packages文件夹下"></a>将<code>package</code>文件夹和<code>module</code>文件放在<code>python</code>安装目录下的<code>site-packages</code>文件夹下</h3><p>我自己<code>ubuntu</code>系统用<code>anaconda</code>发行版，<code>site-packages</code>的位置是<code>/home/usr/anaconda3/lib/python3.5/site-packages</code></p>
 <h3 id="放在任意路径，将所在路径加入PYTHONPATH环境变量-这个方法对于anaconda似乎无效"><a href="#放在任意路径，将所在路径加入PYTHONPATH环境变量-这个方法对于anaconda似乎无效" class="headerlink" title="放在任意路径，将所在路径加入PYTHONPATH环境变量(这个方法对于anaconda似乎无效)"></a>放在任意路径，将所在路径加入<code>PYTHONPATH</code>环境变量(这个方法对于<code>anaconda</code>似乎无效)</h3><h3 id="建议方法"><a href="#建议方法" class="headerlink" title="建议方法"></a>建议方法</h3><p>这里建议的方式搭配<code>Git</code>,让<code>Git</code>统一管理<code>package</code>的版本演变，而每个项目单独<code>clone</code>一份所需的<code>package</code>。这样既能够保证有一份统一的代码，也不会由于向后兼容问题导致以前项目的代码无法运行。</p>
-<h2 id="pytest的基本用法"><a href="#pytest的基本用法" class="headerlink" title="pytest的基本用法"></a><code>pytest</code>的基本用法</h2><h3 id="pytest测试用例代码的组织方式"><a href="#pytest测试用例代码的组织方式" class="headerlink" title="pytest测试用例代码的组织方式"></a><code>pytest</code>测试用例代码的组织方式</h3><p>由于团队使用代码时可能随时会对已有的代码做出修改，修改后要运行测试用例确保没有引入新的问题。因此将测试用例代码和功能代码放在一起会比较方便。建议的方式是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">packageName/</div><div class="line">    __init__.py</div><div class="line">    module1.py</div><div class="line">    module2.py</div><div class="line">    ...</div><div class="line">    test/</div><div class="line">        __init__.py</div><div class="line">        test_module1.py</div><div class="line">        test_module2.py</div><div class="line">        ...</div></pre></td></tr></table></figure></p>
-<p>注意<code>test</code>文件夹下也需要添加 <code>__init__.py</code>成为<code>package</code>，否则<code>test_module1.py</code>等测试代码使用如下的<code>relative import</code>的时候就会报错<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> ..module1 <span class="keyword">import</span> func</div></pre></td></tr></table></figure></p>
-<p>如果要运行测试用例代码，可以在<code>packageName</code>所在的路径打开<code>terminal</code>，运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">py.test</div></pre></td></tr></table></figure></p>
+<h2 id="pytest的基本用法"><a href="#pytest的基本用法" class="headerlink" title="pytest的基本用法"></a><code>pytest</code>的基本用法</h2><h3 id="pytest测试用例代码的组织方式"><a href="#pytest测试用例代码的组织方式" class="headerlink" title="pytest测试用例代码的组织方式"></a><code>pytest</code>测试用例代码的组织方式</h3><p>由于团队使用代码时可能随时会对已有的代码做出修改，修改后要运行测试用例确保没有引入新的问题。因此将测试用例代码和功能代码放在一起会比较方便。建议的方式是
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">packageName/</div><div class="line">    __init__.py</div><div class="line">    module1.py</div><div class="line">    module2.py</div><div class="line">    ...</div><div class="line">    test/</div><div class="line">        __init__.py</div><div class="line">        test_module1.py</div><div class="line">        test_module2.py</div><div class="line">        ...</div></pre></td></tr></table></figure></p>
+<p>注意<code>test</code>文件夹下也需要添加 <code>__init__.py</code>成为<code>package</code>，否则<code>test_module1.py</code>等测试代码使用如下的<code>relative import</code>的时候就会报错
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> ..module1 <span class="keyword">import</span> func</div></pre></td></tr></table></figure></p>
+<p>如果要运行测试用例代码，可以在<code>packageName</code>所在的路径打开<code>terminal</code>，运行
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">py.test</div></pre></td></tr></table></figure></p>
 <p>然后<code>pytest</code>会自动遍历所有<code>test_</code>开头的<code>module</code>，然后执行其中<code>test</code>开头的<code>function</code>,以及<code>Test</code>开头的<code>class</code>中<code>test</code>开头的<code>method</code>并给出测试结果。</p>
 <p>因此如果希望<code>module</code>, <code>function</code>, <code>class</code>, <code>class method</code>被<code>pytest</code>自动识别的话， 记得用<code>test</code>开头命名。(对于<code>class</code>, 使用<code>Test</code>)</p>
-<h2 id="测试用例的写法"><a href="#测试用例的写法" class="headerlink" title="测试用例的写法"></a>测试用例的写法</h2><p>例如写了下面一个功能函数<code>func</code>，功能是返回一个字符串<code>s</code>复制<code>n</code>次后进行拼接的结果，如果<code>s</code>不是字符串，那么抛出<code>TypeError</code>的<code>Exception</code>，并提示<code>s should be string!</code>。那么测试用例可以这么写。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_value</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">assert</span> func(<span class="string">'ab'</span>,<span class="number">3</span>) == <span class="string">'ababab'</span></div></pre></td></tr></table></figure></p>
-<p>这里的关键是利用<code>assert</code>语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">assert [condition]</div></pre></td></tr></table></figure></p>
+<h2 id="测试用例的写法"><a href="#测试用例的写法" class="headerlink" title="测试用例的写法"></a>测试用例的写法</h2><p>例如写了下面一个功能函数<code>func</code>，功能是返回一个字符串<code>s</code>复制<code>n</code>次后进行拼接的结果，如果<code>s</code>不是字符串，那么抛出<code>TypeError</code>的<code>Exception</code>，并提示<code>s should be string!</code>。那么测试用例可以这么写。
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_value</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">assert</span> func(<span class="string">'ab'</span>,<span class="number">3</span>) == <span class="string">'ababab'</span></div></pre></td></tr></table></figure></p>
+<p>这里的关键是利用<code>assert</code>语句
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">assert [condition]</div></pre></td></tr></table></figure></p>
 <p>的功能是判断<code>condition</code>是否成立, 如果成立，什么也不发生，否则的话会<code>raise Exception</code>被<code>pytest</code>识别。</p>
 <p><code>condition</code>的内容一般是如果我们的函数正常生效，应该产生什么样的结果。</p>
 <p>再上面的这个例子里,如果<code>func(s, n)</code>生效，那么<code>func(&#39;ab&#39;, 3)</code>应该等于<code>&#39;ababab&#39;</code></p>
-<p>为了检测<code>s</code>不为字符的时候，<code>func</code>是否正确的<code>raise Exception</code>，可以这么写。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_error</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">with</span> pytest.raises(TypeError) <span class="keyword">as</span> error_info:</div><div class="line">        func(<span class="number">1</span>,<span class="number">3</span>)</div><div class="line">    </div><div class="line">    <span class="keyword">assert</span> <span class="string">'s should be string!'</span> == str(error_info.value)</div></pre></td></tr></table></figure></p>
+<p>为了检测<code>s</code>不为字符的时候，<code>func</code>是否正确的<code>raise Exception</code>，可以这么写。
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_error</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">with</span> pytest.raises(TypeError) <span class="keyword">as</span> error_info:</div><div class="line">        func(<span class="number">1</span>,<span class="number">3</span>)</div><div class="line">    </div><div class="line">    <span class="keyword">assert</span> <span class="string">'s should be string!'</span> == str(error_info.value)</div></pre></td></tr></table></figure></p>
 <p>这里可以用<code>pytest.raises</code>构造一个<code>context-container</code>,然后构造一个场景，故意让被测函数触发<code>raise Exception</code>的场景。</p>
 <p><code>Exception</code>的信息会被<code>error_info</code>捕捉， 然后检查<code>str(error_info.value)</code>字符串中是否包含我们设想的<code>Exception</code>内容即可。</p>
 
@@ -615,7 +625,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -637,7 +647,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -751,7 +761,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -792,9 +802,6 @@
 
 
 
-  
-  
-
 
 
 
@@ -821,12 +828,6 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
-
 
   
 
@@ -839,13 +840,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -1033,13 +1027,32 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
   
 
   
+  
+
 
   
 

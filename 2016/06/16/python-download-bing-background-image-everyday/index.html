@@ -5,9 +5,9 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -112,7 +112,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -138,7 +138,7 @@
 
 
 
-  <title>Download Bing Background Image Everyday by Python | Dreamland</title>
+  <title>Download Bing Background Image Everyday by Python | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -149,7 +149,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -450,13 +450,15 @@
 <h2 id="Next-Ask-PC-to-do-Everyday-Job"><a href="#Next-Ask-PC-to-do-Everyday-Job" class="headerlink" title="Next, Ask PC to do Everyday Job"></a>Next, Ask PC to do Everyday Job</h2><h3 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a><code>crontab</code></h3><p>I searched and people say <code>crontab</code> could solve the problem and it’s already in Linux os.  </p>
 <p>Syntax is as below: </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">crontab [-u user] file</div><div class="line">crontab [ -u user ] [ -i ] &#123; -e | -l | -r &#125;</div><div class="line"></div><div class="line">-e	(edit user&apos;s crontab)</div><div class="line">-l	(list user&apos;s crontab)</div><div class="line">-r	(delete user&apos;s crontab)</div><div class="line">-i	(prompt before deleting user&apos;s crontab)</div></pre></td></tr></table></figure>
-<p>Below is the syntax of <code>crontab</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">*   *   *   *   *   command to be executed</div><div class="line">-   -   -   -   -</div><div class="line">|   |   |   |   |</div><div class="line">|   |   |   |   +----- day of week (0 - 6) (Sunday=0)</div><div class="line">|   |   |   +------- month (1 - 12)</div><div class="line">|   |   +--------- day of month (1 - 31)</div><div class="line">|   +----------- hour (0 - 23)</div><div class="line">+------------- min (0 - 59)</div></pre></td></tr></table></figure></p>
+<p>Below is the syntax of <code>crontab</code>. 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">*   *   *   *   *   command to be executed</div><div class="line">-   -   -   -   -</div><div class="line">|   |   |   |   |</div><div class="line">|   |   |   |   +----- day of week (0 - 6) (Sunday=0)</div><div class="line">|   |   |   +------- month (1 - 12)</div><div class="line">|   |   +--------- day of month (1 - 31)</div><div class="line">|   +----------- hour (0 - 23)</div><div class="line">+------------- min (0 - 59)</div></pre></td></tr></table></figure></p>
 <p>However, I failed…<br>Now I think maybe because I didn’t specify the user name.  </p>
 <h3 id="python-crontab"><a href="#python-crontab" class="headerlink" title="python-crontab"></a><code>python-crontab</code></h3><p>Then I just find a python package called <a href="https://pypi.python.org/pypi/python-crontab/" target="_blank" rel="external"><code>crontab</code></a> which can do the same job.  </p>
 <p>Use <code>pip install python-crontab</code> to complete the installation. </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> crontab <span class="keyword">import</span> CronTab</div><div class="line"></div><div class="line">cron = CronTab(user=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">job = cron.new(command=<span class="string">'python3 /home/katherine/PycharmProjects/untitled/bing_img.py'</span>)</div><div class="line">job.minute.on(<span class="number">45</span>)</div><div class="line">job.hour.on(<span class="number">9</span>)</div><div class="line"></div><div class="line">cron.write()</div></pre></td></tr></table></figure>
 <p>After setting a crontab task, we can use <code>crontab -l</code> in Terminal to check.  </p>
-<p>Now we can see<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">45  9  *  *  *  python3 /home/katherine/PycharmProjects/untitled/bing_img.py</div></pre></td></tr></table></figure></p>
+<p>Now we can see 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">45  9  *  *  *  python3 /home/katherine/PycharmProjects/untitled/bing_img.py</div></pre></td></tr></table></figure></p>
 <p>which means 09:45 everyday, <code>python3</code> would run <code>bing_img.py</code>.  </p>
 <p><strong>If the computer is power off, the <code>crontab</code> will not work.</strong>   </p>
 <h2 id="Next-Step"><a href="#Next-Step" class="headerlink" title="Next Step"></a>Next Step</h2><p>Maybe in next step I can collect the description for the image everyday because I can tell no information only by looking at the beautiful pictures.<br>Or I could try other interesting tasks ;P  </p>
@@ -626,7 +628,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -648,7 +650,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -762,7 +764,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -803,9 +805,6 @@
 
 
 
-  
-  
-
 
 
 
@@ -832,12 +831,6 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
-
 
   
 
@@ -850,13 +843,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -1044,13 +1030,32 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
   
 
   
+  
+
 
   
 

@@ -5,9 +5,9 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。他是用jupyter notebook写的，放在公司内网的博客上。我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。">
+<meta name="description" content="这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。 他是用jupyter notebook写的，放在公司内网的博客上。 我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。">
 <meta name="keywords" content="python,sphinx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Generate Doc for Python Packages by sphinx">
 <meta property="og:url" content="http://monkey0105.github.io/2016/09/09/generate-doc-for-python-pkgs-by-sphinx/index.html">
 <meta property="og:site_name" content="Dreamland">
-<meta property="og:description" content="这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。他是用jupyter notebook写的，放在公司内网的博客上。我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。">
+<meta property="og:description" content="这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。 他是用jupyter notebook写的，放在公司内网的博客上。 我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。">
 <meta property="og:updated_time" content="2017-05-11T07:26:12.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Generate Doc for Python Packages by sphinx">
-<meta name="twitter:description" content="这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。他是用jupyter notebook写的，放在公司内网的博客上。我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。">
+<meta name="twitter:description" content="这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。 他是用jupyter notebook写的，放在公司内网的博客上。 我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。">
 
 
 
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -134,7 +134,7 @@
 
 
 
-  <title>Generate Doc for Python Packages by sphinx | Dreamland</title>
+  <title>Generate Doc for Python Packages by sphinx | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +145,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -429,21 +429,30 @@
       
 
       
-        <p>这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。<br>他是用jupyter notebook写的，放在公司内网的博客上。<br>我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。</p>
+        <p>这篇是直接把领导整理的“如何利用sphinx自动为python package生成文档”搬过来的。
+他是用jupyter notebook写的，放在公司内网的博客上。
+我为了方便自己查阅，就硬搬过来了。最近还在找如何把jupyter notebook直接搬到Hexo blog上，然而还没有找到答案。</p>
 <a id="more"></a>
-<h2 id="安装sphinx"><a href="#安装sphinx" class="headerlink" title="安装sphinx"></a>安装<code>sphinx</code></h2><p>ubuntu下可以用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install python-sphinx</div></pre></td></tr></table></figure></p>
-<h2 id="生成文档"><a href="#生成文档" class="headerlink" title="生成文档"></a>生成文档</h2><h3 id="建立文件夹"><a href="#建立文件夹" class="headerlink" title="建立文件夹"></a>建立文件夹</h3><p>假设我们的文件结构是这样的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">some_path/</div><div class="line">    /src</div><div class="line">        /jfds</div><div class="line">            __init__.py</div><div class="line">            module1.py</div><div class="line">            ...</div></pre></td></tr></table></figure></p>
-<p>其中jfds是python package对应的文件夹，如果要想在<code>some_path/</code>下创建名为<code>doc</code>的documentation文件夹，(和<code>src</code>并列)，那么可以在<code>some_path</code>打开<code>terminal</code>， 输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sphinx-apidoc -F -o docs src/</div></pre></td></tr></table></figure></p>
+<h2 id="安装sphinx"><a href="#安装sphinx" class="headerlink" title="安装sphinx"></a>安装<code>sphinx</code></h2><p>ubuntu下可以用
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install python-sphinx</div></pre></td></tr></table></figure></p>
+<h2 id="生成文档"><a href="#生成文档" class="headerlink" title="生成文档"></a>生成文档</h2><h3 id="建立文件夹"><a href="#建立文件夹" class="headerlink" title="建立文件夹"></a>建立文件夹</h3><p>假设我们的文件结构是这样的
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">some_path/</div><div class="line">    /src</div><div class="line">        /jfds</div><div class="line">            __init__.py</div><div class="line">            module1.py</div><div class="line">            ...</div></pre></td></tr></table></figure></p>
+<p>其中jfds是python package对应的文件夹，如果要想在<code>some_path/</code>下创建名为<code>doc</code>的documentation文件夹，(和<code>src</code>并列)，那么可以在<code>some_path</code>打开<code>terminal</code>， 输入
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sphinx-apidoc -F -o docs src/</div></pre></td></tr></table></figure></p>
 <p>这样就自动生成了<code>doc</code>文件夹，包含了创建documentation所需的信息</p>
-<h3 id="添加package路径信息"><a href="#添加package路径信息" class="headerlink" title="添加package路径信息"></a>添加package路径信息</h3><p>如果jfds并未通过放入<code>site-packages</code>,加入<code>PYTHONPATH</code>等方式让<code>python</code>全局识别的话，如果修改<code>doc</code>文件夹中的<code>conf.py</code>, 添加以下行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),<span class="string">'../src'</span>))</div><div class="line">os.path.dirname(os.path.abspath(__file__))</div></pre></td></tr></table></figure></p>
+<h3 id="添加package路径信息"><a href="#添加package路径信息" class="headerlink" title="添加package路径信息"></a>添加package路径信息</h3><p>如果jfds并未通过放入<code>site-packages</code>,加入<code>PYTHONPATH</code>等方式让<code>python</code>全局识别的话，如果修改<code>doc</code>文件夹中的<code>conf.py</code>, 添加以下行
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),<span class="string">'../src'</span>))</div><div class="line">os.path.dirname(os.path.abspath(__file__))</div></pre></td></tr></table></figure></p>
 <p>的目的是找到<code>conf.py</code>的绝对路径，用<code>os.path.join</code>将它和<code>../src</code>合并后就找到了jfds这个package所在的绝对路径。</p>
-<p>最后用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sys.path.append</div></pre></td></tr></table></figure></p>
+<p>最后用
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sys.path.append</div></pre></td></tr></table></figure></p>
 <p>将jfds所在的路径加入，之后<code>sphinx</code>就能够找到<code>jfds</code> package</p>
-<h3 id="生成Documentation-HTML"><a href="#生成Documentation-HTML" class="headerlink" title="生成Documentation HTML"></a>生成Documentation HTML</h3><p>切换到<code>doc</code>目录，打开<code>terminal</code>，运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make html</div></pre></td></tr></table></figure></p>
+<h3 id="生成Documentation-HTML"><a href="#生成Documentation-HTML" class="headerlink" title="生成Documentation HTML"></a>生成Documentation HTML</h3><p>切换到<code>doc</code>目录，打开<code>terminal</code>，运行
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make html</div></pre></td></tr></table></figure></p>
 <p>就能在<code>_build</code>文件夹找到自动生成的文档</p>
 <h2 id="文档编写方式"><a href="#文档编写方式" class="headerlink" title="文档编写方式"></a>文档编写方式</h2><p>比较了几种风格，建议采用<code>google</code>的标准，这样可以让原始的docstring和生成的文档都有不错的可读性，<a href="http://www.sphinx-doc.org/en/stable/ext/example_google.html" target="_blank" rel="external"><em>样例见这里</em></a>。</p>
 <p>里面演示了如果编写<code>module</code>, <code>class</code>, <code>class method</code>, <code>function</code>等的文档。</p>
-<p>这里节选一部分展示<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">module_level_function</span><span class="params">(param1, param2=None, *args, **kwargs)</span>:</span></div><div class="line">    <span class="string">"""This is an example of a module level function.</span></div><div class="line"></div><div class="line">    Function parameters should be documented in the ``Args`` section. The name</div><div class="line">    of each parameter is required. The type and description of each parameter</div><div class="line">    is optional, but should be included if not obvious.</div><div class="line"></div><div class="line">    Parameter types -- if given -- should be specified according to</div><div class="line">    `PEP 484`_, though `PEP 484`_ conformance isn't required or enforced.</div><div class="line"></div><div class="line">    If \*args or \*\*kwargs are accepted,</div><div class="line">    they should be listed as ``*args`` and ``**kwargs``.</div><div class="line"></div><div class="line">    The format for a parameter is::</div><div class="line"></div><div class="line">        name (type): description</div><div class="line">            The description may span multiple lines. Following</div><div class="line">            lines should be indented. The "(type)" is optional.</div><div class="line"></div><div class="line">            Multiple paragraphs are supported in parameter</div><div class="line">            descriptions.</div><div class="line"></div><div class="line">    Args:</div><div class="line">        param1 (int): The first parameter.</div><div class="line">        param2 (Optional[str]): The second parameter. Defaults to None.</div><div class="line">            Second line of description should be indented.</div><div class="line">        *args: Variable length argument list.</div><div class="line">        **kwargs: Arbitrary keyword arguments.</div><div class="line"></div><div class="line">    Returns:</div><div class="line">        bool: True if successful, False otherwise.</div><div class="line"></div><div class="line">        The return type is optional and may be specified at the beginning of</div><div class="line">        the ``Returns`` section followed by a colon.</div><div class="line"></div><div class="line">        The ``Returns`` section may span multiple lines and paragraphs.</div><div class="line">        Following lines should be indented to match the first line.</div><div class="line"></div><div class="line">        The ``Returns`` section supports any reStructuredText formatting,</div><div class="line">        including literal blocks::</div><div class="line"></div><div class="line">            &#123;</div><div class="line">                'param1': param1,</div><div class="line">                'param2': param2</div><div class="line">            &#125;</div><div class="line"></div><div class="line">    Raises:</div><div class="line">        AttributeError: The ``Raises`` section is a list of all exceptions</div><div class="line">            that are relevant to the interface.</div><div class="line">        ValueError: If `param2` is equal to `param1`.</div><div class="line"></div><div class="line"></div><div class="line">    .. _PEP 484:</div><div class="line">       https://www.python.org/dev/peps/pep-0484/</div><div class="line"></div><div class="line">    """</div><div class="line">    <span class="keyword">if</span> param1 == param2:</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'param1 may not be equal to param2'</span>)</div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>这里节选一部分展示
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">module_level_function</span><span class="params">(param1, param2=None, *args, **kwargs)</span>:</span></div><div class="line">    <span class="string">"""This is an example of a module level function.</span></div><div class="line"></div><div class="line">    Function parameters should be documented in the ``Args`` section. The name</div><div class="line">    of each parameter is required. The type and description of each parameter</div><div class="line">    is optional, but should be included if not obvious.</div><div class="line"></div><div class="line">    Parameter types -- if given -- should be specified according to</div><div class="line">    `PEP 484`_, though `PEP 484`_ conformance isn't required or enforced.</div><div class="line"></div><div class="line">    If \*args or \*\*kwargs are accepted,</div><div class="line">    they should be listed as ``*args`` and ``**kwargs``.</div><div class="line"></div><div class="line">    The format for a parameter is::</div><div class="line"></div><div class="line">        name (type): description</div><div class="line">            The description may span multiple lines. Following</div><div class="line">            lines should be indented. The "(type)" is optional.</div><div class="line"></div><div class="line">            Multiple paragraphs are supported in parameter</div><div class="line">            descriptions.</div><div class="line"></div><div class="line">    Args:</div><div class="line">        param1 (int): The first parameter.</div><div class="line">        param2 (Optional[str]): The second parameter. Defaults to None.</div><div class="line">            Second line of description should be indented.</div><div class="line">        *args: Variable length argument list.</div><div class="line">        **kwargs: Arbitrary keyword arguments.</div><div class="line"></div><div class="line">    Returns:</div><div class="line">        bool: True if successful, False otherwise.</div><div class="line"></div><div class="line">        The return type is optional and may be specified at the beginning of</div><div class="line">        the ``Returns`` section followed by a colon.</div><div class="line"></div><div class="line">        The ``Returns`` section may span multiple lines and paragraphs.</div><div class="line">        Following lines should be indented to match the first line.</div><div class="line"></div><div class="line">        The ``Returns`` section supports any reStructuredText formatting,</div><div class="line">        including literal blocks::</div><div class="line"></div><div class="line">            &#123;</div><div class="line">                'param1': param1,</div><div class="line">                'param2': param2</div><div class="line">            &#125;</div><div class="line"></div><div class="line">    Raises:</div><div class="line">        AttributeError: The ``Raises`` section is a list of all exceptions</div><div class="line">            that are relevant to the interface.</div><div class="line">        ValueError: If `param2` is equal to `param1`.</div><div class="line"></div><div class="line"></div><div class="line">    .. _PEP 484:</div><div class="line">       https://www.python.org/dev/peps/pep-0484/</div><div class="line"></div><div class="line">    """</div><div class="line">    <span class="keyword">if</span> param1 == param2:</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'param1 may not be equal to param2'</span>)</div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -606,7 +615,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -628,7 +637,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -742,7 +751,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -783,9 +792,6 @@
 
 
 
-  
-  
-
 
 
 
@@ -812,12 +818,6 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
-
 
   
 
@@ -830,13 +830,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -1024,13 +1017,32 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
   
 
   
+  
+
 
   
 

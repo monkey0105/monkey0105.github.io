@@ -5,9 +5,9 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -134,7 +134,7 @@
 
 
 
-  <title>Install Operation System Ubuntu 14.04 and Some Softwares | Dreamland</title>
+  <title>Install Operation System Ubuntu 14.04 and Some Softwares | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +145,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -430,41 +430,62 @@
 
       
         <p>Recently I was working with postgresql and python on Ubuntu. When I need to use pl/python extension, I met a system error but I cannot know how to fix it directly. Then a simple idea just came into my mind: reinstall the operation system and all the softwares.</p>
-<p>本文方法也基本适用其他版本的ubuntu。自从装了16以来，bug不断，还是决定重回14了。被自己的强迫症打脸了。<br><a id="more"></a><br>在16中碰到的尚未解决的问题包括但不限于：<br>运行pgadmin3时出现：</p>
+<p>本文方法也基本适用其他版本的ubuntu。自从装了16以来，bug不断，还是决定重回14了。被自己的强迫症打脸了。
+<a id="more"></a>
+在16中碰到的尚未解决的问题包括但不限于：
+运行pgadmin3时出现：</p>
 <blockquote>
-<p>Debug: Failed to connect to session manager: SESSION_MANAGER environment variable not defined.<br>Debug: Adding duplicate image handler for ‘PNG file’</p>
+<p>Debug: Failed to connect to session manager: SESSION_MANAGER environment variable not defined. 
+Debug: Adding duplicate image handler for ‘PNG file’</p>
 </blockquote>
-<p>最开始只有第二句，后来两句都有了。我在自己的电脑上测试少量数据，删除表格或schema会显示Running，没有任何错误提示，也没有任何会跑完的迹象。<br>在pgadmin3界面点击一个表格，整个软件就会奔溃。<br>未找到解决方法。</p>
-<h1 id="Install-Ubuntu"><a href="#Install-Ubuntu" class="headerlink" title="Install Ubuntu"></a>Install Ubuntu</h1><p>Go to the <a href="http://www.ubuntu.com/download/desktop" target="_blank" rel="external">official website</a> of Ubuntu to get the latest desktop version. Follow the steps and you’ll get it.<br>If you want previous version like 14.04 LTS, please go as: <code>Downloads</code> - <code>Alternative Downloads</code> - <code>Other Images</code> - <code>See all ubuntu mirrors</code>. And then click <code>http</code> in Shanghai Jiao Tong University, China. The download speed is quite fast. </p>
-<h2 id="Prepare-a-new-USB-stick"><a href="#Prepare-a-new-USB-stick" class="headerlink" title="Prepare a new USB stick"></a>Prepare a new USB stick</h2><p>Find <code>Startup Disk Creator</code> in the Software Center. If you find the usb disk cannot be erased, go to <code>Disks</code> software to format it.<br>After you build the usb as a startup disk, it cannot be used to save files any more. </p>
+<p>最开始只有第二句，后来两句都有了。我在自己的电脑上测试少量数据，删除表格或schema会显示Running，没有任何错误提示，也没有任何会跑完的迹象。
+在pgadmin3界面点击一个表格，整个软件就会奔溃。
+未找到解决方法。</p>
+<h1 id="Install-Ubuntu"><a href="#Install-Ubuntu" class="headerlink" title="Install Ubuntu"></a>Install Ubuntu</h1><p>Go to the <a href="http://www.ubuntu.com/download/desktop" target="_blank" rel="external">official website</a> of Ubuntu to get the latest desktop version. Follow the steps and you’ll get it. 
+If you want previous version like 14.04 LTS, please go as: <code>Downloads</code> - <code>Alternative Downloads</code> - <code>Other Images</code> - <code>See all ubuntu mirrors</code>. And then click <code>http</code> in Shanghai Jiao Tong University, China. The download speed is quite fast. </p>
+<h2 id="Prepare-a-new-USB-stick"><a href="#Prepare-a-new-USB-stick" class="headerlink" title="Prepare a new USB stick"></a>Prepare a new USB stick</h2><p>Find <code>Startup Disk Creator</code> in the Software Center. If you find the usb disk cannot be erased, go to <code>Disks</code> software to format it. 
+After you build the usb as a startup disk, it cannot be used to save files any more. </p>
 <h2 id="Small-problem"><a href="#Small-problem" class="headerlink" title="Small problem"></a>Small problem</h2>{% blockquote %}
 Missing parameter in configuration file. Keyboard: path
 gfxboot.c32: not a COM32R image
 boot: 
 {% endblockquote %}
 <p>The bug would appear only when you build a <code>Startup Disk</code> and use it immediately on the same PC.<br>Just typing <code>Tab</code> and then choosing <code>live</code> or <code>live-install</code> would start the installation.  </p>
-<h1 id="Open-Here-in-Terminal"><a href="#Open-Here-in-Terminal" class="headerlink" title="Open Here in Terminal"></a>Open Here in Terminal</h1><p>This is a very useful add-on called <code>nautilus</code> to help daily usage.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install nautilus-open-terminal</div></pre></td></tr></table></figure></p>
-<p>Then restart nautilus to make it work immediately.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nautilus -q</div></pre></td></tr></table></figure></p>
+<h1 id="Open-Here-in-Terminal"><a href="#Open-Here-in-Terminal" class="headerlink" title="Open Here in Terminal"></a>Open Here in Terminal</h1><p>This is a very useful add-on called <code>nautilus</code> to help daily usage. 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install nautilus-open-terminal</div></pre></td></tr></table></figure></p>
+<p>Then restart nautilus to make it work immediately.
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nautilus -q</div></pre></td></tr></table></figure></p>
 <p>Then you’ll find <code>Open in Terminal</code> in your right-click menu list.</p>
 <h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h2 id="Install-latest-python"><a href="#Install-latest-python" class="headerlink" title="Install latest python"></a>Install latest python</h2><p>Since Ubuntu 14.04 is installed with Python 3.4, let’s install latest python 3.5.2. </p>
-<h3 id="Alternative"><a href="#Alternative" class="headerlink" title="Alternative"></a>Alternative</h3><p>We need C compiler and other stuff to compile Python<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential</div></pre></td></tr></table></figure></p>
-<p>SQLite libs need to be installed in order for Python to have SQLite support.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libsqlite3-dev</div><div class="line">sudo apt-get install sqlite3 # for the command-line client</div><div class="line">sudo apt-get install bzip2 libbz2-dev</div></pre></td></tr></table></figure></p>
-<h3 id="Use-apt-get-install"><a href="#Use-apt-get-install" class="headerlink" title="Use apt-get install"></a>Use apt-get install</h3><p>添加 PPA：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:fkrull/deadsnakes</div><div class="line">sudo apt-get update</div></pre></td></tr></table></figure></p>
-<p>安装 Python 3.5：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python3.5</div><div class="line">sudo apt-get install python3.5-dev</div><div class="line">sudo apt-get install libncurses5-dev</div></pre></td></tr></table></figure></p>
-<p>安装新版pip：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py</div><div class="line">sudo python3 get-pip.py</div><div class="line">sudo pip3 install setuptools --upgrade</div><div class="line">sudo pip3 install ipython[all]</div></pre></td></tr></table></figure></p>
-<p>Reference:<br><a href="https://plumz.me/archives/2333/" target="_blank" rel="external">在 Ubuntu 14.04.3 上安装 Python 3.5</a></p>
+<h3 id="Alternative"><a href="#Alternative" class="headerlink" title="Alternative"></a>Alternative</h3><p>We need C compiler and other stuff to compile Python
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential</div></pre></td></tr></table></figure></p>
+<p>SQLite libs need to be installed in order for Python to have SQLite support.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libsqlite3-dev</div><div class="line">sudo apt-get install sqlite3 # for the command-line client</div><div class="line">sudo apt-get install bzip2 libbz2-dev</div></pre></td></tr></table></figure></p>
+<h3 id="Use-apt-get-install"><a href="#Use-apt-get-install" class="headerlink" title="Use apt-get install"></a>Use apt-get install</h3><p>添加 PPA：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:fkrull/deadsnakes</div><div class="line">sudo apt-get update</div></pre></td></tr></table></figure></p>
+<p>安装 Python 3.5：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python3.5</div><div class="line">sudo apt-get install python3.5-dev</div><div class="line">sudo apt-get install libncurses5-dev</div></pre></td></tr></table></figure></p>
+<p>安装新版pip：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py</div><div class="line">sudo python3 get-pip.py</div><div class="line">sudo pip3 install setuptools --upgrade</div><div class="line">sudo pip3 install ipython[all]</div></pre></td></tr></table></figure></p>
+<p>Reference:
+<a href="https://plumz.me/archives/2333/" target="_blank" rel="external">在 Ubuntu 14.04.3 上安装 Python 3.5</a></p>
 <h2 id="Build-virtual-env-of-Python"><a href="#Build-virtual-env-of-Python" class="headerlink" title="Build virtual env of Python"></a>Build virtual env of Python</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential</div><div class="line">sudo pip3 install --upgrade pip</div><div class="line">sudo pip3 install --upgrade virtualenv</div><div class="line">virtualenv -p /usr/bin/python3.5 /home/katherine/venv/py35</div><div class="line"><span class="built_in">source</span> /home/katherine/venv/py35/bin/activate</div></pre></td></tr></table></figure>
-<p>Then<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gedit ~/.bashrc</div></pre></td></tr></table></figure></p>
-<p>Add the following code at the bottom of <code>.bashrc</code> file.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias venvpy35=&apos;source /home/katherine/venv/py35/bin/activate&apos;</div></pre></td></tr></table></figure></p>
-<p>Return to the terminal window.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> ~/.bashrc</div><div class="line">venvpy35</div></pre></td></tr></table></figure></p>
+<p>Then
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gedit ~/.bashrc</div></pre></td></tr></table></figure></p>
+<p>Add the following code at the bottom of <code>.bashrc</code> file.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias venvpy35=&apos;source /home/katherine/venv/py35/bin/activate&apos;</div></pre></td></tr></table></figure></p>
+<p>Return to the terminal window.
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> ~/.bashrc</div><div class="line">venvpy35</div></pre></td></tr></table></figure></p>
 <p>Next time, you don’t need to type the long sentence any more. Instead, type <code>venvpy35</code> in the terminal and the virtual environment would be activated.</p>
 <p>If you want to exit the virtual environment, just type <code>deactivate</code>. </p>
 <p><strong><code>virtualenv</code> cannot be build under <code>sudo</code>, or <code>pip install</code> would not have the access to the <code>site-packages</code> directory of the <code>virtualenv</code>.</strong></p>
 <h2 id="Install-Mostly-Used-Packages"><a href="#Install-Mostly-Used-Packages" class="headerlink" title="Install Mostly-Used Packages"></a>Install Mostly-Used Packages</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pip3 install pandas</div><div class="line">pip3 install psycopg2</div><div class="line">pip3 install sqlalchemy==1.1.1</div></pre></td></tr></table></figure>
 <h2 id="pip-Uninstall-Packages-with-Dependencies"><a href="#pip-Uninstall-Packages-with-Dependencies" class="headerlink" title="pip-Uninstall Packages with Dependencies"></a>pip-Uninstall Packages with Dependencies</h2><h3 id="install-pip-autoremove"><a href="#install-pip-autoremove" class="headerlink" title="install pip-autoremove"></a>install pip-autoremove</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pip-autoremove</div></pre></td></tr></table></figure>
 <h3 id="remove-“somepackage”-plus-its-dependencies"><a href="#remove-“somepackage”-plus-its-dependencies" class="headerlink" title="remove “somepackage” plus its dependencies:"></a>remove “somepackage” plus its dependencies:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip-autoremove somepackage -y</div></pre></td></tr></table></figure>
-<p>Reference:<br><a href="http://stackoverflow.com/questions/7915998/does-uninstalling-a-package-with-pip-also-removes-the-dependent-packages" target="_blank" rel="external">pip-uninstall packages with dependencies</a></p>
-<h1 id="Install-cx-oracle"><a href="#Install-cx-oracle" class="headerlink" title="Install cx_oracle"></a>Install cx_oracle</h1><h2 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h2><p><strong>Activate your virtual environment, and then do the following steps.</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install unzip python3.5-dev libaio-dev</div></pre></td></tr></table></figure></p>
+<p>Reference: 
+<a href="http://stackoverflow.com/questions/7915998/does-uninstalling-a-package-with-pip-also-removes-the-dependent-packages" target="_blank" rel="external">pip-uninstall packages with dependencies</a></p>
+<h1 id="Install-cx-oracle"><a href="#Install-cx-oracle" class="headerlink" title="Install cx_oracle"></a>Install cx_oracle</h1><h2 id="Install-Dependencies"><a href="#Install-Dependencies" class="headerlink" title="Install Dependencies"></a>Install Dependencies</h2><p><strong>Activate your virtual environment, and then do the following steps.</strong>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install unzip python3.5-dev libaio-dev</div></pre></td></tr></table></figure></p>
 <p>建议安装对应版本的<code>python-dev</code>如<code>python3.5-dev</code>，否则<code>pip install cx_Oracle</code>会出现错误提示<code>cannot find Python.h</code>。</p>
 <h2 id="Download-Oracle-Client"><a href="#Download-Oracle-Client" class="headerlink" title="Download Oracle Client"></a><a href="http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html" target="_blank" rel="external">Download Oracle Client</a></h2><p>Login oracle website and download: </p>
 <ul>
@@ -474,9 +495,12 @@ boot:
 </ul>
 <h2 id="Unzip-oracle-client"><a href="#Unzip-oracle-client" class="headerlink" title="Unzip oracle client"></a>Unzip oracle client</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span></div><div class="line">mkdir cx_Oracle</div><div class="line">unzip instantclient-basic-linux.x64-12.1.0.2.0.zip <span class="_">-d</span> cx_Oracle</div><div class="line">unzip instantclient-sdk-linux.x64-12.1.0.2.0.zip <span class="_">-d</span> cx_Oracle</div><div class="line">unzip instantclient-sqlplus-linux.x64-12.1.0.2.0.zip <span class="_">-d</span> cx_Oracle</div></pre></td></tr></table></figure>
 <h2 id="Set-ORACLE-HOME-location"><a href="#Set-ORACLE-HOME-location" class="headerlink" title="Set ORACLE_HOME location"></a>Set ORACLE_HOME location</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gedit ~/.bashrc</div></pre></td></tr></table></figure>
-<p>然后添加以下语句到<code>~/.bashrc</code>，然后保存。这是告诉安装程序oracle安装文件的位置，若后面出现<code>cannot locate oracle installation</code>的提示，一定是这里没有设置好。注意：ORACLE_HOME 要指向绝对路径。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cx_Oracle</span></div><div class="line"><span class="built_in">export</span> ORACLE_HOME=/home/katherine/cx_Oracle/instantclient_12_1</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$ORACLE_HOME</span>:<span class="variable">$LD_LIBRARY_PATH</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;PATH&#125;</span>:<span class="variable">$&#123;ORACLE_HOME&#125;</span></div></pre></td></tr></table></figure></p>
-<p>记得更新配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> ~/.bashrc</div><div class="line">mypy35</div></pre></td></tr></table></figure></p>
-<p>对以下文件建立软链接。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> cx_Oracle/instantclient_12_1</div><div class="line">sudo ln -sf libclntsh.so.12.1 libclntsh.so</div><div class="line">sudo ln -sf libclntshcore.so.12.1 libclntshcore.so</div><div class="line">sudo ln -sf libocci.so.12.1 libocci.so</div></pre></td></tr></table></figure></p>
+<p>然后添加以下语句到<code>~/.bashrc</code>，然后保存。这是告诉安装程序oracle安装文件的位置，若后面出现<code>cannot locate oracle installation</code>的提示，一定是这里没有设置好。注意：ORACLE_HOME 要指向绝对路径。
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cx_Oracle</span></div><div class="line"><span class="built_in">export</span> ORACLE_HOME=/home/katherine/cx_Oracle/instantclient_12_1</div><div class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$ORACLE_HOME</span>:<span class="variable">$LD_LIBRARY_PATH</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;PATH&#125;</span>:<span class="variable">$&#123;ORACLE_HOME&#125;</span></div></pre></td></tr></table></figure></p>
+<p>记得更新配置：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> ~/.bashrc</div><div class="line">mypy35</div></pre></td></tr></table></figure></p>
+<p>对以下文件建立软链接。
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> cx_Oracle/instantclient_12_1</div><div class="line">sudo ln -sf libclntsh.so.12.1 libclntsh.so</div><div class="line">sudo ln -sf libclntshcore.so.12.1 libclntshcore.so</div><div class="line">sudo ln -sf libocci.so.12.1 libocci.so</div></pre></td></tr></table></figure></p>
 <h2 id="Install-cx-oracle-1"><a href="#Install-cx-oracle-1" class="headerlink" title="Install cx_oracle"></a>Install cx_oracle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install cx_Oracle</div></pre></td></tr></table></figure>
 <p>Reference: </p>
 <ol>
@@ -487,44 +511,74 @@ boot:
 <h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><h1 id="Install-postgresql"><a href="#Install-postgresql" class="headerlink" title="Install postgresql"></a>Install postgresql</h1><h2 id="Install-postgresql-1"><a href="#Install-postgresql-1" class="headerlink" title="Install postgresql"></a>Install postgresql</h2><h3 id="Add-PostgreSQL-Apt-Repository"><a href="#Add-PostgreSQL-Apt-Repository" class="headerlink" title="Add PostgreSQL Apt Repository"></a>Add PostgreSQL Apt Repository</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo sh -c <span class="string">'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" &gt;&gt; /etc/apt/sources.list.d/pgdg.list'</span></div><div class="line">wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -</div></pre></td></tr></table></figure>
 <h3 id="Install-PostgreSQL"><a href="#Install-PostgreSQL" class="headerlink" title="Install PostgreSQL"></a>Install PostgreSQL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install postgresql-9.5 postgresql-contrib-9.5 postgresql-plpython3-9.5 postgresql-client-9.5 postgresql-common postgresql-server-dev-9.5</div><div class="line">sudo apt-get install libpq-dev</div></pre></td></tr></table></figure>
 <h3 id="Configure-PYTHONPATH-to-PostgreSQL-Environment"><a href="#Configure-PYTHONPATH-to-PostgreSQL-Environment" class="headerlink" title="Configure PYTHONPATH to PostgreSQL Environment"></a>Configure PYTHONPATH to PostgreSQL Environment</h3><p>Add <code>PYTHONPATH=&#39;/home/katherine/Documents/Coding/jfds/src:/home/katherine/venv/py352/lib/python3.5/site-packages&#39;</code> to <code>/etc/postgresql/9.5/main/environment</code>. </p>
-<p>Then run:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service postgresql restart</div></pre></td></tr></table></figure></p>
-<h2 id="Initial-settings"><a href="#Initial-settings" class="headerlink" title="Initial settings"></a>Initial settings</h2><p><code>postgreSQL</code> automatically create a <code>ubuntu</code> and <code>postgreSQL</code> user named <code>postgres</code>.<br>First, let’s change the password of <code>postgres</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo su</div><div class="line">passwd postgres</div></pre></td></tr></table></figure></p>
-<p>Then let’s login postgreSQL as user <code>postgres</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo su postgres</div><div class="line">psql</div></pre></td></tr></table></figure></p>
-<p>Then <code>postgres=#</code> would appear in the very front.<br>Then let’s create a user we would use in our daily work. The same as your ubuntu user account is quite good.<br>Creating as <code>SUPERUSER</code> is necessary for configuring python fucntions in postgreSQL by <code>pl/python</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">create user katherine superuser password &apos;houzi0105&apos;;</div><div class="line">create database bigdata;</div><div class="line">alter database bigdata owner to katherine;</div><div class="line">\q</div></pre></td></tr></table></figure></p>
-<p>Next time, you can use the sentence below to login.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">psql -U [dbuser] -d [db] -h 127.0.0.1 -p 5432</div></pre></td></tr></table></figure></p>
-<p>The abbreviated sentence can be:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">psql bigdata</div></pre></td></tr></table></figure></p>
+<p>Then run:
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service postgresql restart</div></pre></td></tr></table></figure></p>
+<h2 id="Initial-settings"><a href="#Initial-settings" class="headerlink" title="Initial settings"></a>Initial settings</h2><p><code>postgreSQL</code> automatically create a <code>ubuntu</code> and <code>postgreSQL</code> user named <code>postgres</code>. 
+First, let’s change the password of <code>postgres</code>. 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo su</div><div class="line">passwd postgres</div></pre></td></tr></table></figure></p>
+<p>Then let’s login postgreSQL as user <code>postgres</code>. 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo su postgres</div><div class="line">psql</div></pre></td></tr></table></figure></p>
+<p>Then <code>postgres=#</code> would appear in the very front. 
+Then let’s create a user we would use in our daily work. The same as your ubuntu user account is quite good. 
+Creating as <code>SUPERUSER</code> is necessary for configuring python fucntions in postgreSQL by <code>pl/python</code>. 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">create user katherine superuser password &apos;houzi0105&apos;;</div><div class="line">create database bigdata;</div><div class="line">alter database bigdata owner to katherine;</div><div class="line">\q</div></pre></td></tr></table></figure></p>
+<p>Next time, you can use the sentence below to login. 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">psql -U [dbuser] -d [db] -h 127.0.0.1 -p 5432</div></pre></td></tr></table></figure></p>
+<p>The abbreviated sentence can be: 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">psql bigdata</div></pre></td></tr></table></figure></p>
 <p>The initial settings have been done. </p>
 <h2 id="plpython3u"><a href="#plpython3u" class="headerlink" title="plpython3u"></a>plpython3u</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gedit /etc/postgresql/9.5/main/environment</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PYTHONPATH=&apos;/home/katherine/Documents/Coding/jfds/src:/home/katherine/venv/py35/lib/python3.5/site-packages&apos;</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install postgresql-plpython3</div></pre></td></tr></table></figure>
-<p>Login postgresql and run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE EXTENSION plpython3u;</div></pre></td></tr></table></figure></p>
-<p>Reference:<br><a href="https://stackoverflow.com/questions/8032293/how-to-install-3rd-party-module-for-postgres-pl-python/8036067#8036067" target="_blank" rel="external">How to install 3rd party module for postgres pl/python</a><br><a href="http://www.ilizhen.com/2015/04/postgresql-%e4%b8%8b%e5%ae%89%e8%a3%85-plpython-ubuntu/" target="_blank" rel="external">PostgreSql 下安装 plpython</a></p>
+<p>Login postgresql and run:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE EXTENSION plpython3u;</div></pre></td></tr></table></figure></p>
+<p>Reference: 
+<a href="https://stackoverflow.com/questions/8032293/how-to-install-3rd-party-module-for-postgres-pl-python/8036067#8036067" target="_blank" rel="external">How to install 3rd party module for postgres pl/python</a>
+<a href="http://www.ilizhen.com/2015/04/postgresql-%e4%b8%8b%e5%ae%89%e8%a3%85-plpython-ubuntu/" target="_blank" rel="external">PostgreSql 下安装 plpython</a></p>
 <h2 id="Install-psycopg2-and-sqlalchemy"><a href="#Install-psycopg2-and-sqlalchemy" class="headerlink" title="Install psycopg2 and sqlalchemy"></a>Install psycopg2 and sqlalchemy</h2><h3 id="Install-the-Dependencies"><a href="#Install-the-Dependencies" class="headerlink" title="Install the Dependencies"></a>Install the Dependencies</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-psycopg2</div></pre></td></tr></table></figure>
 <h3 id="Then-run-this-command-in-your-virtualenv"><a href="#Then-run-this-command-in-your-virtualenv" class="headerlink" title="Then run this command in your virtualenv"></a>Then run this command in your virtualenv</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install psycopg2</div><div class="line">pip install sqlalchemy==1.1.1</div></pre></td></tr></table></figure>
 <p>Reference: <a href="http://toy.linuxtoy.org/2013/12/11/installing-specific-package-versions-with-pip.html" target="_blank" rel="external">pip 安装特定版本的 Python 包</a></p>
 <h1 id="Sougou-Input"><a href="#Sougou-Input" class="headerlink" title="Sougou Input"></a><a href="http://pinyin.sogou.com/linux/" target="_blank" rel="external">Sougou Input</a></h1><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>若是ubuntu14或以上系统，只要双击下载的<code>.deb</code>文件，点击<code>install</code>，之后在<code>System Settings</code> - <code>Language Support</code>中选择<code>fcitx</code>，注销再登录，然后在键盘符号处点击<code>设置</code> - <code>+</code>添加sougoupinyin输入法即可。</p>
 <h2 id="若还无法正常使用"><a href="#若还无法正常使用" class="headerlink" title="若还无法正常使用"></a>若还无法正常使用</h2><p>我的ubuntu14安装了搜狗输入法并设置后，仍然无法正常使用，<a href="http://www.linuxdiyf.com/linux/22075.html" target="_blank" rel="external">参考</a>，不过须把<code>im-switch</code>换成<code>im-config</code>才行。具体步骤如下：</p>
-<p>第一，添加源：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:fcitx-team/nightly</div></pre></td></tr></table></figure></p>
-<p>第二，更新系统<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure></p>
-<p>第三，安装fcitx：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install fcitx</div></pre></td></tr></table></figure></p>
-<p>第四，安装fcitx的配置工具：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install fcitx-config-gtk</div></pre></td></tr></table></figure></p>
-<p>第五，安装fcitx的table-all软件包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install fcitx-table-all</div></pre></td></tr></table></figure></p>
-<p>第六，安装im-config:<br>因为我按照他原来的步骤操作时，最后一步提示我<code>im-switch</code>与安装冲突，要安装<code>im-config</code>，呵呵。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install im-config</div></pre></td></tr></table></figure></p>
-<p>第七，用dpkg命令安装搜狗输入法资源包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dpkg -i [资源包文件名.deb]</div></pre></td></tr></table></figure></p>
-<p>第八，设置语言选项<br><code>System Settings</code> - <code>Language Support</code> - <code>fcitx</code><br>第九，注销<br>第十，在fcitx配置中添加sougou pinyin。</p>
-<h2 id="Small-problems"><a href="#Small-problems" class="headerlink" title="Small problems"></a>Small problems</h2><h3 id="Ubuntu-16-04-Pycharm无法切换搜狗输入法"><a href="#Ubuntu-16-04-Pycharm无法切换搜狗输入法" class="headerlink" title="Ubuntu-16-04-Pycharm无法切换搜狗输入法"></a><a href="http://sjq597.github.io/2016/08/29/Ubuntu-16-04-Pycharm%E6%97%A0%E6%B3%95%E5%88%87%E6%8D%A2%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95/" target="_blank" rel="external">Ubuntu-16-04-Pycharm无法切换搜狗输入法</a></h3><p>In Ubuntu 16.04, Sougou Input Method cannot be used in Cmaptools and Pycharm.<br>The solution is add the following 3 lines to the top of the start file such as <code>/usr/dev/pycharm-2016.2/bin/pycharm.sh</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export GTK_IM_MODULE=fcitx</div><div class="line">export QT_IM_MODULE=fcitx</div><div class="line">export XMODIFIERS=@im=fcitx</div></pre></td></tr></table></figure></p>
+<p>第一，添加源：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:fcitx-team/nightly</div></pre></td></tr></table></figure></p>
+<p>第二，更新系统
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure></p>
+<p>第三，安装fcitx：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install fcitx</div></pre></td></tr></table></figure></p>
+<p>第四，安装fcitx的配置工具：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install fcitx-config-gtk</div></pre></td></tr></table></figure></p>
+<p>第五，安装fcitx的table-all软件包：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install fcitx-table-all</div></pre></td></tr></table></figure></p>
+<p>第六，安装im-config:
+因为我按照他原来的步骤操作时，最后一步提示我<code>im-switch</code>与安装冲突，要安装<code>im-config</code>，呵呵。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install im-config</div></pre></td></tr></table></figure></p>
+<p>第七，用dpkg命令安装搜狗输入法资源包
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dpkg -i [资源包文件名.deb]</div></pre></td></tr></table></figure></p>
+<p>第八，设置语言选项
+<code>System Settings</code> - <code>Language Support</code> - <code>fcitx</code>
+第九，注销
+第十，在fcitx配置中添加sougou pinyin。</p>
+<h2 id="Small-problems"><a href="#Small-problems" class="headerlink" title="Small problems"></a>Small problems</h2><h3 id="Ubuntu-16-04-Pycharm无法切换搜狗输入法"><a href="#Ubuntu-16-04-Pycharm无法切换搜狗输入法" class="headerlink" title="Ubuntu-16-04-Pycharm无法切换搜狗输入法"></a><a href="http://sjq597.github.io/2016/08/29/Ubuntu-16-04-Pycharm%E6%97%A0%E6%B3%95%E5%88%87%E6%8D%A2%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95/" target="_blank" rel="external">Ubuntu-16-04-Pycharm无法切换搜狗输入法</a></h3><p>In Ubuntu 16.04, Sougou Input Method cannot be used in Cmaptools and Pycharm.
+The solution is add the following 3 lines to the top of the start file such as <code>/usr/dev/pycharm-2016.2/bin/pycharm.sh</code>.
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export GTK_IM_MODULE=fcitx</div><div class="line">export QT_IM_MODULE=fcitx</div><div class="line">export XMODIFIERS=@im=fcitx</div></pre></td></tr></table></figure></p>
 <p>Then we can type in Chinese character by Sougou Input Method in Pycharm. Solution for Cmaptools is similar. The only problem left is the small menu of alternative characters does not follow tightly behind the input curser any more. </p>
-<h1 id="Install-CmapTools"><a href="#Install-CmapTools" class="headerlink" title="Install CmapTools"></a>Install CmapTools</h1><p>Reference: <a href="http://askubuntu.com/questions/15093/how-can-i-install-a-bin-file" target="_blank" rel="external">How to install a .bin file</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod a+x name_of_file.bin</div><div class="line">sudo ./name_of_file.bin</div></pre></td></tr></table></figure></p>
+<h1 id="Install-CmapTools"><a href="#Install-CmapTools" class="headerlink" title="Install CmapTools"></a>Install CmapTools</h1><p>Reference: <a href="http://askubuntu.com/questions/15093/how-can-i-install-a-bin-file" target="_blank" rel="external">How to install a .bin file</a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod a+x name_of_file.bin</div><div class="line">sudo ./name_of_file.bin</div></pre></td></tr></table></figure></p>
 <p>In order to get full access to Cmaps directory, I need to choose “where to install” as <code>/home/katherine/IHMC CmapTools</code> rather than <code>/root/IHMC CmapTools</code>. Then you can have the <code>My_Cmaps</code> file under directory <code>/home/katherine</code>.</p>
 <p>Every time use <code>bash CmapTools</code> in the directory of file <code>CmapTools</code> to start it. </p>
-<h1 id="Install-Pycharm"><a href="#Install-Pycharm" class="headerlink" title="Install Pycharm"></a>Install Pycharm</h1><p>Reference: <a href="http://askubuntu.com/questions/25961/how-do-i-install-a-tar-gz-or-tar-bz2-file" target="_blank" rel="external">Install a .tar.gz file</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf /home/katherine/Documents/Software/pycharm-professional-2016.2.3.tar.gz -C /home/katherine/</div><div class="line"><span class="built_in">cd</span> /home/katherine/pycharm-2016.2.3/</div></pre></td></tr></table></figure></p>
+<h1 id="Install-Pycharm"><a href="#Install-Pycharm" class="headerlink" title="Install Pycharm"></a>Install Pycharm</h1><p>Reference: <a href="http://askubuntu.com/questions/25961/how-do-i-install-a-tar-gz-or-tar-bz2-file" target="_blank" rel="external">Install a .tar.gz file</a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf /home/katherine/Documents/Software/pycharm-professional-2016.2.3.tar.gz -C /home/katherine/</div><div class="line"><span class="built_in">cd</span> /home/katherine/pycharm-2016.2.3/</div></pre></td></tr></table></figure></p>
 <p>Then:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash pycharm.sh</div></pre></td></tr></table></figure></p>
 <p>And the Installation process would start. This is also the way to start Pycharm after installation.</p>
 <h1 id="Install-Git"><a href="#Install-Git" class="headerlink" title="Install Git"></a>Install Git</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install git </div><div class="line">sudo apt-get install git-core</div></pre></td></tr></table></figure>
-<h1 id="Get-Access-to-Google-by-Firefox"><a href="#Get-Access-to-Google-by-Firefox" class="headerlink" title="Get Access to Google by Firefox"></a>Get Access to Google by Firefox</h1><h2 id="Install-shadowsocks-GUI"><a href="#Install-shadowsocks-GUI" class="headerlink" title="Install shadowsocks GUI"></a>Install <code>shadowsocks</code> GUI</h2><p>If you use Ubuntu like me, you can follow the code below.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install shadowsocks-qt5</div></pre></td></tr></table></figure></p>
-<p>For other OS please see <a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/安装指南" target="_blank" rel="external">here</a>.<br>You need to buy the service yourself, or you need a good boss like I have =.=</p>
+<h1 id="Get-Access-to-Google-by-Firefox"><a href="#Get-Access-to-Google-by-Firefox" class="headerlink" title="Get Access to Google by Firefox"></a>Get Access to Google by Firefox</h1><h2 id="Install-shadowsocks-GUI"><a href="#Install-shadowsocks-GUI" class="headerlink" title="Install shadowsocks GUI"></a>Install <code>shadowsocks</code> GUI</h2><p>If you use Ubuntu like me, you can follow the code below.
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install shadowsocks-qt5</div></pre></td></tr></table></figure></p>
+<p>For other OS please see <a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/安装指南" target="_blank" rel="external">here</a>.
+You need to buy the service yourself, or you need a good boss like I have =.=</p>
 <p>Then search “shadowsocks” in your computer and start the application. Configure the server and connect. </p>
-<h2 id="Install-the-Add-on-foxyproxy-for-Firefox"><a href="#Install-the-Add-on-foxyproxy-for-Firefox" class="headerlink" title="Install the Add-on foxyproxy for Firefox"></a>Install the Add-on <code>foxyproxy</code> for Firefox</h2><p>Follow the steps in <a href="http://sslite.top/136/" target="_blank" rel="external">http://sslite.top/136/</a>.<br>Make sure the shadowsocks is working when foxyproxy starts to work. </p>
+<h2 id="Install-the-Add-on-foxyproxy-for-Firefox"><a href="#Install-the-Add-on-foxyproxy-for-Firefox" class="headerlink" title="Install the Add-on foxyproxy for Firefox"></a>Install the Add-on <code>foxyproxy</code> for Firefox</h2><p>Follow the steps in <a href="http://sslite.top/136/" target="_blank" rel="external">http://sslite.top/136/</a>.
+Make sure the shadowsocks is working when foxyproxy starts to work. </p>
 <h1 id="Other-References"><a href="#Other-References" class="headerlink" title="Other References"></a>Other References</h1><p><a href="http://www.computerhope.com/issues/ch000773.htm" target="_blank" rel="external">How do I open, create, edit, and view a file in Linux?</a></p>
 <p>Almost all the problems and issues I met with are listed here. If you have other questions as well as answers, it’s very appreciated to tell me. </p>
 
@@ -697,7 +751,7 @@ boot:
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -719,7 +773,7 @@ boot:
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -833,7 +887,7 @@ boot:
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -874,9 +928,6 @@ boot:
 
 
 
-  
-  
-
 
 
 
@@ -903,12 +954,6 @@ boot:
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
-
 
   
 
@@ -921,13 +966,6 @@ boot:
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -1115,13 +1153,32 @@ boot:
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
   
 
   
+  
+
 
   
 

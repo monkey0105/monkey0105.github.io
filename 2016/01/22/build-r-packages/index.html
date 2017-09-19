@@ -5,9 +5,9 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -90,18 +90,19 @@
 
 
 
-<meta name="description" content="After MM and I developed several R tools for our team (missing the whole year we kept working together), we began to look for more convenient way for the users.We were eager to build our own packages,">
+<meta name="description" content="After MM and I developed several R tools for our team (missing the whole year we kept working together), we began to look for more convenient way for the users.  We were eager to build our own package">
 <meta name="keywords" content="R,package">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Build R Packages">
 <meta property="og:url" content="http://monkey0105.github.io/2016/01/22/build-r-packages/index.html">
 <meta property="og:site_name" content="Dreamland">
-<meta property="og:description" content="After MM and I developed several R tools for our team (missing the whole year we kept working together), we began to look for more convenient way for the users.We were eager to build our own packages,">
+<meta property="og:description" content="After MM and I developed several R tools for our team (missing the whole year we kept working together), we began to look for more convenient way for the users.  We were eager to build our own package">
 <meta property="og:image" content="http://monkey0105.github.io/2016/01/22/build-r-packages/20160121164233.png">
+<meta property="og:image" content="http://monkey0105.github.io/2016/01/22/build-r-packages/20160122120100.png">
 <meta property="og:updated_time" content="2017-05-11T09:29:01.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Build R Packages">
-<meta name="twitter:description" content="After MM and I developed several R tools for our team (missing the whole year we kept working together), we began to look for more convenient way for the users.We were eager to build our own packages,">
+<meta name="twitter:description" content="After MM and I developed several R tools for our team (missing the whole year we kept working together), we began to look for more convenient way for the users.  We were eager to build our own package">
 <meta name="twitter:image" content="http://monkey0105.github.io/2016/01/22/build-r-packages/20160121164233.png">
 
 
@@ -110,7 +111,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -136,7 +137,7 @@
 
 
 
-  <title>Build R Packages | Dreamland</title>
+  <title>Build R Packages | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +148,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -431,27 +432,54 @@
       
 
       
-        <p>After MM and I developed several R tools for our team (missing the whole year we kept working together), we began to look for more convenient way for the users.<br>We were eager to build our own packages, but we didn’t know how and didn’t dig deep down.<br><a id="more"></a><br>Once I found our intern was using version control while working in RStudio. The <strong>Project</strong> concept came into our view.<br>Surprisingly, <strong>Projects</strong> are just the basic concept for building R packages.<br>In October 2015, I tried, failed and gave up. Now the needs for building R packages become more urgent so I start again. </p>
+        <p>After MM and I developed several R tools for our team (missing the whole year we kept working together), we began to look for more convenient way for the users. 
+We were eager to build our own packages, but we didn’t know how and didn’t dig deep down. 
+<a id="more"></a>
+Once I found our intern was using version control while working in RStudio. The <strong>Project</strong> concept came into our view. 
+Surprisingly, <strong>Projects</strong> are just the basic concept for building R packages. 
+In October 2015, I tried, failed and gave up. Now the needs for building R packages become more urgent so I start again. </p>
 <h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>First of all, there are two main prerequisites for building R packages:</p>
 <ol>
 <li>GNU software development tools including a C/C++ compiler; and</li>
 <li>LaTeX for building R manuals and vignettes.</li>
 </ol>
 <p>The following steps are suitable for <strong>Windows</strong> system. If you are using other OS, please look for help on <a href="https://support.rstudio.com/hc/en-us/articles/200486498" target="_blank" rel="external">Package Development Prerequisites</a>.</p>
-<h3 id="Rtools"><a href="#Rtools" class="headerlink" title="Rtools"></a>Rtools</h3><p>The core software development utilities required for R package development can be obtained from the <strong>Rtools</strong> download on CRAN: <a href="https://cran.rstudio.com/bin/windows/Rtools/" target="_blank" rel="external">https://cran.rstudio.com/bin/windows/Rtools/</a>.<br>After downloading and installing the version of Rtools appropriate to the version of R you are using, you should also ensure that you’ve arranged your system PATH as recommended by Rtools (you can choose to do this automatically as part of Rtools installation if you like).</p>
-<h3 id="MiKTeX"><a href="#MiKTeX" class="headerlink" title="MiKTeX"></a>MiKTeX</h3><p>To build manuals and vignettes you’ll also need to install the <strong>MikTeX LaTeX</strong> distribution for Windows which you can download from here: <a href="http://miktex.org/download" target="_blank" rel="external">http://miktex.org/download</a>.<br>If you have installed MiKTeX before like me, it is recommended that you <a href="http://miktex.org/howto/update-miktex" target="_blank" rel="external">run the update wizard</a> in order to get the latest updates.<br>Just go to <strong>Startup</strong> menu. Click <strong>All Programs</strong>. Find <strong>MikTeX</strong> then go to <strong>Maintainence</strong> and click <strong>Update</strong>.<br><img src="/2016/01/22/build-r-packages/20160121164233.png" alt="image1" title="image1"><br>Then just click <strong>Next</strong>, <strong>Next</strong> and <strong>Next</strong>. If the first time going by “Selecting packages” it’s unable for you to click on “Select All”, don’t worry, finish the update process and run all the steps once again. </p>
-<h2 id="Packages-Needed-Before-Starting"><a href="#Packages-Needed-Before-Starting" class="headerlink" title="Packages Needed Before Starting"></a>Packages Needed Before Starting</h2><h3 id="devtools"><a href="#devtools" class="headerlink" title="devtools"></a>devtools</h3><p>All <code>check</code> and <code>build</code> work is completed by package <a href="https://cran.r-project.org/web/packages/devtools/index.html" target="_blank" rel="external">devtools</a>.<br>Now find function <code>devtools::install_github()</code> and <code>devtools::install_local()</code> quite useful to install packages on GitHub or local disc.<br>And command <code>devtools::document()</code> can create or update the <code>NAMESPACE</code> file.<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.packages(<span class="string">"devtools"</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="roxygen2"><a href="#roxygen2" class="headerlink" title="roxygen2"></a>roxygen2</h3><p>Package <a href="https://cran.r-project.org/web/packages/roxygen2/index.html" target="_blank" rel="external">roxygen2</a> is needed for generating R package documentations. Will talk more in Coding section below.<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.packages(<span class="string">"roxygen2"</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="packrat"><a href="#packrat" class="headerlink" title="packrat"></a>packrat</h3><p><a href="https://cran.r-project.org/web/packages/packrat/index.html" target="_blank" rel="external">Packrat</a> is a Dependency Management System for Projects and their R Package Dependencies.<br>Using packrat can make your R projects more:</p>
+<h3 id="Rtools"><a href="#Rtools" class="headerlink" title="Rtools"></a>Rtools</h3><p>The core software development utilities required for R package development can be obtained from the <strong>Rtools</strong> download on CRAN: <a href="https://cran.rstudio.com/bin/windows/Rtools/" target="_blank" rel="external">https://cran.rstudio.com/bin/windows/Rtools/</a>.
+After downloading and installing the version of Rtools appropriate to the version of R you are using, you should also ensure that you’ve arranged your system PATH as recommended by Rtools (you can choose to do this automatically as part of Rtools installation if you like).</p>
+<h3 id="MiKTeX"><a href="#MiKTeX" class="headerlink" title="MiKTeX"></a>MiKTeX</h3><p>To build manuals and vignettes you’ll also need to install the <strong>MikTeX LaTeX</strong> distribution for Windows which you can download from here: <a href="http://miktex.org/download" target="_blank" rel="external">http://miktex.org/download</a>.
+If you have installed MiKTeX before like me, it is recommended that you <a href="http://miktex.org/howto/update-miktex" target="_blank" rel="external">run the update wizard</a> in order to get the latest updates.
+Just go to <strong>Startup</strong> menu. Click <strong>All Programs</strong>. Find <strong>MikTeX</strong> then go to <strong>Maintainence</strong> and click <strong>Update</strong>. 
+<img src="/2016/01/22/build-r-packages/20160121164233.png" alt="image1" title="image1">
+Then just click <strong>Next</strong>, <strong>Next</strong> and <strong>Next</strong>. If the first time going by “Selecting packages” it’s unable for you to click on “Select All”, don’t worry, finish the update process and run all the steps once again. </p>
+<h2 id="Packages-Needed-Before-Starting"><a href="#Packages-Needed-Before-Starting" class="headerlink" title="Packages Needed Before Starting"></a>Packages Needed Before Starting</h2><h3 id="devtools"><a href="#devtools" class="headerlink" title="devtools"></a>devtools</h3><p>All <code>check</code> and <code>build</code> work is completed by package <a href="https://cran.r-project.org/web/packages/devtools/index.html" target="_blank" rel="external">devtools</a>. 
+Now find function <code>devtools::install_github()</code> and <code>devtools::install_local()</code> quite useful to install packages on GitHub or local disc. 
+And command <code>devtools::document()</code> can create or update the <code>NAMESPACE</code> file. 
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.packages(<span class="string">"devtools"</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="roxygen2"><a href="#roxygen2" class="headerlink" title="roxygen2"></a>roxygen2</h3><p>Package <a href="https://cran.r-project.org/web/packages/roxygen2/index.html" target="_blank" rel="external">roxygen2</a> is needed for generating R package documentations. Will talk more in Coding section below. 
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.packages(<span class="string">"roxygen2"</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="packrat"><a href="#packrat" class="headerlink" title="packrat"></a>packrat</h3><p><a href="https://cran.r-project.org/web/packages/packrat/index.html" target="_blank" rel="external">Packrat</a> is a Dependency Management System for Projects and their R Package Dependencies. 
+Using packrat can make your R projects more:</p>
 <ul>
 <li><strong>Isolated</strong>: Installing a new or updated package for one project won’t break your other projects, and vice versa. That’s because packrat gives each project its own private package library.</li>
 <li><strong>Portable</strong>: Easily transport your projects from one computer to another, even across different platforms. Packrat makes it easy to install the packages your project depends on.</li>
 <li><strong>Reproducible</strong>: Packrat records the exact package versions you depend on, and ensures those exact versions are the ones that get installed wherever you go.</li>
 </ul>
-<p>Packrat is now available on CRAN, so you can install it with:<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.packages(<span class="string">"packrat"</span>)</div></pre></td></tr></table></figure></p>
-<p>If you like to live on the bleeding edge, you can also install the development version of Packrat with:<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">install.packages(<span class="string">"devtools"</span>)</div><div class="line">devtools::install_github(<span class="string">"rstudio/packrat"</span>)</div></pre></td></tr></table></figure></p>
-<h2 id="Build-A-Package"><a href="#Build-A-Package" class="headerlink" title="Build A Package"></a>Build A Package</h2><h3 id="Project-New-Project"><a href="#Project-New-Project" class="headerlink" title="Project - New Project"></a>Project - New Project</h3><h4 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h4><p>First, we need to create a new project. On the top right corner of the RStudio window, you can find the “Project” button.<br>{% asset_img 20160120194401.png image2 %}<br>Then select “New Directory”. If you already have some R scripts but not a package yet, you can choose “Existing Directory”.<br>{% asset_img 20160121160957.png image3 %}<br>Then choose “R Package”. <em>More exploration needed on other two choices.</em><br>{% asset_img 20160121161110.png image4 %}<br>Name your package and tick “Use packrat with this project”.<br>{% asset_img 20160121161436.png image5 %}<br>After creating a brand new package, RStudio will automatically open a new R script file “hello.R”.<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Hello, world!</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># This is an example function named 'hello' </span></div><div class="line"><span class="comment"># which prints 'Hello, world!'.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># You can learn more about package authoring with RStudio at:</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#   http://r-pkgs.had.co.nz/</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Some useful keyboard shortcuts for package authoring:</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#   Build and Reload Package:  'Ctrl + Shift + B'</span></div><div class="line"><span class="comment">#   Check Package:             'Ctrl + Shift + E'</span></div><div class="line"><span class="comment">#   Test Package:              'Ctrl + Shift + T'</span></div><div class="line"></div><div class="line">hello &lt;- <span class="keyword">function</span>() &#123;</div><div class="line">  print(<span class="string">"Hello, world!"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Under the package working directory, some files are automatically created. All the R scripts the package holds should be saved under the folder “R”.<br>{% asset_img 20160121162047.png)
+<p>Packrat is now available on CRAN, so you can install it with:
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.packages(<span class="string">"packrat"</span>)</div></pre></td></tr></table></figure></p>
+<p>If you like to live on the bleeding edge, you can also install the development version of Packrat with:
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">install.packages(<span class="string">"devtools"</span>)</div><div class="line">devtools::install_github(<span class="string">"rstudio/packrat"</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="Build-A-Package"><a href="#Build-A-Package" class="headerlink" title="Build A Package"></a>Build A Package</h2><h3 id="Project-New-Project"><a href="#Project-New-Project" class="headerlink" title="Project - New Project"></a>Project - New Project</h3><h4 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h4><p>First, we need to create a new project. On the top right corner of the RStudio window, you can find the “Project” button. 
+{% asset_img 20160120194401.png image2 %}
+Then select “New Directory”. If you already have some R scripts but not a package yet, you can choose “Existing Directory”. 
+{% asset_img 20160121160957.png image3 %}
+Then choose “R Package”. <em>More exploration needed on other two choices.</em>
+{% asset_img 20160121161110.png image4 %}
+Name your package and tick “Use packrat with this project”. 
+{% asset_img 20160121161436.png image5 %}
+After creating a brand new package, RStudio will automatically open a new R script file “hello.R”. 
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Hello, world!</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># This is an example function named 'hello' </span></div><div class="line"><span class="comment"># which prints 'Hello, world!'.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># You can learn more about package authoring with RStudio at:</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#   http://r-pkgs.had.co.nz/</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Some useful keyboard shortcuts for package authoring:</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#   Build and Reload Package:  'Ctrl + Shift + B'</span></div><div class="line"><span class="comment">#   Check Package:             'Ctrl + Shift + E'</span></div><div class="line"><span class="comment">#   Test Package:              'Ctrl + Shift + T'</span></div><div class="line"></div><div class="line">hello &lt;- <span class="keyword">function</span>() &#123;</div><div class="line">  print(<span class="string">"Hello, world!"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Under the package working directory, some files are automatically created. All the R scripts the package holds should be saved under the folder “R”. 
+{% asset_img 20160121162047.png)
 #### DESCRIPTION
 You can edit the package DESCRIPTION. 
 {% asset_img 20160121162919.png)
@@ -464,20 +492,37 @@ If you use `roxygen2` to generate NAMESPACE automatically like me, you should no
 ### Dependent Packages
 You can install other necessary packages in the whole process of building your package. `packrat` can help record the package list and their version information. 
 {% asset_img 20160122115721.png image6 %}</p>
-<h4 id="Snapshot"><a href="#Snapshot" class="headerlink" title="Snapshot"></a>Snapshot</h4><p>When you just install a packge, the “Version” and the “Source” column may have information while the “Packrat” column may be empty. The action of <code>packrat</code> saving information is called <code>snapshot</code>.<br>Though I choose to “Automatically snapshot local changes” in Packrat “Project Options”, I don’t see the effect after waiting for a whole night ;P<br>{% asset_img 20160122115826.png image7 %}<br>If so, you could manually snapshot by <code>packrat::snapshot()</code>. </p>
-<h4 id="Remove-Packages"><a href="#Remove-Packages" class="headerlink" title="Remove Packages"></a>Remove Packages</h4><p>If you find some packages unused, you can just use <code>remove.packages(&quot;unused package name&quot;)</code>.<br>Or you can just let packrat to handle it. Click “Clean Unused Packages…” and <code>packrat</code> begins working.<br>{% asset_img 20160122120100.png image8 %}</p>
+<h4 id="Snapshot"><a href="#Snapshot" class="headerlink" title="Snapshot"></a>Snapshot</h4><p>When you just install a packge, the “Version” and the “Source” column may have information while the “Packrat” column may be empty. The action of <code>packrat</code> saving information is called <code>snapshot</code>. 
+Though I choose to “Automatically snapshot local changes” in Packrat “Project Options”, I don’t see the effect after waiting for a whole night ;P 
+{% asset_img 20160122115826.png image7 %}
+If so, you could manually snapshot by <code>packrat::snapshot()</code>. </p>
+<h4 id="Remove-Packages"><a href="#Remove-Packages" class="headerlink" title="Remove Packages"></a>Remove Packages</h4><p>If you find some packages unused, you can just use <code>remove.packages(&quot;unused package name&quot;)</code>. 
+Or you can just let packrat to handle it. Click “Clean Unused Packages…” and <code>packrat</code> begins working. 
+<img src="/2016/01/22/build-r-packages/20160122120100.png" alt="image8" title="image8"></p>
 <h4 id="Restore"><a href="#Restore" class="headerlink" title="Restore"></a>Restore</h4><p>If you change the package information by mistake, you can use <code>packrat::restore()</code> to restore the packrat library to the latest snapshot. </p>
-<h3 id="Coding"><a href="#Coding" class="headerlink" title="Coding"></a>Coding</h3><p>Now you can just define the functions you need. What’s different is that you need to standardize the definition using <code>roxygen2</code> gramma.<br>Here is an example which is enough for beginners. More information on <a href="https://support.rstudio.com/hc/en-us/articles/200532317-Writing-Package-Documentation" target="_blank" rel="external">Writing Package Documentation</a>.<br>As you choose to use <code>roxygen2</code> method as below, <code># Generated by roxygen2: do not edit by hand</code> will appear at the very beginning of the <code>NAMESPACE</code> file.<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#' Arithmetic Mean</span></div><div class="line"><span class="comment">#' </span></div><div class="line"><span class="comment">#' Generic function for calculating average value. </span></div><div class="line"><span class="comment">#' @param x A numeric vector. </span></div><div class="line"><span class="comment">#' @param ... further arguments passed to or from other methods.</span></div><div class="line"><span class="comment">#' @return The average value of the numeric vector, regardless of NAs. </span></div><div class="line"><span class="comment">#' @export </span></div><div class="line">average &lt;- <span class="keyword">function</span>(x, <span class="keyword">...</span>)&#123;</div><div class="line">	y &lt;- x[!is.na(x)]</div><div class="line">	<span class="keyword">return</span>(sum(y)/length(y))</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Coding"><a href="#Coding" class="headerlink" title="Coding"></a>Coding</h3><p>Now you can just define the functions you need. What’s different is that you need to standardize the definition using <code>roxygen2</code> gramma. 
+Here is an example which is enough for beginners. More information on <a href="https://support.rstudio.com/hc/en-us/articles/200532317-Writing-Package-Documentation" target="_blank" rel="external">Writing Package Documentation</a>. 
+As you choose to use <code>roxygen2</code> method as below, <code># Generated by roxygen2: do not edit by hand</code> will appear at the very beginning of the <code>NAMESPACE</code> file. 
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#' Arithmetic Mean</span></div><div class="line"><span class="comment">#' </span></div><div class="line"><span class="comment">#' Generic function for calculating average value. </span></div><div class="line"><span class="comment">#' @param x A numeric vector. </span></div><div class="line"><span class="comment">#' @param ... further arguments passed to or from other methods.</span></div><div class="line"><span class="comment">#' @return The average value of the numeric vector, regardless of NAs. </span></div><div class="line"><span class="comment">#' @export </span></div><div class="line">average &lt;- <span class="keyword">function</span>(x, <span class="keyword">...</span>)&#123;</div><div class="line">	y &lt;- x[!is.na(x)]</div><div class="line">	<span class="keyword">return</span>(sum(y)/length(y))</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h4 id="Attention"><a href="#Attention" class="headerlink" title="Attention:"></a>Attention:</h4><ul>
 <li><code>@param</code>:  All parameters should be mentioned and defined, or warnings would appear when checking. </li>
 <li><code>@export</code>:  If <code>@export</code> is omitted, users are not able to call the funciton in Console. </li>
 <li><code>@import</code> or <code>@importFrom&#39;:  If functions built from other packages are called inside your package, you just need to add a special comment in the format</code>#’ @import packagename<code>to a file to import all functions from that package, or</code>#’ @importFrom packagename functionname<code>to import one function, e.g.</code>#’ @importFrom magrittr “%&gt;%”</li>
 </ul>
-<h3 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h3><p>Before asking RStudio to do the “Build” work, go to “Configure Build Tools” and tick “Generate documentation with Roxygen” and all inside choices.<br>This can make all your <code>#&#39;</code> sentences work and create <code>.Rd</code> files under folder <code>man</code> automatically. You could also not use Roxygen and create <code>.Rd</code> files by yourself.<br>{% asset_img 20160122135403.png image9 %}<br>{% asset_img 20160122151841.png image10 %}<br>{% asset_img 20160122152145.png image11 %}</p>
-<h4 id="Check"><a href="#Check" class="headerlink" title="Check"></a>Check</h4><p>RStudio will check if your package can work well and print out all the warnings, undocumented arguments, no visible global function definition, etc.<br>After the check finishes, read the information carefully and review your code. </p>
-<h4 id="Build-amp-Reload"><a href="#Build-amp-Reload" class="headerlink" title="Build &amp; Reload"></a>Build &amp; Reload</h4><p>After there is no problems of the check, click “Build &amp; Reload”. Now it’s time for you to <code>library(YourPackage)</code> and debug yourself.<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hello()</div><div class="line">average(<span class="number">1</span>:<span class="number">5</span>)</div></pre></td></tr></table></figure></p>
-<p>Try <code>?average</code> and see the documention built by Roxygen.<br></p>
-<h4 id="More-Build-Source-Package-amp-Build-Binary-Package"><a href="#More-Build-Source-Package-amp-Build-Binary-Package" class="headerlink" title="More - Build Source Package &amp; Build Binary Package"></a>More - Build Source Package &amp; Build Binary Package</h4><p>“Build Source Package” can output a <em>.tar.gz file; while “Build Binary Package” can output a </em>.zip file.<br>Then it’s very convenient to share your package. After the user recieve the file, they can go straight to use your packge!<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">devtools::install_local(<span class="string">"~/Test_0.1.tar.gz"</span>)</div><div class="line"><span class="keyword">library</span>(test)</div><div class="line">hello()</div><div class="line">average(<span class="number">1</span>:<span class="number">5</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h3><p>Before asking RStudio to do the “Build” work, go to “Configure Build Tools” and tick “Generate documentation with Roxygen” and all inside choices.
+This can make all your <code>#&#39;</code> sentences work and create <code>.Rd</code> files under folder <code>man</code> automatically. You could also not use Roxygen and create <code>.Rd</code> files by yourself. 
+{% asset_img 20160122135403.png image9 %}
+{% asset_img 20160122151841.png image10 %}
+{% asset_img 20160122152145.png image11 %}</p>
+<h4 id="Check"><a href="#Check" class="headerlink" title="Check"></a>Check</h4><p>RStudio will check if your package can work well and print out all the warnings, undocumented arguments, no visible global function definition, etc. 
+After the check finishes, read the information carefully and review your code. </p>
+<h4 id="Build-amp-Reload"><a href="#Build-amp-Reload" class="headerlink" title="Build &amp; Reload"></a>Build &amp; Reload</h4><p>After there is no problems of the check, click “Build &amp; Reload”. Now it’s time for you to <code>library(YourPackage)</code> and debug yourself. 
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hello()</div><div class="line">average(<span class="number">1</span>:<span class="number">5</span>)</div></pre></td></tr></table></figure></p>
+<p>Try <code>?average</code> and see the documention built by Roxygen. 
+</p>
+<h4 id="More-Build-Source-Package-amp-Build-Binary-Package"><a href="#More-Build-Source-Package-amp-Build-Binary-Package" class="headerlink" title="More - Build Source Package &amp; Build Binary Package"></a>More - Build Source Package &amp; Build Binary Package</h4><p>“Build Source Package” can output a <em>.tar.gz file; while “Build Binary Package” can output a </em>.zip file. 
+Then it’s very convenient to share your package. After the user recieve the file, they can go straight to use your packge! 
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">devtools::install_local(<span class="string">"~/Test_0.1.tar.gz"</span>)</div><div class="line"><span class="keyword">library</span>(test)</div><div class="line">hello()</div><div class="line">average(<span class="number">1</span>:<span class="number">5</span>)</div></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
 <li><a href="https://support.rstudio.com/hc/en-us/articles/200486498" target="_blank" rel="external">Package Development Prerequisites</a></li>
@@ -652,7 +697,7 @@ You can install other necessary packages in the whole process of building your p
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -674,7 +719,7 @@ You can install other necessary packages in the whole process of building your p
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -788,7 +833,7 @@ You can install other necessary packages in the whole process of building your p
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -829,9 +874,6 @@ You can install other necessary packages in the whole process of building your p
 
 
 
-  
-  
-
 
 
 
@@ -858,12 +900,6 @@ You can install other necessary packages in the whole process of building your p
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
-
 
   
 
@@ -876,13 +912,6 @@ You can install other necessary packages in the whole process of building your p
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -1070,13 +1099,32 @@ You can install other necessary packages in the whole process of building your p
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
   
 
   
+  
+
 
   
 

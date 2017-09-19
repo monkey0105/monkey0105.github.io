@@ -5,9 +5,9 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="本篇文章简单介绍python装饰器的应用。若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。">
+<meta name="description" content="本篇文章简单介绍python装饰器的应用。 若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。">
 <meta name="keywords" content="python,decorator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Decorator Application">
 <meta property="og:url" content="http://monkey0105.github.io/2017/01/15/python-decorator-application/index.html">
 <meta property="og:site_name" content="Dreamland">
-<meta property="og:description" content="本篇文章简单介绍python装饰器的应用。若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。">
+<meta property="og:description" content="本篇文章简单介绍python装饰器的应用。 若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。">
 <meta property="og:updated_time" content="2017-05-17T08:26:38.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Decorator Application">
-<meta name="twitter:description" content="本篇文章简单介绍python装饰器的应用。若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。">
+<meta name="twitter:description" content="本篇文章简单介绍python装饰器的应用。 若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。">
 
 
 
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -134,7 +134,7 @@
 
 
 
-  <title>Python Decorator Application | Dreamland</title>
+  <title>Python Decorator Application | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +145,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -429,7 +429,9 @@
       
 
       
-        <p>本篇文章简单介绍python装饰器的应用。<br>若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。<br><a id="more"></a></p>
+        <p>本篇文章简单介绍python装饰器的应用。
+若多个不同的函数需要实现一个相同的功能，则可以考虑使用装饰器来实现，而不需要去修改每一个函数。
+<a id="more"></a></p>
 <h1 id="情景描述1"><a href="#情景描述1" class="headerlink" title="情景描述1"></a>情景描述1</h1><p>有一个函数，存在一定概率会运行失败。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">prob_fail</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line">    <span class="keyword">if</span> randint(<span class="number">0</span>,<span class="number">100</span>) &lt; <span class="number">20</span>:</div><div class="line">        print(<span class="string">'Succeed'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Fail'</span>)</div><div class="line">        <span class="keyword">raise</span> Exception</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prob_fail()</div></pre></td></tr></table></figure>
@@ -535,13 +537,18 @@ MaxRetryNumError                          Traceback (most recent call last)
 
 
 MaxRetryNumError: Reach the Max Retry Number: 3! 
-</code></pre><h1 id="情景描述2（修改于2017-05-17）"><a href="#情景描述2（修改于2017-05-17）" class="headerlink" title="情景描述2（修改于2017-05-17）"></a>情景描述2（修改于2017-05-17）</h1><p>现在有一堆函数，都是输入一个dataframe，输出一个dataframe。<br>现在为了运用既定的流程，并且保留dataframe的读取path，我希望所有的函数都能接收一个path和一个dataframe，输出也是path和dataframe。</p>
-<h2 id="原函数定义"><a href="#原函数定义" class="headerlink" title="原函数定义"></a>原函数定义</h2><p>用简单函数来做演示，<code>func1</code>的功能是给输入的数字加上<code>2</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">return</span> x+<span class="number">2</span></div></pre></td></tr></table></figure></p>
-<p>运行效果如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func1(<span class="number">2</span>)</div></pre></td></tr></table></figure></p>
+</code></pre><h1 id="情景描述2（修改于2017-05-17）"><a href="#情景描述2（修改于2017-05-17）" class="headerlink" title="情景描述2（修改于2017-05-17）"></a>情景描述2（修改于2017-05-17）</h1><p>现在有一堆函数，都是输入一个dataframe，输出一个dataframe。
+现在为了运用既定的流程，并且保留dataframe的读取path，我希望所有的函数都能接收一个path和一个dataframe，输出也是path和dataframe。</p>
+<h2 id="原函数定义"><a href="#原函数定义" class="headerlink" title="原函数定义"></a>原函数定义</h2><p>用简单函数来做演示，<code>func1</code>的功能是给输入的数字加上<code>2</code>。
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">return</span> x+<span class="number">2</span></div></pre></td></tr></table></figure></p>
+<p>运行效果如下：
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func1(<span class="number">2</span>)</div></pre></td></tr></table></figure></p>
 <pre><code>4
 </code></pre><h2 id="定义装饰器"><a href="#定义装饰器" class="headerlink" title="定义装饰器"></a>定义装饰器</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(s, x)</span>:</span></div><div class="line">        <span class="keyword">return</span> s, func(x)</div><div class="line">    <span class="keyword">return</span> inner</div></pre></td></tr></table></figure>
-<h2 id="应用装饰器"><a href="#应用装饰器" class="headerlink" title="应用装饰器"></a>应用装饰器</h2><p>装饰器定义好后，在每个原函数定义前加上<code>@decorator</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@decorator</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">return</span> x+<span class="number">2</span></div></pre></td></tr></table></figure></p>
-<p>这样再调用<code>func1</code>时，<code>func1</code>的参数就从一个变成了两个，输出也相应地改变了。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func1(<span class="string">'x'</span>, <span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="应用装饰器"><a href="#应用装饰器" class="headerlink" title="应用装饰器"></a>应用装饰器</h2><p>装饰器定义好后，在每个原函数定义前加上<code>@decorator</code>。
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@decorator</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">return</span> x+<span class="number">2</span></div></pre></td></tr></table></figure></p>
+<p>这样再调用<code>func1</code>时，<code>func1</code>的参数就从一个变成了两个，输出也相应地改变了。
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func1(<span class="string">'x'</span>, <span class="number">1</span>)</div></pre></td></tr></table></figure></p>
 <pre><code>(&apos;x&apos;, 3)
 </code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>装饰器<code>decorator</code>本身是一个函数，同时，它的输入参数必须是一个函数，就是需要被装饰的原函数<code>func</code>，它的输出<code>return</code>也是一个函数<code>inner</code>。<code>inner</code>负责调用原函数<code>func</code>，及进行相应的改造。</p>
 
@@ -706,7 +713,7 @@ MaxRetryNumError: Reach the Max Retry Number: 3!
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -728,7 +735,7 @@ MaxRetryNumError: Reach the Max Retry Number: 3!
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -842,7 +849,7 @@ MaxRetryNumError: Reach the Max Retry Number: 3!
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -883,9 +890,6 @@ MaxRetryNumError: Reach the Max Retry Number: 3!
 
 
 
-  
-  
-
 
 
 
@@ -912,12 +916,6 @@ MaxRetryNumError: Reach the Max Retry Number: 3!
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
-
 
   
 
@@ -930,13 +928,6 @@ MaxRetryNumError: Reach the Max Retry Number: 3!
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -1124,13 +1115,32 @@ MaxRetryNumError: Reach the Max Retry Number: 3!
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
   
 
   
+  
+
 
   
 

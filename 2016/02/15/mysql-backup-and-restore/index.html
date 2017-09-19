@@ -5,9 +5,9 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -134,7 +134,7 @@
 
 
 
-  <title>MySQL Database Backup and Restore | Dreamland</title>
+  <title>MySQL Database Backup and Restore | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +145,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -429,8 +429,10 @@
       
 
       
-        <p>MySQL的数据建了也有段日子了，但始终没有做备份，确实很不符合数据库的理论，倒是很符合我的懒癌风格。<br><a id="more"></a></p>
-<h1 id="Using-mysqldump-in-Command-Prompt"><a href="#Using-mysqldump-in-Command-Prompt" class="headerlink" title="Using mysqldump in Command Prompt"></a>Using <code>mysqldump</code> in Command Prompt</h1><p>在Google搜索”MySQL Backup Restore”出现最多的词应该就是<code>mysqldump</code>了，一开始以为是一个需要另外安装的软件，所以一直避开不看，结果绕了弯路。<br><code>mysqldump</code>其实是完全复制创建数据库和数据表的过程，导出sql语句文件。这样，在恢复备份时，只需要重新跑一遍导出的sql语句即可。</p>
+        <p>MySQL的数据建了也有段日子了，但始终没有做备份，确实很不符合数据库的理论，倒是很符合我的懒癌风格。 
+<a id="more"></a></p>
+<h1 id="Using-mysqldump-in-Command-Prompt"><a href="#Using-mysqldump-in-Command-Prompt" class="headerlink" title="Using mysqldump in Command Prompt"></a>Using <code>mysqldump</code> in Command Prompt</h1><p>在Google搜索”MySQL Backup Restore”出现最多的词应该就是<code>mysqldump</code>了，一开始以为是一个需要另外安装的软件，所以一直避开不看，结果绕了弯路。
+<code>mysqldump</code>其实是完全复制创建数据库和数据表的过程，导出sql语句文件。这样，在恢复备份时，只需要重新跑一遍导出的sql语句即可。</p>
 <h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>优点是快速复制了数据库和数据表的结构和内容；缺点是碰到如我现在碰到的庞大的表格（一开始一次性导入都十分困难，只能有R循环分批导入的表格），导出过程就如卡死了一般，非常缓慢，也不知道是否能够完全复制。</p>
 <h2 id="备份过程"><a href="#备份过程" class="headerlink" title="备份过程"></a>备份过程</h2><ol>
 <li>点击<code>Startup</code>，输入<code>cmd</code>，打开Windows Command Prompt。</li>
@@ -448,7 +450,8 @@
 </li>
 <li>输入<code>root</code>的password。</li>
 </ol>
-<h2 id="恢复过程"><a href="#恢复过程" class="headerlink" title="恢复过程"></a>恢复过程</h2><p>仍然在Windows Command Prompt中，把<code>&gt;</code>之前最低一级单位的名称删除，然后把<code>&gt;</code>换成<code>&lt;</code>即可。<br>注意要在<code>C:\Program Files\MySQL\MySQL Server 5.6\bin</code>目录下。</p>
+<h2 id="恢复过程"><a href="#恢复过程" class="headerlink" title="恢复过程"></a>恢复过程</h2><p>仍然在Windows Command Prompt中，把<code>&gt;</code>之前最低一级单位的名称删除，然后把<code>&gt;</code>换成<code>&lt;</code>即可。
+注意要在<code>C:\Program Files\MySQL\MySQL Server 5.6\bin</code>目录下。</p>
 <ul>
 <li>恢复一个数据库中多个表： <code>mysqldump -u username -p dbname &lt; BackupName.sql</code>    </li>
 <li>恢复一个或多个数据库： <code>mysqldump -u username -p &lt; BackupName.sql</code></li>
@@ -456,13 +459,17 @@
 <h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><ol>
 <li>我一开始把导出的目标文件夹命名为<code>MySQL DB Backup</code>，中间有空格，结果提示说<code>mysqldump: Couldn&#39;t find table: &quot;DB&quot;</code>，让我很是无语啊，于是就改成了<code>MySQL_Backup</code>。</li>
 <li>备份之前请一定检查一下目标文件夹的空间够不够，否则就会碰到我碰到的窘况。<blockquote>
-<p>Backup failed: mysqldump: Got errno 28 on write<br>Meaning： Insufficient disk space to store output.<br>Solution： Free up some disk space. You might want to track down the reason you’re low on disk space too.</p>
+<p>Backup failed: mysqldump: Got errno 28 on write
+Meaning： Insufficient disk space to store output.
+Solution： Free up some disk space. You might want to track down the reason you’re low on disk space too.</p>
 </blockquote>
 </li>
 </ol>
 <h1 id="Copy-data-file-from-MySQL-Server-Path"><a href="#Copy-data-file-from-MySQL-Server-Path" class="headerlink" title="Copy data file from MySQL Server Path"></a>Copy <code>data</code> file from MySQL Server Path</h1><p>原先二师兄好像也研究过这一块，然而今天在一篇博客中看到详解，让我茅塞顿开（虽然还来不及完全尝试╮(╯▽╰)╭）。</p>
 <h2 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h2><p><del>据说是直接复制出来，要还原的时候直接粘贴在相同路径就欧儿了！</del>  </p>
-<h2 id="补充-2016-04"><a href="#补充-2016-04" class="headerlink" title="补充 2016-04"></a>补充 2016-04</h2><p>试了几次貌似并不成功。恢复时粘贴回原来的文件，文件夹里看起来跟原始状态一样，MySQL里面也能看到那张表，但是无法成功打开或操作。<br>建议还是使用数据库生成方式进行备份与恢复。<br>应该是有解决方案的才对=。=</p>
+<h2 id="补充-2016-04"><a href="#补充-2016-04" class="headerlink" title="补充 2016-04"></a>补充 2016-04</h2><p>试了几次貌似并不成功。恢复时粘贴回原来的文件，文件夹里看起来跟原始状态一样，MySQL里面也能看到那张表，但是无法成功打开或操作。
+建议还是使用数据库生成方式进行备份与恢复。
+应该是有解决方案的才对=。=</p>
 <h2 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h2><p>这里说的<code>data</code>文件夹并不是<code>C:\Program Files\MySQL\MySQL Server 5.6\data</code>，而是<strong>隐藏文件夹</strong>： <code>C:\Users\All Users\MySQL\MySQL Server 5.6\data</code>。</p>
 <ol>
 <li>先设置<code>Folder and search options</code>中隐藏文件夹可见。</li>
@@ -644,7 +651,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -666,7 +673,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -780,7 +787,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -821,9 +828,6 @@
 
 
 
-  
-  
-
 
 
 
@@ -850,12 +854,6 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
-
 
   
 
@@ -868,13 +866,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
@@ -1062,13 +1053,32 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
   
 
   
+  
+
 
   
 
