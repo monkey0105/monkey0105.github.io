@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://monkey0105.github.io/2017/09/19/transform-data-from-long-format-to-wide-format/index.html">
 <meta property="og:site_name" content="Dreamland">
 <meta property="og:description" content="在数据存储时，由于缺失等情况，为了节省存储空间，很多时候会采取long format，待到建模或分析等时候，wide format会使操作更便捷。于是，将long format的数据转换成wide format，就成了很常见的一种数据转换的场景。在pandas中运用unstack方法还是非常方便的，不过对于数据量很大的情况，pandas可能hold不住。本文记录了用pandas和sqlalchem">
-<meta property="og:updated_time" content="2017-09-19T07:43:02.168Z">
+<meta property="og:updated_time" content="2017-09-19T08:20:06.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Transform data from long format to wide format">
 <meta name="twitter:description" content="在数据存储时，由于缺失等情况，为了节省存储空间，很多时候会采取long format，待到建模或分析等时候，wide format会使操作更便捷。于是，将long format的数据转换成wide format，就成了很常见的一种数据转换的场景。在pandas中运用unstack方法还是非常方便的，不过对于数据量很大的情况，pandas可能hold不住。本文记录了用pandas和sqlalchem">
@@ -350,7 +350,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-19T15:43:02+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-19T16:20:00+08:00">
                 2017-09-19
               </time>
             
@@ -1024,6 +1024,10 @@ FROM test.test) AS spread GROUP BY spread.id
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/09/21/hexo-mathjax/" rel="prev" title="Hexo博客数学公式显示">
+                Hexo博客数学公式显示 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -1107,7 +1111,7 @@ FROM test.test) AS spread GROUP BY spread.id
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1129,7 +1133,7 @@ FROM test.test) AS spread GROUP BY spread.id
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1282,6 +1286,8 @@ FROM test.test) AS spread GROUP BY spread.id
   
 
 
+  
+
 
 
 
@@ -1309,6 +1315,9 @@ FROM test.test) AS spread GROUP BY spread.id
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
@@ -1509,9 +1518,35 @@ FROM test.test) AS spread GROUP BY spread.id
         showTime(Counter);
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+  MathJax.Hub.Config("");
 </script>
 
 <script type="text/x-mathjax-config">
@@ -1523,16 +1558,10 @@ FROM test.test) AS spread GROUP BY spread.id
   });
 </script>
 
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="custom_mathjax_source">
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-
-
-  
-
-  
   
 
 
