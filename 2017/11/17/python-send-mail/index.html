@@ -1,0 +1,1134 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,html," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="日常工作中有些临时报表或者报警需要通过邮件形式进行。">
+<meta name="keywords" content="Python,html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python发送邮件">
+<meta property="og:url" content="http://monkey0105.github.io/2017/11/17/python-send-mail/index.html">
+<meta property="og:site_name" content="Dreamland">
+<meta property="og:description" content="日常工作中有些临时报表或者报警需要通过邮件形式进行。">
+<meta property="og:updated_time" content="2017-11-17T11:12:05.690Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python发送邮件">
+<meta name="twitter:description" content="日常工作中有些临时报表或者报警需要通过邮件形式进行。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '0WAS567B7X',
+      apiKey: '759b8f1ab783d5715ba2a55a26a069d0',
+      indexName: 'hexo_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://monkey0105.github.io/2017/11/17/python-send-mail/"/>
+
+
+
+
+
+  <title>Python发送邮件 | Dreamland</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ff535cdcd7fc7a424187099c15b8d662";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dreamland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Inner Peace</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://monkey0105.github.io/2017/11/17/python-send-mail/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katherine Hou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dreamland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python发送邮件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-17T19:00:00+08:00">
+                2017-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序媛-Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">程序媛|Coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/17/python-send-mail/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/17/python-send-mail/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/17/python-send-mail/" class="leancloud_visitors" data-flag-title="Python发送邮件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>日常工作中有些临时报表或者报警需要通过邮件形式进行。
+<a id="more"></a></p>
+<h1 id="导入必要代码库"><a href="#导入必要代码库" class="headerlink" title="导入必要代码库"></a>导入必要代码库</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</div><div class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</div><div class="line"><span class="keyword">from</span> email.mime.image <span class="keyword">import</span> MIMEImage</div><div class="line"><span class="keyword">from</span> email.mime.application <span class="keyword">import</span> MIMEApplication</div><div class="line"><span class="keyword">from</span> os.path <span class="keyword">import</span> basename</div><div class="line"><span class="keyword">from</span> premailer <span class="keyword">import</span> transform</div></pre></td></tr></table></figure>
+<h1 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h1><p>主要功能包括发送普通邮件、抄送邮件和密送邮件。<br>邮件正文中可添加文字（标题、段落）、表格和图片。<br>可添加邮件附件。<br>具体限制根据不同的邮箱服务器而有所不同，最好在正式邮件发送前多进行测试。  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">send_mail(</div><div class="line">    from_addr=<span class="string">'&lt;发送的邮箱地址&gt;'</span>, </div><div class="line">    password=<span class="string">'&lt;发送邮箱的密码或授权码&gt;'</span>, </div><div class="line">    smtp_server=<span class="string">'&lt;发送邮箱的服务器&gt;'</span>, </div><div class="line">    smtp_port=&lt;发送邮箱的服务器端口&gt;,</div><div class="line">    to_addr=[<span class="string">'&lt;收件人邮箱的地址&gt;'</span>], </div><div class="line">    subject=<span class="string">'&lt;邮件标题&gt;'</span>,</div><div class="line">    html_text=<span class="string">'&lt;邮件内容（复杂的可先生成并存在其他变量内）&gt;'</span>,</div><div class="line">    styles = <span class="string">'&lt;邮件内容的html的格式配置&gt;'</span>, </div><div class="line">    cc_addr = [<span class="string">'&lt;被抄送人邮箱的地址&gt;'</span>], </div><div class="line">    bcc_addr = [<span class="string">'&lt;被密送人邮箱的地址&gt;'</span>],  </div><div class="line">    alternative_plain_text = <span class="string">''</span>, </div><div class="line">    local_images = &#123;<span class="string">'&lt;图片cid&gt;'</span>: <span class="string">'&lt;图片文件名&gt;'</span>&#125;, </div><div class="line">    attachments = [<span class="string">'&lt;附件文件名&gt;'</span>]</div><div class="line">)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_mail</span><span class="params">(</span></span></div><div class="line">    from_addr, </div><div class="line">    password, </div><div class="line">    smtp_server, </div><div class="line">    to_addr, </div><div class="line">    subject, </div><div class="line">    html_text, </div><div class="line">    smtp_port=<span class="number">0</span>, </div><div class="line">    styles = <span class="string">''</span>, </div><div class="line">    cc_addr = None, </div><div class="line">    bcc_addr = None,  </div><div class="line">    local_images = None, </div><div class="line">    attachments = None</div><div class="line">):</div><div class="line">    </div><div class="line">    cc_addr = cc_addr <span class="keyword">or</span> []</div><div class="line">    bcc_addr = bcc_addr <span class="keyword">or</span> []</div><div class="line">    local_images = local_images <span class="keyword">or</span> &#123;&#125;</div><div class="line">    attachments = attachments <span class="keyword">or</span> []    </div><div class="line">    to_all_addr = to_addr+cc_addr+bcc_addr</div><div class="line"></div><div class="line"></div><div class="line">    html_text = transform(styles+html_text)</div><div class="line"></div><div class="line">    <span class="comment"># Create the root message and fill in the from, to, and subject headers</span></div><div class="line">    msgRoot = MIMEMultipart(<span class="string">'related'</span>)</div><div class="line">    msgRoot[<span class="string">'Subject'</span>] = subject</div><div class="line"></div><div class="line">    <span class="comment"># We reference the image in the IMG SRC attribute by the ID we give it below</span></div><div class="line">    msgText = MIMEText(html_text, <span class="string">'html'</span>)</div><div class="line"></div><div class="line">    msgRoot.attach(msgText)</div><div class="line"></div><div class="line"></div><div class="line">    msgRoot.add_header(<span class="string">'From'</span>,from_addr)</div><div class="line">    msgRoot.add_header(<span class="string">'To'</span>, <span class="string">","</span>.join(to_addr))</div><div class="line">    msgRoot.add_header(<span class="string">'Cc'</span>, <span class="string">","</span>.join(cc_addr))</div><div class="line">    msgRoot.add_header(<span class="string">'Bcc'</span>, <span class="string">","</span>.join(bcc_addr))</div><div class="line"></div><div class="line">    <span class="comment"># This example assumes the image is in the current directory</span></div><div class="line">    <span class="keyword">for</span> cid, path <span class="keyword">in</span> local_images.items():</div><div class="line">        fp = open(path, <span class="string">'rb'</span>)</div><div class="line">        msgImage = MIMEImage(fp.read())</div><div class="line">        fp.close()</div><div class="line"></div><div class="line">        <span class="comment"># Define the image's ID as referenced above</span></div><div class="line">        msgImage.add_header(<span class="string">'Content-ID'</span>, <span class="string">'&lt;&#123;cid&#125;&gt;'</span>.format(cid = cid))</div><div class="line">        msgRoot.attach(msgImage)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> path <span class="keyword">in</span> attachments <span class="keyword">or</span> []:</div><div class="line">        <span class="keyword">with</span> open(path, <span class="string">"rb"</span>) <span class="keyword">as</span> file:</div><div class="line">            part = MIMEApplication(</div><div class="line">                file.read(),</div><div class="line">                Name=basename(path)</div><div class="line">            )</div><div class="line">            part[<span class="string">'Content-Disposition'</span>] = <span class="string">'attachment; filename="&#123;&#125;"'</span>.format(basename(path)) </div><div class="line">            msgRoot.attach(part)    </div><div class="line"></div><div class="line">    <span class="comment"># Send the email (this example assumes SMTP authentication is required)</span></div><div class="line">    <span class="keyword">import</span> smtplib</div><div class="line">    smtp = smtplib.SMTP()</div><div class="line">    smtp.connect(smtp_server, smtp_port)</div><div class="line"><span class="comment">#     smtp = smtplib.SMTP_SSL(smtp_server, smtp_port)</span></div><div class="line">    </div><div class="line">    smtp.login(from_addr, password)</div><div class="line">    smtp.sendmail(from_addr, to_all_addr, msgRoot.as_string())</div><div class="line">    smtp.quit()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">styles = <span class="string">'''</span></div><div class="line">&lt;style&gt;</div><div class="line">    table &#123;</div><div class="line">        background:#87ceeb;</div><div class="line">        color: #333; /* Lighten up font color */</div><div class="line">        font-family: Helvetica, Arial, sans-serif; /* Nicer font */</div><div class="line">        width: 640px;</div><div class="line">        border-collapse:</div><div class="line">        collapse; border-spacing: 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">   td, th &#123; border: 1px solid #CCC; height: 30px; &#125; /* Make cells a bit taller */</div><div class="line"></div><div class="line">   th &#123;</div><div class="line">        background: #F3F3F3; /* Light grey background */</div><div class="line">        font-weight: bold; /* Make sure they're bold */</div><div class="line">    &#125;</div><div class="line">   td &#123;</div><div class="line">        /*background: #FAFAFA;  Lighter grey background */</div><div class="line">        text-align: center; /* Center our text */</div><div class="line">    &#125;</div><div class="line">   .odd&gt;td &#123; background: #FEFEFE;&#125;</div><div class="line">   .even&gt;td &#123; background: #F1F1F1;&#125;</div><div class="line"></div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">'''</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">send_mail(</div><div class="line">    from_addr=<span class="string">'finance.datascience@jfpal.com'</span>, </div><div class="line">    password=<span class="string">'Jrsjkxzbbd2333'</span>, </div><div class="line">    smtp_server=<span class="string">'smtp.exmail.qq.com'</span>, </div><div class="line"><span class="comment">#     smtp_port=465,</span></div><div class="line">    to_addr=[<span class="string">'hxt@jfpal.com'</span>], </div><div class="line">    subject=<span class="string">'&lt;邮件标题&gt;'</span>,</div><div class="line">    html_text=<span class="string">'喵喵喵'</span>+html_text,</div><div class="line">    styles = styles, </div><div class="line"><span class="comment">#     cc_addr = ['&lt;被抄送人邮箱的地址&gt;'], </span></div><div class="line"><span class="comment">#     bcc_addr = ['&lt;被密送人邮箱的地址&gt;'],  </span></div><div class="line"><span class="comment">#     alternative_plain_text = '', </span></div><div class="line"><span class="comment">#     local_images = &#123;'&lt;图片cid&gt;': '&lt;图片文件名&gt;'&#125;, </span></div><div class="line"><span class="comment">#     attachments = ['&lt;附件文件名&gt;']</span></div><div class="line">)</div></pre></td></tr></table></figure>
+<p>不同邮件系统所需的设置会有所不同，例如：  </p>
+<ul>
+<li>要用腾讯企业邮箱作为发送邮箱时，使用以下两句代码：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">smtp = smtplib.SMTP()</div><div class="line">smtp.connect(smtp_server, smtp_port)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>把<code>smtp_server</code>填充成<code>smtp.exmail.qq.com</code>，<code>smtp_port</code>保持默认的<code>0</code>，<code>password</code>也填写邮箱的登录密码即可。</p>
+<ul>
+<li>而要使用QQ邮箱作为发送邮箱时，就需要把上面两句代码改写为<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">smtp = smtplib.SMTP_SSL(smtp_server, smtp_port)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>且需要提前在QQ邮箱中<code>设置</code>-&gt;<code>账户</code>中开启SMTP服务，并生成“授权码”，并在<code>password</code>处填写授权码。
+此外，还需要把<code>smtp_server</code>填充为<code>‘smtp.qq.com&#39;</code>，<code>smtp_port</code>填写为<code>465</code>。
+设置部分截图如下：
+{% asset_img image_001.jpg 图片1 %}</p>
+<h1 id="函数调用-amp-html-styles应用"><a href="#函数调用-amp-html-styles应用" class="headerlink" title="函数调用&amp;html styles应用"></a>函数调用&amp;html styles应用</h1><p><code>.py</code>文件与<code>muban</code>文件夹平级，以下<code>.html</code>模板文件都存在<code>muban</code>文件夹下。<br>一般运行代码时可选择相对路径引用，如下所示。不过碰到在docker中运行时只能用绝对路径的情况。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">path = <span class="string">"muban/"</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> jinja2 <span class="keyword">import</span> Template, Environment, FileSystemLoader</div><div class="line">templateLoader = FileSystemLoader(searchpath=path)</div><div class="line">env = Environment(loader=templateLoader)</div></pre></td></tr></table></figure>
+<h2 id="插入文字"><a href="#插入文字" class="headerlink" title="插入文字"></a>插入文字</h2><ul>
+<li><p>如果不需要任何格式修饰，可以直接往<code>html_text</code>输入长的<code>Python</code> <code>string</code>。</p>
+</li>
+<li><p>如果邮件的正文中有部分固定文字的格式，还有一部分内容可以由使用函数的用户自定义变量的值来进行填充，可以使用以下方式。</p>
+</li>
+</ul>
+<p>在<code>header.html</code>中写入如下内容：
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>DEAR ALL～，此为&#123;&#123;date_str&#125;&#125;自动发送的邮件，请勿直接回复，如有疑问，请与&#123;&#123;author&#125;&#125;联系，谢谢！ <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>然后运行以下代码，就可把<code>date_str</code>和<code>author</code>的值填充进邮件正文中了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">start_template = env.get_template(<span class="string">'header.html'</span>)</div><div class="line">date_str = datetime.strftime(datetime.now(), <span class="string">'%Y-%m-%d %H:%M:%S'</span>)</div><div class="line">start_statement = start_template.render(date_str=date_str,author=<span class="string">'模型组'</span>)</div><div class="line"></div><div class="line">html_text = start_statement</div></pre></td></tr></table></figure>
+<h2 id="插入表格"><a href="#插入表格" class="headerlink" title="插入表格"></a>插入表格</h2><p>把以下表格styles代码存入文件<code>table_template.html</code>中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;% macro table(data) %&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">         &#123;% for row in data%&#125;</div><div class="line">		&#123;% if (row[0]!='序号') and (row[0]%2==0) %&#125;</div><div class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">'odd'</span>&gt;</span></div><div class="line">		&#123;% elif (row[0]!='序号') and (row[0]%2!=0) %&#125;</div><div class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span> =<span class="string">'even'</span>&gt;</span></div><div class="line">		&#123;% else %&#125;</div><div class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span> =<span class="string">'tableHeader'</span>&gt;</span></div><div class="line">		&#123;% endif %&#125;</div><div class="line">                &#123;% for col in row%&#125;</div><div class="line">                	<span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;col&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">                &#123;% endfor %&#125;</div><div class="line">            	<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        &#123;% endfor %&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">&#123;% endmacro %&#125;</div></pre></td></tr></table></figure>
+<p>然后在<code>main_body_template.html</code>中输入以下代码：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% from &quot;table_template.html&quot; import table with context %&#125;</div><div class="line">&#123;&#123;table(data)&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>将需要发送在邮件内容中的<code>pandas.DataFrame</code>存在<code>input_df</code>变量中，则应用以上模板的方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> jinja2 <span class="keyword">import</span> Template, Environment, FileSystemLoader</div><div class="line">templateLoader = FileSystemLoader(searchpath=<span class="string">'./'</span>)</div><div class="line">env = Environment(loader=templateLoader)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">table_template = env.get_template(<span class="string">'main_body_template.html'</span>)</div><div class="line">header = list(input_df.columns)</div><div class="line">header.insert(<span class="number">0</span>, <span class="string">'序号'</span>)</div><div class="line">email_list = []</div><div class="line">email_list.append(header)</div><div class="line">email_list.extend(input_df.to_records())</div><div class="line">html_text = table_template.render(data=email_list)</div></pre></td></tr></table></figure>
+<p>应用在如下<code>pd.DataFrame</code>上，可得到下面的显示效果（不同邮箱系统可能会存在差异）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">input_df = pd.DataFrame(</div><div class="line">    &#123;</div><div class="line">        <span class="string">'产品'</span>: list(<span class="string">'ABCD'</span>),</div><div class="line">        <span class="string">'销量'</span>: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">200</span>] </div><div class="line">    &#125;</div><div class="line">)</div><div class="line">input_df</div></pre></td></tr></table></figure>
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>产品</th>
+      <th>销量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>D</td>
+      <td>200</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>将生成好的图片保存在代码同级或以下的路径中，然后将<code>cid</code>和图片文件名一一对应，如下所示。  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">local_images = &#123;</div><div class="line">    <span class="string">'01'</span>: <span class="string">'pic01.png'</span>,</div><div class="line">    ...</div><div class="line">    <span class="string">'10'</span>: <span class="string">'pic10.png'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意：若图片数量大于等于10张，需要将<code>cid</code>编号左边填充<code>0</code>，否则，<code>cid</code>排序不正确会导致图片显示顺序出错。</strong><br>如果有10张图片，而<code>cid</code>直接从<code>1</code>到<code>10</code>，则<code>cid</code>为<code>10</code>的图片会显示在<code>1</code>的后面、<code>2</code>的前面。</p>
+<h2 id="添加附件"><a href="#添加附件" class="headerlink" title="添加附件"></a>添加附件</h2><p>将附件文件存放在代码路径或以下，后将文件路径填写在<code>attachments</code>下。</p>
+<h1 id="定时任务设置"><a href="#定时任务设置" class="headerlink" title="定时任务设置"></a>定时任务设置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> apscheduler.schedulers.background <span class="keyword">import</span> BlockingScheduler</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">aps_task</span><span class="params">()</span>:</span></div><div class="line">    send_mail(...)</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    print(<span class="string">'scheduler starts'</span>)</div><div class="line">    scheduler  = BlockingScheduler()</div><div class="line">    scheduler.add_job(func=aps_task, trigger=<span class="string">'cron'</span>,minute=<span class="string">'*/30'</span>)</div><div class="line">    scheduler.start()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="Katherine Hou WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="Katherine Hou Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/html/" rel="tag"># html</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/21/hexo-mathjax/" rel="next" title="Hexo博客数学公式显示">
+                <i class="fa fa-chevron-left"></i> Hexo博客数学公式显示
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Katherine Hou" />
+          <p class="site-author-name" itemprop="name">Katherine Hou</p>
+           
+              <p class="site-description motion-element" itemprop="description">To love the world as never get hurt!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/monkey0105" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://papacochon.com/" title="二师兄" target="_blank">二师兄</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://junjiecai.github.io/" title="师父" target="_blank">师父</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://xiaogalayy.github.io/" title="琳儿" target="_blank">琳儿</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://mjp1124.github.io/" title="白龙马" target="_blank">白龙马</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://zhangxu999.github.io/" title="旭总" target="_blank">旭总</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导入必要代码库"><span class="nav-number">1.</span> <span class="nav-text">导入必要代码库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义函数"><span class="nav-number">2.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数调用-amp-html-styles应用"><span class="nav-number">3.</span> <span class="nav-text">函数调用&html styles应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入文字"><span class="nav-number">3.1.</span> <span class="nav-text">插入文字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入表格"><span class="nav-number">3.2.</span> <span class="nav-text">插入表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入图片"><span class="nav-number">3.3.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加附件"><span class="nav-number">3.4.</span> <span class="nav-text">添加附件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定时任务设置"><span class="nav-number">4.</span> <span class="nav-text">定时任务设置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katherine Hou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://monkey0105.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://monkey0105.github.io/2017/11/17/python-send-mail/';
+          this.page.identifier = '2017/11/17/python-send-mail/';
+          this.page.title = 'Python发送邮件';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://monkey0105.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3BX3ONtgxqqdzfeRue8AEATv-gzGzoHsz", "BBCnRCQrdzUDzXcMwYbdLwle");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
