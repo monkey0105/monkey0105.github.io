@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="Dreamland">
 <meta property="og:description" content="日常工作中有些临时报表或者报警需要通过邮件形式进行。">
 <meta property="og:image" content="http://monkey0105.github.io/2017/11/17/python-send-mail/image_002.png">
-<meta property="og:updated_time" content="2017-11-20T02:23:58.631Z">
+<meta property="og:updated_time" content="2017-11-20T02:57:11.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python发送邮件">
 <meta name="twitter:description" content="日常工作中有些临时报表或者报警需要通过邮件形式进行。">
@@ -449,9 +449,9 @@
 </li>
 </ul>
 <p>且需要提前在QQ邮箱中<code>设置</code>-&gt;<code>账户</code>中开启SMTP服务，并生成“授权码”，并在<code>password</code>处填写授权码。
-此外，还需要把<code>smtp_server</code>填充为<code>‘smtp.qq.com&#39;</code>，<code>smtp_port</code>填写为<code>465</code>。
-设置部分截图如下：
-{% asset_img image_001.png 图片1 %}</p>
+此外，还需要把<code>smtp_server</code>填充为<code>‘smtp.qq.com&#39;</code>，<code>smtp_port</code>填写为<code>465</code>。</p>
+<p>设置部分截图如下：</p>
+{% asset_img image_001.png QQ邮箱设置 %}
 <h1 id="函数调用-amp-html-styles应用"><a href="#函数调用-amp-html-styles应用" class="headerlink" title="函数调用&amp;html styles应用"></a>函数调用&amp;html styles应用</h1><p><code>.py</code>文件与<code>muban</code>文件夹平级，以下<code>.html</code>模板文件都存在<code>muban</code>文件夹下。<br>一般运行代码时可选择相对路径引用，如下所示。不过碰到在docker中运行时只能用绝对路径的情况。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">path = <span class="string">"muban/"</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> jinja2 <span class="keyword">import</span> Template, Environment, FileSystemLoader</div><div class="line">templateLoader = FileSystemLoader(searchpath=path)</div><div class="line">env = Environment(loader=templateLoader)</div></pre></td></tr></table></figure>
 <h2 id="插入文字"><a href="#插入文字" class="headerlink" title="插入文字"></a>插入文字</h2><ul>
@@ -463,7 +463,7 @@
 <p>在<code>header.html</code>中写入如下内容：
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>DEAR ALL～，此为&#123;&#123;date_str&#125;&#125;自动发送的邮件，请勿直接回复，如有疑问，请与&#123;&#123;author&#125;&#125;联系，谢谢！ <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>然后运行以下代码，就可把<code>date_str</code>和<code>author</code>的值填充进邮件正文中了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">start_template = env.get_template(<span class="string">'header.html'</span>)</div><div class="line">date_str = datetime.strftime(datetime.now(), <span class="string">'%Y-%m-%d %H:%M:%S'</span>)</div><div class="line">start_statement = start_template.render(date_str=date_str,author=<span class="string">'模型组'</span>)</div><div class="line"></div><div class="line">html_text = start_statement</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">start_template = env.get_template(<span class="string">'header.html'</span>)</div><div class="line">date_str = datetime.strftime(datetime.now(), <span class="string">'%Y-%m-%d %H:%M:%S'</span>)</div><div class="line">start_statement = start_template.render(date_str=date_str,author=<span class="string">'XXX'</span>)</div><div class="line"></div><div class="line">html_text = start_statement</div></pre></td></tr></table></figure>
 <h2 id="插入表格"><a href="#插入表格" class="headerlink" title="插入表格"></a>插入表格</h2><p>把以下表格styles代码存入文件<code>table_template.html</code>中。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;% macro table(data) %&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">         &#123;% for row in data%&#125;</div><div class="line">		&#123;% if (row[0]!='序号') and (row[0]%2==0) %&#125;</div><div class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">'odd'</span>&gt;</span></div><div class="line">		&#123;% elif (row[0]!='序号') and (row[0]%2!=0) %&#125;</div><div class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span> =<span class="string">'even'</span>&gt;</span></div><div class="line">		&#123;% else %&#125;</div><div class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span> =<span class="string">'tableHeader'</span>&gt;</span></div><div class="line">		&#123;% endif %&#125;</div><div class="line">                &#123;% for col in row%&#125;</div><div class="line">                	<span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;col&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">                &#123;% endfor %&#125;</div><div class="line">            	<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        &#123;% endfor %&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">&#123;% endmacro %&#125;</div></pre></td></tr></table></figure>
 <p>然后在<code>main_body_template.html</code>中输入以下代码：
@@ -509,7 +509,7 @@
 
 
 
-<img src="/2017/11/17/python-send-mail/image_002.png" alt="图片2" title="图片2">
+<img src="/2017/11/17/python-send-mail/image_002.png" alt="表格显示效果" title="表格显示效果">
 <h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>将生成好的图片保存在代码同级或以下的路径中，然后将<code>cid</code>和图片文件名一一对应，如下所示。  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">local_images = &#123;</div><div class="line">    <span class="string">'01'</span>: <span class="string">'pic01.png'</span>,</div><div class="line">    ...</div><div class="line">    <span class="string">'10'</span>: <span class="string">'pic10.png'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>注意：若图片数量大于等于10张，需要将<code>cid</code>编号左边填充<code>0</code>，否则，<code>cid</code>排序不正确会导致图片显示顺序出错。</strong><br>如果有10张图片，而<code>cid</code>直接从<code>1</code>到<code>10</code>，则<code>cid</code>为<code>10</code>的图片会显示在<code>1</code>的后面、<code>2</code>的前面。</p>
